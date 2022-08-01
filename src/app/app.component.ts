@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'family-activity-board';
+
+  public test() {
+    const test = 'teSt';
+
+    console.log(test);
+  }
 }
