@@ -7,8 +7,7 @@
 ## 💻 Projeto
 
 [Quadro Familiar](https://fitness-tracker-6fb47.web.app/) é um aplicativo para auxilio
-em atividades físicas, com controle de tempo de execução dos exercícios. Desenvolvido com amor para
-minha noiva Liana Fernandes.
+na gestão de atividades familiares como controle de contas, atividades de filhos entre outras...
 
 ## ✨ Tecnologias
 
