@@ -1,27 +1,49 @@
-# FamilyActivityBoard
+<h1 align="center">
+   Quadro de Controle Familiar
+</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
+<br>
 
-## Development server
+## 💻 Projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[Quadro Familiar](https://fitness-tracker-6fb47.web.app/) é um aplicativo para auxilio
+na gestão de atividades familiares como controle de contas, atividades de filhos entre outras...
 
-## Code scaffolding
+## ✨ Tecnologias
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-## Build
+- [Angular](https://angular.io/startg)
+- [Firebase](https://firebase.google.com/)
+- [Material](https://material.angular.io/)
+- [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🔖 Layout
 
-## Running unit tests
+![interface](src/assets/images/layout.png 'Layout')
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## 🚀 Instalação
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+# Clone o repositório e entre na pasta do projeto
+$ git clone https://github.com/lucasspeixoto/family-activity-board.git && cd family-activity-board
 
-## Further help
+# Instale as dependências
+$ npm install
+# ou
+$ yarn install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Execute a aplicação
+$ npm start
+# ou
+$ yarn start
+
+# Abra http://localhost:5555 no seu navegador para ver a aplicação rodando!
+```
+
+## 📝 Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para obter mais detalhes.
+
+---
