@@ -1,0 +1,68 @@
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$my-app-primary: mat-palette($mat-indigo);
+$my-app-accent: mat-palette($mat-pink);
+
+// The warn palette is optional (defaults to red).
+$my-app-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($my-app-theme);
+
+.alternate-teal-theme {
+  $teal-app-primary: mat-palette($mat-teal);
+  $teal-app-accent: mat-palette($mat-yellow);
+
+  // The warn palette is optional (defaults to red).
+  $teal-app-warn: mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $teal-app-theme: mat-light-theme(
+    $teal-app-primary,
+    $teal-app-accent,
+    $teal-app-warn
+  );
+
+  // Include theme styles for core and each component used in your app.
+  // Alternatively, you can import and @include the theme mixins for each component
+  // that you are using.
+  @include angular-material-theme($teal-app-theme);
+}
+
+.purple {
+  $purple-primary: mat-palette($mat-purple);
+  $purple-accent: mat-palette($mat-light-green);
+  $purple-theme: mat-light-theme($purple-primary, $purple-accent);
+  @include angular-material-theme($purple-theme);
+}
+
+.pink {
+  $pink-primary: mat-palette($mat-pink);
+  $pink-accent: mat-palette($mat-yellow);
+  $pink-theme: mat-light-theme($pink-primary, $pink-accent);
+  @include angular-material-theme($pink-theme);
+}
+
+.deep-orange {
+  $deep-orange-primary: mat-palette($mat-deep-orange);
+  $deep-orange-accent: mat-palette($mat-teal, A100);
+  $deep-orange-theme: mat-light-theme(
+    $deep-orange-primary,
+    $deep-orange-accent
+  );
+  @include angular-material-theme($deep-orange-theme);
+}
