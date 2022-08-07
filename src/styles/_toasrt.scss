@@ -1,5 +1,23 @@
 @import "colors";
 
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin appButton {
+  font-size: 15px;
+	background: $blue;
+	color: $blue-white;
+	box-shadow: $violet;
+	&:hover {
+			background: $light-blue;
+		}
+}
+
 @mixin toastr-wrapper {
   display: flex;
   justify-content: space-between;

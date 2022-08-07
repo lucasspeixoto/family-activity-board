@@ -1,6 +1,7 @@
 @import '../../../../styles/colors';
 @import '../../../../styles/font';
 @import '../../../../styles/variables';
+@import '../../../../styles/classes';
 
 .login-page {
   width: 100%;
@@ -12,10 +13,6 @@
 
   &__card {
     width: 30vw;
-
-    &:hover {
-      transform: scale(1.02);
-    }
 
     > h1 {
       margin: 2rem;
@@ -48,4 +45,11 @@
     color: $white;
     z-index: 1;
   }
+
 }
+
+/* .form {
+  &__actions--login {
+    @include appButton
+  }
+} */
