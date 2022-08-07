@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  public defaultElevation = 2;
+  public raisedElevation = 8;
   public readonly year = new Date().getFullYear();
   constructor() {}
 

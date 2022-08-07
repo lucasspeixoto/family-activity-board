@@ -1,6 +1,11 @@
 <div class="login-page" fxLayout="column wrap" fxLayoutAlign="center center">
-  <mat-card class="login-page__card">
-    <h1 class="login-page__card--title">Login</h1>
+  <mat-card class="login-page__card" appUpElevation>
+    <h1
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      class="login-page__card--title">
+      Login
+    </h1>
     <mat-card-content>
       <form
         class="form"
@@ -13,7 +18,6 @@
           appearance="fill">
           <input matInput placeholder="E-mail" type="email" required />
         </mat-form-field>
-
         <mat-form-field
           class="form__input form__input--password"
           appearance="fill">

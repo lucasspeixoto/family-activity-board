@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpElevationDirective } from '../directives/up-elevation.directive';
 
 const MODULES = [
   CommonModule,
@@ -12,9 +13,11 @@ const MODULES = [
   FlexLayoutModule,
 ];
 
+const DIRECTIVES = [UpElevationDirective];
+
 @NgModule({
-  declarations: [],
+  declarations: [...DIRECTIVES],
   imports: [...MODULES],
-  exports: [...MODULES],
+  exports: [...MODULES, ...DIRECTIVES],
 })
 export class SharedModule {}
