@@ -2,74 +2,43 @@
 @import '../../../../styles/font';
 @import '../../../../styles/variables';
 
-/* Add application styles & imports to this file! */
-
-.bounds {
-  background-color: #ddd;
-  height: 800px;
-}
-
-.sec1 {
-  background: red;
-  color: white;
-  text-transform: uppercase;
-}
-
-.sec2 {
-  background: yellow;
-  color: blue;
-}
-
-.sec3 {
-  background: blue;
-  color: white;
-  text-transform: uppercase;
-}
-
-.sec1,
-.sec2,
-.sec3 {
-  padding-top: 20px;
-  text-align: center;
-}
-
-.content {
-  min-width: 350px;
-
-  height: 250px;
-}
-
-.example-card {
-  max-width: 400px;
-}
 
 .login-page {
   width: 100%;
   height: 100vh;
-  display: flex;
   padding: 2rem;
-
-  background-image: linear-gradient(
-      to right bottom,
-      rgba($blue, 0.2),
-      rgba($light-blue, 0.2)
-    ),
+  background-image:
     url(../../../../assets/images/background.jpg);
 
   background-size: cover;
-  background-position: top;
   position: relative;
-  align-items: center;
-  justify-content: center;
 
-  &__content {
-    width: 45%;
+  &__card {
+    width: 30vw;
 
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    @media  screen and (min-width: 651px) and (max-width: 800px) {
+      width: 60vw;
+    }
+
+    @media  screen and (min-width: 501px) and (max-width: 650px) {
+      width: 70vw;
+    }
+
+    @media  screen and (min-width: 301px) and (max-width: 500px) {
+      width: 80vw;
+    }
+
+    @media screen and (max-width: 300px) {
+      width: 98vw;
+     }
+
+  }
+
+  &__copyright {
+    position: absolute;
+    bottom: 2rem;
+    color: $white;
+    z-index: 1
 
   }
 }
