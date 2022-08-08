@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpElevationDirective } from '../directives/up-elevation.directive';
+import { CustomValidationMessageComponent } from '../components/custom-validation-message/custom-validation-message.component';
 
 const MODULES = [
   CommonModule,
@@ -13,11 +14,13 @@ const MODULES = [
   FlexLayoutModule,
 ];
 
+const COMPONENTS = [CustomValidationMessageComponent];
+
 const DIRECTIVES = [UpElevationDirective];
 
 @NgModule({
-  declarations: [...DIRECTIVES],
+  declarations: [...DIRECTIVES, ...COMPONENTS],
   imports: [...MODULES],
-  exports: [...MODULES, ...DIRECTIVES],
+  exports: [...MODULES, ...DIRECTIVES, ...COMPONENTS],
 })
 export class SharedModule {}

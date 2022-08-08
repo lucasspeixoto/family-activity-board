@@ -2,6 +2,7 @@
 @import '../../../../styles/font';
 @import '../../../../styles/variables';
 @import '../../../../styles/classes';
+@import '../../../../styles/typography';
 
 .login-page {
   width: 100%;
@@ -13,16 +14,14 @@
 
   &__card {
     width: 30vw;
+    border-radius: $borderRadius;
 
     > h1 {
-      margin: 2rem;
       color: $blue;
-      font-weight: 700;
-      font-size: 3rem;
-      line-height: 2rem;
+      margin-bottom: 2rem;
     }
 
-    @media screen and (min-width: 651px) and (max-width: 800px) {
+    @media screen and (min-width: 651px) and (max-width: 900px) {
       width: 60vw;
     }
 
