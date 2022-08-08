@@ -20,7 +20,7 @@ const MODULES = [
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [...MODULES],
+  imports: [...MODULES, BrowserAnimationsModule],
 
   providers: [],
   bootstrap: [AppComponent],

@@ -1,8 +1,8 @@
-@import "colors";
+//@import "colors";
 
 @mixin clearfix {
   &::after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
@@ -10,12 +10,12 @@
 
 @mixin appButton {
   font-size: 15px;
-	background: $blue;
-	color: $blue-white;
-	box-shadow: $violet;
-	&:hover {
-			background: $light-blue;
-		}
+  background: $blue;
+  color: $blue-white;
+  box-shadow: $violet;
+  &:hover {
+    background: $light-blue;
+  }
 }
 
 @mixin toastr-wrapper {
@@ -40,7 +40,7 @@
 }
 
 @mixin toastr-wrapper-icon {
-  color:$white-80;
+  color: $white-80;
   height: 45px;
   width: 45px;
   display: flex;
