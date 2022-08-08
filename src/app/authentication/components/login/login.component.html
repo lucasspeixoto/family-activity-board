@@ -1,19 +1,77 @@
-<div class="login-page">
-  <div class="login-page__content">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title>Login</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="content" fxLayout="row" fxLayout.xs="column">
-          <div fxFlex="15" class="sec1" fxFlex.xs="55">first-section</div>
-          <div fxFlex="30" class="sec2">second-section</div>
-          <div fxFlex="55" class="sec3" fxFlex.xs="15">third-section</div>
+<div class="login-page" fxLayout="column wrap" fxLayoutAlign="center center">
+  <mat-card class="login-page__card" appUpElevation>
+    <h1
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      class="login-page__card--title">
+      Login
+    </h1>
+    <mat-card-content>
+      <form
+        class="form"
+        id="form"
+        fxLayout="column"
+        fxLayoutAlign="center stretch"
+        fxLayoutGap="20"
+        [formGroup]="loginForm"
+        (submit)="handleLogin()">
+        <mat-form-field
+          class="form__input form__input--email"
+          appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="text" formControlName="email" required />
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error
+            ><app-custom-validation-message
+              controlName="email"></app-custom-validation-message>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field
+          class="form__input form__input--password"
+          appearance="fill">
+          <mat-label>Digite Sua Senha</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+            required
+            minlength="3" />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Ocultar Senha'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error
+            ><app-custom-validation-message
+              controlName="password"
+              [minLength]="3"></app-custom-validation-message>
+          </mat-error>
+        </mat-form-field>
+        <div
+          class="form__actions"
+          fxLayout="column"
+          fxLayoutAlign="center stretch"
+          fxLayoutGap="20">
+          <button
+            class="form__actions--login appButton"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="loginForm.invalid">
+            Login
+          </button>
+          <button class="form__actions--forget" mat-button>
+            Esqueceu a senha ?
+          </button>
         </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Login</button>
-      </mat-card-actions>
-    </mat-card>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="login-page__copyright">
+    Copyright © {{ year }} - Gestão Familiar
   </div>
 </div>

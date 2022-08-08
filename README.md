@@ -6,7 +6,7 @@
 
 ## 💻 Projeto
 
-[Quadro Familiar](https://fitness-tracker-6fb47.web.app/) é um aplicativo para auxilio
+[Quadro Familiar](https://github.com/lucasspeixoto/family-activity-board) é um aplicativo para auxilio
 na gestão de atividades familiares como controle de contas, atividades de filhos entre outras...
 
 ## ✨ Tecnologias

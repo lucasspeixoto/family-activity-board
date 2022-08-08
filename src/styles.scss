@@ -1,8 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/purple-green.css';
-@import './styles/base';
-@import './styles/colors';
-@import './styles/font';
-@import './styles/theme';
-@import './styles/toasrt';
-@import './styles/variables';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import './styles/layout.scss';
