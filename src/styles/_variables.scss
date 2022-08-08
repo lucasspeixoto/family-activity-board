@@ -1,5 +1,10 @@
 @import 'colors';
 
+/* General */
+$fontSize: 10px;
+$borderRadius: 12px;
+$transitionDuration: 0.2s;
+
 //== Viewports
 
 $extra-small: 340px;
@@ -12,7 +17,7 @@ $extra-large: 1200px;
 //== Sidebar
 
 $sidebar-width: 210px;
-$sidebar-font-color: $gray-08;
+$sidebar-font-color: $grey-08;
 $sidebar-font-color-active: $dark-grey;
 $sidebar-background-color-active: $blue-white;
 $sidebar-background-color-hover: $blue-white;
