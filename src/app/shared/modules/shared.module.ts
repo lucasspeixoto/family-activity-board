@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UpElevationDirective } from '../directives/up-elevation.directive';
-import { CustomValidationMessageComponent } from '../components/custom-validation-message/custom-validation-message.component';
+import { UpElevationDirective } from '@sharedD/up-elevation.directive';
+import { CustomValidationMessageComponent } from '@sharedC/custom-validation-message/custom-validation-message.component';
+import { PageNotFoundComponent } from '@sharedC/page-not-found/page-not-found.component';
 
 const MODULES = [
   CommonModule,
@@ -14,7 +15,7 @@ const MODULES = [
   FlexLayoutModule,
 ];
 
-const COMPONENTS = [CustomValidationMessageComponent];
+const COMPONENTS = [CustomValidationMessageComponent, PageNotFoundComponent];
 
 const DIRECTIVES = [UpElevationDirective];
 

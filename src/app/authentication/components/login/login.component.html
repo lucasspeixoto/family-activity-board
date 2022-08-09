@@ -50,20 +50,26 @@
               [minLength]="3"></app-custom-validation-message>
           </mat-error>
         </mat-form-field>
-        <div
-          class="form__actions"
-          fxLayout="column"
-          fxLayoutAlign="center stretch"
-          fxLayoutGap="20">
+
+        <button
+          class="form__actions--login appButton"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid">
+          Login
+        </button>
+        <div fxFlex fxLayout="row wrap" fxLayoutAlign="space-between center">
           <button
-            class="form__actions--login appButton"
-            mat-raised-button
-            color="primary"
-            type="submit"
-            [disabled]="loginForm.invalid">
-            Login
+            class="form__actions--forget"
+            mat-button
+            routerLink="/cadastro">
+            Cadastre-se
           </button>
-          <button class="form__actions--forget" mat-button>
+          <button
+            class="form__actions--forget"
+            mat-button
+            routerLink="/lembrar-senha">
             Esqueceu a senha ?
           </button>
         </div>

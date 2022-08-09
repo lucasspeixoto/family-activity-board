@@ -11,6 +11,8 @@
       "@app/*": ["src/app/*"],
       "@shared/*": ["src/app/shared/*"],
       "@sharedM/*": ["src/app/shared/modules/*"],
+      "@sharedC/*": ["src/app/shared/components/*"],
+      "@sharedD/*": ["src/app/shared/directives/*"],
 
       "@auth/*": ["src/app/authentication/*"],
       "@authC/*": ["src/app/authentication/components/*"]
