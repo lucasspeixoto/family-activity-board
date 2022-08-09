@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   public handleLogin(): void {
+    if (this.loginForm.invalid) return;
     console.log(this.loginForm.value);
   }
 }

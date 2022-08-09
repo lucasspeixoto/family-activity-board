@@ -39,6 +39,7 @@
           <button
             mat-icon-button
             matSuffix
+            type="button"
             (click)="hide = !hide"
             [attr.aria-label]="'Ocultar Senha'"
             [attr.aria-pressed]="hide">
@@ -61,7 +62,7 @@
         </button>
         <div fxFlex fxLayout="row wrap" fxLayoutAlign="space-between center">
           <button
-            class="form__actions--forget"
+            class="form__actions--signup"
             mat-button
             routerLink="/cadastro">
             Cadastre-se
