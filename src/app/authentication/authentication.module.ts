@@ -6,6 +6,7 @@ import { SharedModule } from '@app/shared/modules/shared.module';
 import { SignupComponent } from './components/signup/signup.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { RouterModule } from '@angular/router';
+import { AuthenticationLayoutComponent } from './components/authentication-layout/authentication-layout.component';
 
 const authRoutes = [
   { path: '', component: LoginComponent },
@@ -15,6 +16,11 @@ const authRoutes = [
 
 @NgModule({
   imports: [CommonModule, SharedModule, RouterModule.forChild(authRoutes)],
-  declarations: [LoginComponent, SignupComponent, ForgotPasswordComponent],
+  declarations: [
+    LoginComponent,
+    SignupComponent,
+    ForgotPasswordComponent,
+    AuthenticationLayoutComponent,
+  ],
 })
 export class AuthenticationModule {}

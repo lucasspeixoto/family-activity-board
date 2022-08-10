@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
+  public readonly title = 'Cadastro';
   public hide = true;
 
   public signupForm!: FormGroup;
