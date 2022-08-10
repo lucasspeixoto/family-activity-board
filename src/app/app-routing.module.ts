@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from '@sharedC/page-not-found/page-not-found.component';
+import { NotFoundComponent } from '@sharedC/not-found/not-found.component';
 
 const authenticationRoutes: Routes = [
   {
@@ -12,8 +12,13 @@ const authenticationRoutes: Routes = [
     canActivate: [],
   },
   {
+    path: 'obligations',
+    loadChildren: () =>
+      import('./obligations/obligations.module').then(m => m.ObligationsModule),
+  },
+  {
     path: '**',
-    component: PageNotFoundComponent,
+    component: NotFoundComponent,
   },
 ];
 

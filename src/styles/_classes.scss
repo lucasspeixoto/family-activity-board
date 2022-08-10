@@ -24,9 +24,11 @@
     width: 30vw;
     border-radius: $borderRadius;
 
-    > h1 {
+    > h3 {
       color: $blue;
       margin-bottom: 2rem;
+      font-style: italic;
+      font-weight: bold;
     }
 
     @media screen and (min-width: 651px) and (max-width: 900px) {
