@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<mat-sidenav-container class="layout">
+  <mat-sidenav #sidenav mode="side" class="layout-sidebar">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content class="layout-content">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

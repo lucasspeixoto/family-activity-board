@@ -6,12 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpElevationDirective } from '@sharedD/up-elevation.directive';
 import { CustomValidationMessageComponent } from '@sharedC/custom-validation-message/custom-validation-message.component';
 
-import { HeaderComponent } from '@sharedC/header/header.component';
+import { HeaderComponent } from '@app/layout/header/header.component';
 import { MainLayoutComponent } from '@sharedC/main-layout/main-layout.component';
-import { SidebarComponent } from '@sharedC/sidebar/sidebar.component';
+import { SidebarComponent } from '@app/layout/sidebar/sidebar.component';
 import { NotFoundComponent } from '@sharedC/not-found/not-found.component';
 import { ObligationsPanelComponent } from '@app/obligations/components/obligations-panel/obligations-panel.component';
 import { FooterComponent } from '@sharedC/footer/footer.component';
+import { LayoutComponent } from '@app/layout/layout/layout.component';
 
 const MODULES = [
   CommonModule,
@@ -23,6 +24,7 @@ const MODULES = [
 
 const COMPONENTS = [
   CustomValidationMessageComponent,
+  LayoutComponent,
   MainLayoutComponent,
   HeaderComponent,
   SidebarComponent,
