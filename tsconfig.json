@@ -9,6 +9,7 @@
       "@styles/*": ["src/styles/*"],
       "@app/*": ["src/app/*"],
       "@config/*": ["src/app/config/*"],
+      "@layout/*": ["src/app/layout/*"],
       "@shared/*": ["src/app/shared/*"],
       "@sharedM/*": ["src/app/shared/modules/*"],
       "@sharedC/*": ["src/app/shared/components/*"],

@@ -6,16 +6,16 @@
   box-sizing: inherit;
 }
 
+html, body {
+  height: 100%;
+ }
+
 html {
-  font-size: 62.5%; /* 10/ 16 0.625 * 16 px
-  (font-size default) = 10px que nós queremos */
-  /* font-size: 10px <--> Com o font-size de
-  nosso documento sendo 10px, 1rem = 10px
-  (Igual ao font-size do nosso
-  root). */
+  font-size: 62.5%;
 }
 body {
   box-sizing: border-box;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

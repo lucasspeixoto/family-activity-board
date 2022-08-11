@@ -255,9 +255,9 @@ mat-toolbar.page-header {
   display: flex;
   justify-content: space-between;
   padding: 50px 24px 16px 24px;
-  background: none;
+  background: red;
   height: auto;
-  color: red;
+
   @media (max-width: $small) {
     flex-direction: column;
     align-items: baseline;
@@ -337,8 +337,8 @@ mat-tab-body div.mat-tab-body-content {
 }
 
 .mat-icon {
-  padding-right: 3px;
-  padding-bottom: 5px;
+  padding-right: 4px;
+  padding-bottom: 2px;
 }
 
 .material-icons {
@@ -352,6 +352,8 @@ button.mat-mini-fab .mat-button-wrapper {
 button.mat-mini-fab {
   height: 36px;
   width: 36px;
+  padding-right: 3px;
+  padding-bottom: 4px;
 }
 
 div.mat-menu-panel {
@@ -377,7 +379,7 @@ div.apexcharts-xaxistooltip-bottom:after {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
   height: 3px;
 }
 ::-webkit-scrollbar-button {

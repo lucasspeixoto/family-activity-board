@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatBadgeModule } from '@angular/material/badge';
 
 const MODULES = [
   MatButtonModule,
@@ -23,6 +24,7 @@ const MODULES = [
   MatMenuModule,
   MatSelectModule,
   MatToolbarModule,
+  MatBadgeModule,
 ];
 
 @NgModule({

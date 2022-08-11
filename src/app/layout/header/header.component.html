@@ -1,22 +1,17 @@
 <mat-toolbar class="header">
-  <button mat-mini-fab>
-    <mat-icon>menu</mat-icon>
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  <h6 class="header__title-text">Angular Material Admin</h6>
+  <!-- * Menu e Título -->
+  <div class="header__menu">
+    <button mat-mini-fab class="header__menu-button" (click)="openMenu()">
+      <mat-icon *ngIf="!isMenuOpened">menu</mat-icon>
+      <mat-icon *ngIf="isMenuOpened">arrow_back</mat-icon>
+    </button>
+    <h6 class="header__menu-title">Quadro Familiar</h6>
+  </div>
 
-  <span>Quadro Familiar</span>
-  <span class="example-spacer"></span>
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
+  <div class="header__actions">
+    <app-notifications></app-notifications>
+    <button class="header__actions-logout" mat-mini-fab (click)="logout()">
+      <mat-icon class="header__actions-logout__icon">exit_to_app</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>

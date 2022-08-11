@@ -1,0 +1,59 @@
+@import 'src/styles/variables';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  height: $header-height;
+  background-color: $header-background-color;
+  z-index: 2;
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &-button {
+      background-color: $header-button-background-color;
+      box-shadow: none;
+
+      &:hover {
+        background-color: $header-button-background-color-hover;
+      }
+
+      @media (max-width: $small) {
+        margin-top: 0;
+      }
+    }
+
+    > h6 {
+      color: $white;
+
+      @media (max-width: $extra-small) {
+        display: none;
+      }
+    }
+  }
+
+  &__actions {
+
+    &-logout {
+      background-color: $blue;
+      box-shadow: none;
+      margin-left: 16px;
+
+      &__icon {
+        color: $white-35;
+      }
+
+      &:hover {
+        background-color: $black-08;
+      }
+
+      @media (max-width: $small) {
+        margin-top: 0;
+      }
+    }
+  }
+}
