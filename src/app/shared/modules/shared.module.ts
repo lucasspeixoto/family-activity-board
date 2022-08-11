@@ -14,10 +14,12 @@ import { ObligationsPanelComponent } from '@app/obligations/components/obligatio
 
 import { LayoutComponent } from '@layout/layout/layout.component';
 import { NotificationsComponent } from '@layout/header/notifications/notifications.component';
+import { RouterModule } from '@angular/router';
 
 const MODULES = [
   CommonModule,
   FormsModule,
+  RouterModule,
   ReactiveFormsModule,
   MaterialModule,
   FlexLayoutModule,

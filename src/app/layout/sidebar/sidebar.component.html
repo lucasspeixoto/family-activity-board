@@ -1,5 +1,10 @@
 <mat-list>
-  <mat-list-item> <mat-icon>home</mat-icon> Dashboard </mat-list-item>
+  <mat-list-item
+    [routerLink]="routes.OBLIGATIONS"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <mat-icon>home</mat-icon> Dashboard
+  </mat-list-item>
   <mat-list-item> <mat-icon>text_fields</mat-icon> Typography </mat-list-item>
   <mat-list-item> <mat-icon>border_all</mat-icon> Tables </mat-list-item>
   <mat-list-item>
@@ -56,8 +61,8 @@
   </mat-list-item>
   <mat-list-item>
     <div class="project-circle project-circle_blue"></div>
-    Starred</mat-list-item
-  >
+    Starred
+  </mat-list-item>
   <mat-list-item>
     <div class="project-circle project-circle_pink"></div>
     Background

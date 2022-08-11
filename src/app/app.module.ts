@@ -8,9 +8,11 @@ import { AppComponent } from './app.component';
 import { AuthenticationModule } from '@auth/authentication.module';
 import { MaterialModule } from '@sharedM/material.module';
 import { SharedModule } from '@sharedM/shared.module';
+import { RouterModule } from '@angular/router';
 
 const MODULES = [
   BrowserModule,
+  RouterModule,
   AppRoutingModule,
   BrowserAnimationsModule,
   MaterialModule,

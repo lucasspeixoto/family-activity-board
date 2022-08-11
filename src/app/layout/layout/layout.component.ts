@@ -36,4 +36,8 @@ export class LayoutComponent implements OnDestroy {
 
     this.sidenav.close();
   }
+
+  public toggleMenu(value: boolean): void {
+    this.sidenav.toggle(value);
+  }
 }

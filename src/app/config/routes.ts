@@ -1,4 +1,6 @@
 export enum routes {
+  BILLS = '/bills',
+  OBLIGATIONS = '/obligations',
   DASHBOARD = '/dashboard',
   TYPOGRAPHY = '/typography',
   TABLES = '/tables',
