@@ -20,7 +20,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 🔖 Layout
 
-![interface](src/assets/images/layout.png 'Layout')
+![interface](src/assets/images/layout.gif 'Layout')
 
 
 ## 🚀 Instalação
