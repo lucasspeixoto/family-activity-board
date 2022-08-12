@@ -18,7 +18,7 @@ export class HeaderComponent {
     this.isShowSidebar.emit(this.isMenuOpened);
   }
 
-  public logout(): void {
+  public signOut(): void {
     this.router.navigateByUrl('/');
   }
 }

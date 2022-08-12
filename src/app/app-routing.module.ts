@@ -12,9 +12,14 @@ const authenticationRoutes: Routes = [
     canActivate: [],
   },
   {
-    path: 'obligations',
+    path: 'plans',
     loadChildren: () =>
-      import('./obligations/obligations.module').then(m => m.ObligationsModule),
+      import('./features/plans/plans.module').then(m => m.PlansModule),
+  },
+  {
+    path: 'bills',
+    loadChildren: () =>
+      import('./features/bills/bills.module').then(m => m.BillsModule),
   },
   {
     path: '**',

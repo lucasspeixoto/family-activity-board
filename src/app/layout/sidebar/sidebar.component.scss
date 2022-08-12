@@ -20,10 +20,12 @@
       outline: none;
 
       & .mat-icon {
+
         color: $sidebar-icon-color-active;
       }
 
       & .circle {
+
         background-color: $sidebar-icon-color-active;
       }
     }
@@ -39,6 +41,8 @@
 }
 
 .mat-icon {
+  height: 30px;
+  width: 30px;
   margin-right: 15px;
   color: $sidebar-icon-color;
 }

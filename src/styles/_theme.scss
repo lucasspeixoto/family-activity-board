@@ -243,6 +243,7 @@ button.mat-fab .mat-button-wrapper {
 .mat-card {
   color: $card-font-color;
   margin: 16px;
+  border-radius: $card-border-radius;
 }
 
 .mat-card-title p {
@@ -358,6 +359,8 @@ button.mat-mini-fab {
 
 div.mat-menu-panel {
   margin-top: 20px;
+  border-radius: $panel-border-radius;
+
 }
 
 .fa {

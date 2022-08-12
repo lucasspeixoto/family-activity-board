@@ -1,17 +1,23 @@
 <mat-list>
   <mat-list-item
-    [routerLink]="routes.OBLIGATIONS"
+    [routerLink]="routes.BILLS"
     routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }">
-    <mat-icon>home</mat-icon> Dashboard
+    <mat-icon>event</mat-icon> Contas
   </mat-list-item>
-  <mat-list-item> <mat-icon>text_fields</mat-icon> Typography </mat-list-item>
-  <mat-list-item> <mat-icon>border_all</mat-icon> Tables </mat-list-item>
+  <mat-list-item
+    [routerLink]="routes.PLANS"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <mat-icon>description</mat-icon> Planejamentos
+  </mat-list-item>
   <mat-list-item>
-    <mat-icon>notifications_none</mat-icon> Notification
+    <mat-icon>directions_run</mat-icon> Atividades
   </mat-list-item>
-  <mat-list-item> <mat-icon>filter_none</mat-icon> UI Elements </mat-list-item>
-  <div>
+  <mat-list-item>
+    <mat-icon>notifications_none</mat-icon> Notificações
+  </mat-list-item>
+  <!-- <div>
     <mat-list-item class="ui-element">
       <div class="circle"></div>
       Icons
@@ -24,17 +30,19 @@
       <div class="circle"></div>
       Map
     </mat-list-item>
-  </div>
+  </div> -->
 </mat-list>
 
-<p class="sidebar-title">Help</p>
+<p class="sidebar-title">Ajuda</p>
 
 <mat-list>
   <a
     href="https://flatlogic.com/templates"
     target="_blank"
     style="text-decoration: none">
-    <mat-list-item> <mat-icon>library_books</mat-icon> Library </mat-list-item>
+    <mat-list-item>
+      <mat-icon>library_books</mat-icon> Quadro Familiar
+    </mat-list-item>
   </a>
   <a
     href="https://flatlogic.com/forum/"
@@ -50,21 +58,4 @@
     style="text-decoration: none">
     <mat-list-item> <mat-icon>help_outline</mat-icon> FAQ </mat-list-item>
   </a>
-</mat-list>
-
-<p class="sidebar-title">Projects</p>
-
-<mat-list>
-  <mat-list-item>
-    <div class="project-circle project-circle_yellow"></div>
-    My resend
-  </mat-list-item>
-  <mat-list-item>
-    <div class="project-circle project-circle_blue"></div>
-    Starred
-  </mat-list-item>
-  <mat-list-item>
-    <div class="project-circle project-circle_pink"></div>
-    Background
-  </mat-list-item>
 </mat-list>

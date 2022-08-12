@@ -10,8 +10,7 @@
   <!-- * Notificações e Logout -->
   <div class="header__actions">
     <app-notifications></app-notifications>
-    <button class="header__actions-logout" mat-mini-fab (click)="logout()">
-      <mat-icon class="header__actions-logout__icon">exit_to_app</mat-icon>
-    </button>
+    <app-messages></app-messages>
+    <app-user (signOut)="signOut()"></app-user>
   </div>
 </mat-toolbar>

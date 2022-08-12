@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,10 @@ export class LoginComponent implements OnInit {
 
   public readonly year = new Date().getFullYear();
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private readonly _formBuilder: FormBuilder,
+    private readonly _router: Router
+  ) {}
 
   ngOnInit() {
     this.buildForm();
@@ -34,6 +38,6 @@ export class LoginComponent implements OnInit {
 
   public handleLogin(): void {
     if (this.loginForm.invalid) return;
-    console.log(this.loginForm.value);
+    this._router.navigateByUrl('/bills');
   }
 }
