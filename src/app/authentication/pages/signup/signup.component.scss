@@ -1,0 +1,21 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__actions {
+    &-signup {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    &-container {
+      display: flex;
+      justify-content: end;
+      padding: 0;
+    }
+  }
+}

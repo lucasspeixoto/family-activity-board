@@ -7,15 +7,25 @@
       "@envs/*": ["src/environments/*"],
       "@assets/*": ["src/assets/*"],
       "@styles/*": ["src/styles/*"],
-
       "@app/*": ["src/app/*"],
+      "@config/*": ["src/app/config/*"],
+      "@layout/*": ["src/app/layout/*"],
       "@shared/*": ["src/app/shared/*"],
+      "@features/*": ["src/app/features/*"],
+      "@stickyNotesC/*": ["src/app/features/sticky-notes/components/*"],
+      "@stickyNotesP/*": ["src/app/features/sticky-notes/pages/*"],
+      "@billsC/*": ["src/app/features/bills/components/*"],
+      "@billsP/*": ["src/app/features/bills/pages/*"],
+      "@plansC/*": ["src/app/features/plans/components/*"],
+      "@plansP/*": ["src/app/features/plans/pages/*"],
       "@sharedM/*": ["src/app/shared/modules/*"],
       "@sharedC/*": ["src/app/shared/components/*"],
       "@sharedD/*": ["src/app/shared/directives/*"],
+      "@sharedP/*": ["src/app/shared/pipes/*"],
 
       "@auth/*": ["src/app/authentication/*"],
-      "@authC/*": ["src/app/authentication/components/*"]
+      "@authL/*": ["src/app/authentication/layout/*"],
+      "@authP/*": ["src/app/authentication/pages/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

@@ -1,0 +1,16 @@
+<mat-toolbar class="header">
+  <!-- * Menu e Título -->
+  <div class="header__menu">
+    <button mat-mini-fab class="header__menu-button" (click)="openMenu()">
+      <mat-icon *ngIf="!isMenuOpened">menu</mat-icon>
+      <mat-icon *ngIf="isMenuOpened">arrow_back</mat-icon>
+    </button>
+    <h6 class="header__menu-title">Quadro Familiar</h6>
+  </div>
+  <!-- * Notificações e Logout -->
+  <div class="header__actions">
+    <app-notifications></app-notifications>
+    <app-messages></app-messages>
+    <app-user (signOut)="signOut()"></app-user>
+  </div>
+</mat-toolbar>

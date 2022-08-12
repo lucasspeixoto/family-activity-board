@@ -1,0 +1,11 @@
+.authentication_layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__card {
+    &-title {
+      text-align: center;
+    }
+  }
+}

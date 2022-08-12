@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
+
+  &__actions {
+    &-login {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 0;
+    }
+  }
+}

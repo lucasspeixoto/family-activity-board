@@ -1,0 +1,61 @@
+<mat-list>
+  <mat-list-item
+    [routerLink]="routes.BILLS"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <mat-icon>event</mat-icon> Contas
+  </mat-list-item>
+  <mat-list-item
+    [routerLink]="routes.PLANS"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <mat-icon>description</mat-icon> Planejamentos
+  </mat-list-item>
+  <mat-list-item>
+    <mat-icon>directions_run</mat-icon> Atividades
+  </mat-list-item>
+  <mat-list-item>
+    <mat-icon>notifications_none</mat-icon> Notificações
+  </mat-list-item>
+  <!-- <div>
+    <mat-list-item class="ui-element">
+      <div class="circle"></div>
+      Icons
+    </mat-list-item>
+    <mat-list-item class="ui-element">
+      <div class="circle"></div>
+      Charts
+    </mat-list-item>
+    <mat-list-item class="ui-element">
+      <div class="circle"></div>
+      Map
+    </mat-list-item>
+  </div> -->
+</mat-list>
+
+<p class="sidebar-title">Ajuda</p>
+
+<mat-list>
+  <a
+    href="https://flatlogic.com/templates"
+    target="_blank"
+    style="text-decoration: none">
+    <mat-list-item>
+      <mat-icon>library_books</mat-icon> Quadro Familiar
+    </mat-list-item>
+  </a>
+  <a
+    href="https://flatlogic.com/forum/"
+    target="_blank"
+    style="text-decoration: none">
+    <mat-list-item>
+      <mat-icon>question_answer</mat-icon> Support
+    </mat-list-item>
+  </a>
+  <a
+    href="https://flatlogic.com/forum"
+    target="_blank"
+    style="text-decoration: none">
+    <mat-list-item> <mat-icon>help_outline</mat-icon> FAQ </mat-list-item>
+  </a>
+</mat-list>

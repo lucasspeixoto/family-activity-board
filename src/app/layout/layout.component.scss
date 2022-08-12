@@ -1,0 +1,16 @@
+@import "src/styles/variables";
+
+.layout {
+  width: 100%;
+
+  &-sidebar {
+    height: calc(100vh - $header-height);
+    margin-top: $header-height;
+  }
+
+  &-content {
+    background-color: $background-color;
+    height: calc(100vh - $header-height);
+    margin-top: $header-height;
+  }
+}

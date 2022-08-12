@@ -1,0 +1,20 @@
+<div class="container">
+  <app-header
+    (isShowSidebar)="toggleMenu($event)"
+    [isMenuOpened]="isShowSidebar">
+  </app-header>
+  <mat-sidenav-container class="layout">
+    <mat-sidenav
+      #sidenav
+      [(opened)]="isShowSidebar"
+      mode="side"
+      class="layout-sidebar"
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content class="layout-content">
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
