@@ -2,9 +2,6 @@
   <form
     class="form"
     id="form"
-    fxLayout="column"
-    fxLayoutAlign="center stretch"
-    fxLayoutGap="20"
     [formGroup]="signupForm"
     (submit)="handleSignup()">
     <mat-form-field class="form__input form__input--name" appearance="fill">
@@ -16,7 +13,7 @@
           controlName="name"></app-custom-validation-message>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="form__input form__input--email" appearance="fill">
+    <mat-form-field class="form__input form__input-field" appearance="fill">
       <mat-label>E-mail</mat-label>
       <input matInput type="text" formControlName="email" required />
       <mat-icon matSuffix>email</mat-icon>
@@ -25,7 +22,7 @@
           controlName="email"></app-custom-validation-message>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="form__input form__input--password" appearance="fill">
+    <mat-form-field class="form__input form__input-field" appearance="fill">
       <mat-label>Digite Sua Senha</mat-label>
       <input
         matInput
@@ -50,15 +47,15 @@
     </mat-form-field>
 
     <button
-      class="form__actions--signup appButton"
+      class="form__actions-signup appButton"
       mat-raised-button
       color="primary"
       type="submit"
       [disabled]="signupForm.invalid">
       Cadastrar
     </button>
-    <div fxFlex fxLayout="row wrap" fxLayoutAlign="end center">
-      <button class="form__actions--login" mat-button routerLink="/">
+    <div class="form__actions-container">
+      <button class="form__actions-login" mat-button routerLink="/">
         Login
       </button>
     </div>

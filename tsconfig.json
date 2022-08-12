@@ -24,7 +24,8 @@
       "@sharedP/*": ["src/app/shared/pipes/*"],
 
       "@auth/*": ["src/app/authentication/*"],
-      "@authC/*": ["src/app/authentication/components/*"]
+      "@authL/*": ["src/app/authentication/layout/*"],
+      "@authP/*": ["src/app/authentication/pages/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

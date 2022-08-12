@@ -1,13 +1,6 @@
 <app-authentication-layout [title]="'Login'">
-  <form
-    class="form"
-    id="form"
-    fxLayout="column"
-    fxLayoutAlign="center stretch"
-    fxLayoutGap="20"
-    [formGroup]="loginForm"
-    (submit)="handleLogin()">
-    <mat-form-field class="form__input form__input--email" appearance="fill">
+  <form class="form" id="form" [formGroup]="loginForm" (submit)="handleLogin()">
+    <mat-form-field class="form__input form__input-field" appearance="fill">
       <mat-label>E-mail</mat-label>
       <input matInput type="text" formControlName="email" required />
       <mat-icon matSuffix>email</mat-icon>
@@ -16,7 +9,7 @@
           controlName="email"></app-custom-validation-message>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="form__input form__input--password" appearance="fill">
+    <mat-form-field class="form__input form__input-field" appearance="fill">
       <mat-label>Digite Sua Senha</mat-label>
       <input
         matInput
@@ -41,19 +34,19 @@
     </mat-form-field>
 
     <button
-      class="form__actions--login appButton"
+      class="form__actions-login appButton"
       mat-raised-button
       color="primary"
       type="submit"
       [disabled]="loginForm.invalid">
       Login
     </button>
-    <div fxFlex fxLayout="row wrap" fxLayoutAlign="space-between center">
-      <button class="form__actions--signup" mat-button routerLink="/cadastro">
+    <div class="form__actions-container">
+      <button class="form__actions-signup" mat-button routerLink="/cadastro">
         Cadastre-se
       </button>
       <button
-        class="form__actions--forget"
+        class="form__actions-forget"
         mat-button
         routerLink="/lembrar-senha">
         Esqueceu a senha ?

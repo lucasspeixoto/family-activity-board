@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LoginComponent } from '@authC/login/login.component';
-import { SharedModule } from '@app/shared/modules/shared.module';
-import { SignupComponent } from './components/signup/signup.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { LoginComponent } from '@authP/login/login.component';
+import { SharedModule } from '@sharedM/shared.module';
+import { SignupComponent } from '@authP/signup/signup.component';
+import { ForgotPasswordComponent } from '@authP/forgot-password/forgot-password.component';
 import { RouterModule } from '@angular/router';
-import { AuthenticationLayoutComponent } from './components/authentication-layout/authentication-layout.component';
+import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
 
 const authRoutes = [
   { path: '', component: LoginComponent },
