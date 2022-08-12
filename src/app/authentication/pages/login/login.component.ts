@@ -26,13 +26,13 @@ export class LoginComponent implements OnInit {
   private buildForm(): void {
     this.loginForm = this._formBuilder.group({
       email: [
-        '',
+        'lspeixotodev@gmail.com',
         [
           Validators.required,
           Validators.pattern(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/),
         ],
       ],
-      password: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['12345', [Validators.required, Validators.minLength(3)]],
     });
   }
 

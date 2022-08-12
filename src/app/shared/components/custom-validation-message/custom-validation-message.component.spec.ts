@@ -11,9 +11,8 @@ describe('CustomValidationMessageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomValidationMessageComponent ]
-    })
-    .compileComponents();
+      declarations: [CustomValidationMessageComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
