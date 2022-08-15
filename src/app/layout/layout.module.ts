@@ -13,6 +13,7 @@ import { MessagesComponent } from '@layout/header/messages/messages.component';
 import { FooterComponent } from '@layout/footer/footer.component';
 import { MaterialModule } from '@sharedM/material.module';
 import { SharedModule } from '@sharedM/shared.module';
+import { AuthenticationService } from '@authS/authentication.service';
 
 const MODULES = [
   CommonModule,
@@ -38,5 +39,6 @@ const COMPONENTS = [
   declarations: [...COMPONENTS],
   imports: [...MODULES],
   exports: [...MODULES, ...COMPONENTS],
+  providers: [AuthenticationService],
 })
 export class LayoutModule {}

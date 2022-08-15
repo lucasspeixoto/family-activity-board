@@ -1,3 +1,4 @@
+import { updateProfile } from 'firebase/auth';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '@authS/authentication.service';
@@ -26,23 +27,25 @@ export class SignupComponent implements OnInit {
 
   private buildForm(): void {
     this.signupForm = this._formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['Dart Vader', [Validators.required, Validators.minLength(3)]],
       email: [
-        '',
+        'lspeixotodev@gmail.com',
         [
           Validators.required,
           Validators.pattern(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/),
         ],
       ],
-      password: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['30101991', [Validators.required, Validators.minLength(3)]],
     });
   }
 
-  public handleSignup(): void {
+  public async handleSignup(): Promise<void> {
     if (this.signupForm.invalid) return;
 
     const { name, email, password } = this.signupForm.value;
 
-    this._authenticationService.signUp(name, email, password);
+    this._authenticationService.signUp(name, email, password).then(() => {
+      this._authenticationService.updateProfile(name);
+    });
   }
 }

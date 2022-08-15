@@ -37,7 +37,7 @@ export class AuthenticationService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then(result => {
-        this.setUserData(result.user);
+        //this.setUserData(result.user);
         this.afAuth.authState.subscribe(user => {
           if (user) {
             this.router.navigate(['bills']);
@@ -49,19 +49,30 @@ export class AuthenticationService {
       });
   }
   // Sign up with email/password
-  public signUp(name: string, email: string, password: string): Promise<void> {
+  public async signUp(
+    name: string,
+    email: string,
+    password: string
+  ): Promise<void> {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then(result => {
-        console.log(result.user);
+        console.log(result);
         /* Call the SendVerificaitonMail() function when new user sign
         up and returns promise */
         this.sendVerificationMail();
-        this.setUserData(result.user);
+        this.setUserData(result.user, name);
       })
       .catch(error => {
         window.alert(error.message);
       });
+  }
+
+  public async updateProfile(displayName: string) {
+    const profile = {
+      displayName: displayName,
+    };
+    return (await this.afAuth.currentUser)!.updateProfile(profile);
   }
   // Send email verfificaiton when new user sign up
   public sendVerificationMail(): Promise<void> {
@@ -99,7 +110,7 @@ export class AuthenticationService {
       .signInWithPopup(provider)
       .then(result => {
         this.router.navigate(['dashboard']);
-        this.setUserData(result.user);
+        //this.setUserData(result.user);
       })
       .catch(error => {
         window.alert(error);
@@ -108,14 +119,14 @@ export class AuthenticationService {
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  public setUserData(user: any): Promise<void> {
+  public setUserData(user: any, name: string): Promise<void> {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      displayName: name,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
     };
@@ -127,7 +138,7 @@ export class AuthenticationService {
   public signOut(): Promise<void> {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['/']);
     });
   }
 }
