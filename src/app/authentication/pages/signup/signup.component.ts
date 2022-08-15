@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthenticationService } from '@authS/authentication.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +15,10 @@ export class SignupComponent implements OnInit {
 
   public readonly year = new Date().getFullYear();
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private readonly _authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit() {
     this.buildForm();
@@ -22,23 +26,23 @@ export class SignupComponent implements OnInit {
 
   private buildForm(): void {
     this.signupForm = this._formBuilder.group({
-      name: [
-        'Arnold Schwarzenegger',
-        [Validators.required, Validators.minLength(3)],
-      ],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       email: [
-        'arnoldbolado@gmail.com',
+        '',
         [
           Validators.required,
           Validators.pattern(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/),
         ],
       ],
-      password: ['123456', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
   public handleSignup(): void {
     if (this.signupForm.invalid) return;
-    console.log(this.signupForm.value);
+
+    const { name, email, password } = this.signupForm.value;
+
+    this._authenticationService.signUp(name, email, password);
   }
 }

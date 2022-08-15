@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +8,12 @@ import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private auth: Auth) {}
-
-  ngOnInit(): void {
-    this.emailLogin('lspeixotodev@gmail.com', '30101991').then(value => {
-      console.log(value);
+  constructor(public afAuth: AngularFireAuth, public afs: AngularFirestore) {}
+  ngOnInit() {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        console.log(user.email);
+      }
     });
-  }
-
-  async emailLogin(email: string, password: string): Promise<any> {
-    return await signInWithEmailAndPassword(this.auth, email, password);
   }
 }

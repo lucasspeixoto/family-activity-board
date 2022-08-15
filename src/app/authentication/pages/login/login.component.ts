@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '@authS/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private readonly _formBuilder: FormBuilder,
-    private readonly _router: Router
+    private readonly _router: Router,
+    private readonly _authenticationService: AuthenticationService
   ) {}
 
   ngOnInit() {
@@ -32,12 +34,17 @@ export class LoginComponent implements OnInit {
           Validators.pattern(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/),
         ],
       ],
-      password: ['12345', [Validators.required, Validators.minLength(3)]],
+      password: ['30101991', [Validators.required, Validators.minLength(3)]],
     });
   }
 
   public handleLogin(): void {
     if (this.loginForm.invalid) return;
+
+    const { email, password } = this.loginForm.value;
+
+    this._authenticationService.signIn(email, password);
+
     this._router.navigateByUrl('/bills');
   }
 }

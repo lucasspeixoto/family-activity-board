@@ -25,7 +25,8 @@
 
       "@auth/*": ["src/app/authentication/*"],
       "@authL/*": ["src/app/authentication/layout/*"],
-      "@authP/*": ["src/app/authentication/pages/*"]
+      "@authP/*": ["src/app/authentication/pages/*"],
+      "@authS/*": ["src/app/authentication/services/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

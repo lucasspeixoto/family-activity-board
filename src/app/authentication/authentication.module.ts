@@ -7,6 +7,7 @@ import { SignupComponent } from '@authP/signup/signup.component';
 import { ForgotPasswordComponent } from '@authP/forgot-password/forgot-password.component';
 import { RouterModule } from '@angular/router';
 import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
+import { AuthenticationService } from './services/authentication.service';
 
 const authRoutes = [
   { path: '', component: LoginComponent },
@@ -22,5 +23,6 @@ const authRoutes = [
     ForgotPasswordComponent,
     AuthenticationLayoutComponent,
   ],
+  providers: [AuthenticationService],
 })
 export class AuthenticationModule {}
