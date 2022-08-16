@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { AuthenticationService } from '@authS/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +12,7 @@ export class HeaderComponent {
   @Input() isMenuOpened!: boolean;
   @Output() isShowSidebar = new EventEmitter<boolean>();
 
-  constructor(
-    private readonly router: Router,
-    private readonly _authenticationService: AuthenticationService
-  ) {}
+  constructor(private readonly _authenticationService: AuthenticationService) {}
 
   public openMenu(): void {
     this.isMenuOpened = !this.isMenuOpened;

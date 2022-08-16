@@ -1,10 +1,12 @@
-import { Injectable, NgZone } from '@angular/core';
 import * as auth from 'firebase/auth';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+
 import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+import { Injectable, NgZone } from '@angular/core';
+
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { User } from '../models/authentication.model';
 
@@ -37,6 +39,7 @@ export class AuthenticationService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then(result => {
+        console.log(result);
         //this.setUserData(result.user);
         this.afAuth.authState.subscribe(user => {
           if (user) {
@@ -100,7 +103,8 @@ export class AuthenticationService {
   }
   // Sign in with Google
   public googleAuth(): Promise<void> {
-    return this.authLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+    return this.authLogin(new auth.GoogleAuthProvider()).then((result: any) => {
+      console.log(result);
       this.router.navigate(['dashboard']);
     });
   }
@@ -109,6 +113,7 @@ export class AuthenticationService {
     return this.afAuth
       .signInWithPopup(provider)
       .then(result => {
+        console.log(result);
         this.router.navigate(['dashboard']);
         //this.setUserData(result.user);
       })

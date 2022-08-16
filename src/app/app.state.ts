@@ -1,9 +1,9 @@
-import { environment } from '@envs/environment';
-import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { ActionReducerMap } from '@ngrx/store';
 
 export interface AppState {
   /*auth: fromAuth.AuthState;
   courses: fromCourses.CoursesState;
+
    router: RouterState; */
 }
 

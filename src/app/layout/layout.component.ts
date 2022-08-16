@@ -1,11 +1,12 @@
-import { MediaMatcher } from '@angular/cdk/layout';
 import {
-  Component,
-  ViewChild,
   ChangeDetectorRef,
+  Component,
   OnDestroy,
+  ViewChild,
 } from '@angular/core';
+
 import { MatSidenav } from '@angular/material/sidenav';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-layout',

@@ -1,16 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MaterialModule } from './material.module';
-import { UpElevationDirective } from '@sharedD/up-elevation.directive';
+import { CommonModule } from '@angular/common';
 import { CustomValidationMessageComponent } from '@sharedC/custom-validation-message/custom-validation-message.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './material.module';
+import { NgModule } from '@angular/core';
 import { NotFoundComponent } from '@sharedC/not-found/not-found.component';
-
+import { RouterModule } from '@angular/router';
 import { ShortNamePipe } from '@sharedP/short-name.pipe';
+import { UpElevationDirective } from '@sharedD/up-elevation.directive';
 
 const MODULES = [
   CommonModule,

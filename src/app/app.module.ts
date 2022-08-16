@@ -1,36 +1,28 @@
-import { environment } from './../environments/environment';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
-import { AuthenticationModule } from '@auth/authentication.module';
-import { MaterialModule } from '@sharedM/material.module';
-import { SharedModule } from '@sharedM/shared.module';
-import { RouterModule } from '@angular/router';
-import { LayoutModule } from './layout/layout.module';
-
-// Firebase services + environment module
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { getStorage, provideStorage } from '@angular/fire/storage';
 import {
-  getAnalytics,
-  provideAnalytics,
   ScreenTrackingService,
   UserTrackingService,
 } from '@angular/fire/analytics';
+
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+// Firebase services + environment module
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthenticationModule } from '@auth/authentication.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
+import { LayoutModule } from './layout/layout.module';
+import { MaterialModule } from '@sharedM/material.module';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '@sharedM/shared.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { environment } from './../environments/environment';
 import { reducers } from './app.state';
 
 const MODULES = [

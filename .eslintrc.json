@@ -5,7 +5,7 @@
     "browser": true,
     "node": true,
     "jasmine": true
-},
+  },
   "overrides": [
     {
       "files": ["*.ts"],
@@ -19,6 +19,15 @@
         "plugin:prettier/recommended"
       ],
       "rules": {
+        "sort-imports": [
+          "warn",
+          {
+            "ignoreCase": false,
+            "ignoreDeclarationSort": false
+          }
+        ],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error"],
         "prettier/prettier": [
           "error",
           {
@@ -46,17 +55,17 @@
     {
       "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/recommended"],
-      "rules": {
-
-      }
+      "rules": {}
     },
     {
       "files": ["*.html"],
       "excludedFiles": ["*inline-template-*.component.html"],
       "extends": ["plugin:prettier/recommended"],
       "rules": {
-        "prettier/prettier": ["error", { "parser": "angular", "endOfLine": "auto" }]
-
+        "prettier/prettier": [
+          "error",
+          { "parser": "angular", "endOfLine": "auto" }
+        ]
       }
     }
   ]
