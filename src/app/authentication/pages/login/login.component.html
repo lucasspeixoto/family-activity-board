@@ -16,7 +16,7 @@
         [type]="hide ? 'password' : 'text'"
         formControlName="password"
         required
-        minlength="3" />
+        minlength="6" />
       <button
         mat-icon-button
         matSuffix
@@ -29,7 +29,7 @@
       <mat-error
         ><app-custom-validation-message
           controlName="password"
-          [minLength]="3"></app-custom-validation-message>
+          [minLength]="6"></app-custom-validation-message>
       </mat-error>
     </mat-form-field>
 

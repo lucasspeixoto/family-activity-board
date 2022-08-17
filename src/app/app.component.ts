@@ -8,7 +8,6 @@ import {
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Component } from '@angular/core';
-import { Messages } from './shared/messages/firebase';
 import { Store } from '@ngrx/store';
 import { User } from './authentication/models/authentication.model';
 import { getIsLoading } from './shared/store/loading/loading.selectors';
@@ -48,7 +47,5 @@ export class AppComponent {
     public afAuth: AngularFireAuth,
     public readonly afs: AngularFirestore,
     private readonly _store: Store<fromApp.AppState>
-  ) {
-    console.log(Messages['auth/session-cookie-revoked']);
-  }
+  ) {}
 }

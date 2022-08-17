@@ -17,6 +17,7 @@ import { StartLoading, StopLoading } from '@sharedS/loading/loading.actions';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthActions } from './action-types';
 import { AuthenticationService } from '@authS/authentication.service';
+import { Messages } from '@app/shared/messages/firebase';
 import { Router } from '@angular/router';
 import { SnackbarService } from '@app/shared/services/snackbar/snackbar.service';
 import { Store } from '@ngrx/store';
@@ -49,14 +50,14 @@ export class AuthEffects {
                 this.router.navigateByUrl('/bills');
                 this._store.dispatch(StopLoading());
                 this._snackBarService.openSuccessSnackBar(
-                  'Bem vindo ao Quadro Familiar'
+                  'Bem vindo ao Quadro Familiar 😁'
                 );
               }
             })
             .catch(error => {
-              //const message = error.code as string;
+              console.log(error.code);
               this._store.dispatch(StopLoading());
-              this._snackBarService.openFailureSnackBar(error.message);
+              this._snackBarService.openFailureSnackBar(Messages[error.code]);
             });
         })
       ),
@@ -88,8 +89,9 @@ export class AuthEffects {
               }
             })
             .catch(error => {
+              console.log(error.code);
               this._store.dispatch(StopLoading());
-              this._snackBarService.openFailureSnackBar(error.message);
+              this._snackBarService.openFailureSnackBar(Messages[error.code]);
             });
         })
       ),
@@ -107,7 +109,7 @@ export class AuthEffects {
               this.router.navigateByUrl('/bills');
               this._store.dispatch(StopLoading());
               this._snackBarService.openSuccessSnackBar(
-                'Bem vindo ao Quadro Familiar'
+                'Bem vindo ao Quadro Familiar 😁'
               );
             });
         })
@@ -164,7 +166,7 @@ export class AuthEffects {
             })
             .catch(error => {
               this._store.dispatch(StopLoading());
-              this._snackBarService.openFailureSnackBar(error.message);
+              this._snackBarService.openFailureSnackBar(Messages[error.code]);
             });
         })
       ),
@@ -180,7 +182,7 @@ export class AuthEffects {
           await this.afAuth.signOut();
           this.router.navigateByUrl('/');
           this._store.dispatch(StopLoading());
-          this._snackBarService.openSuccessSnackBar('Volte Sempre');
+          this._snackBarService.openSuccessSnackBar('Volte Sempre 😁');
         })
       ),
     { dispatch: false }
