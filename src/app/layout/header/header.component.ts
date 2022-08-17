@@ -1,7 +1,9 @@
+import * as fromApp from '@app/app.state';
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { AuthenticationService } from '@authS/authentication.service';
-import { Router } from '@angular/router';
+import { Logout } from '@authSt/auth.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,7 @@ export class HeaderComponent {
   @Input() isMenuOpened!: boolean;
   @Output() isShowSidebar = new EventEmitter<boolean>();
 
-  constructor(private readonly _authenticationService: AuthenticationService) {}
+  constructor(private readonly _store: Store<fromApp.AppState>) {}
 
   public openMenu(): void {
     this.isMenuOpened = !this.isMenuOpened;
@@ -21,6 +23,6 @@ export class HeaderComponent {
   }
 
   public signOut(): void {
-    this._authenticationService.signOut();
+    this._store.dispatch(Logout());
   }
 }

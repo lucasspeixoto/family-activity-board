@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { routes } from '@app/config/routes';
+import * as fromApp from '@app/app.state';
 
-interface User {
-  name: string;
-  lastName: string;
-}
+import { Component, EventEmitter, Output } from '@angular/core';
+
+import { Store } from '@ngrx/store';
+import { getUser } from '@authSt/auth.selectors';
+import { routes } from '@app/config/routes';
 
 @Component({
   selector: 'app-user',
@@ -14,6 +14,10 @@ interface User {
 export class UserComponent {
   @Output() signOut: EventEmitter<void> = new EventEmitter<void>();
   public routes: typeof routes = routes;
+
+  public readonly user$ = this._store.select(getUser);
+
+  constructor(private readonly _store: Store<fromApp.AppState>) {}
 
   public signOutEmit(): void {
     this.signOut.emit();

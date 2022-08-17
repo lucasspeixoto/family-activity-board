@@ -5,12 +5,12 @@ import {
 
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-// Firebase services + environment module
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthEffects } from './authentication/store/auth.effects';
 import { AuthenticationModule } from '@auth/authentication.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -58,7 +58,7 @@ const STORE = [
     maxAge: 25,
     logOnly: environment.production,
   }),
-  EffectsModule.forRoot([]),
+  EffectsModule.forRoot([AuthEffects]),
 ];
 
 @NgModule({

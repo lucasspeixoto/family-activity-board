@@ -1,37 +1,39 @@
-<button class="user-button" mat-mini-fab [matMenuTriggerFor]="userMenu">
-  <mat-icon class="user-button__icon">person</mat-icon>
-</button>
-<mat-menu #userMenu="matMenu" xPosition="before">
-  <div class="user-menu-title">
-    <h4 class="user-menu-title__name">Lucas Peixoto</h4>
-    <a
-      class="user-menu-title__link"
-      href="https://lucasspeixoto.github.io/profile"
-      target="_blank"
-      >lspeixotodev@gmail.com</a
-    >
-  </div>
-  <button mat-menu-item class="user-menu__item-title">
-    <mat-icon class="user-menu-icon">person</mat-icon>Perfil
+<ng-container *ngIf="user$ | async as user">
+  <button class="user-button" mat-mini-fab [matMenuTriggerFor]="userMenu">
+    <mat-icon class="user-button__icon">person</mat-icon>
   </button>
-  <button
-    mat-menu-item
-    class="user-menu__item-title"
-    [routerLink]="routes.BILLS">
-    <mat-icon class="user-menu-icon">event</mat-icon>Contas
-  </button>
-  <button
-    mat-menu-item
-    class="user-menu__item-title"
-    [routerLink]="routes.PLANS">
-    <mat-icon class="user-menu-icon">description</mat-icon>Planejamentos
-  </button>
-  <button mat-menu-item class="user-menu__item-title">
-    <mat-icon class="user-menu-icon">directions_run</mat-icon>Atividades
-  </button>
-  <div class="sign-button-wrapper">
-    <button class="sign-button" mat-flat-button (click)="signOutEmit()">
-      Sair
+  <mat-menu #userMenu="matMenu" xPosition="before">
+    <div class="user-menu-title">
+      <h4 class="user-menu-title__name">{{ user?.displayName }}</h4>
+      <a
+        class="user-menu-title__link"
+        href="https://lucasspeixoto.github.io/profile"
+        target="_blank"
+        >{{ user?.email }}</a
+      >
+    </div>
+    <button mat-menu-item class="user-menu__item-title">
+      <mat-icon class="user-menu-icon">person</mat-icon>Perfil
     </button>
-  </div>
-</mat-menu>
+    <button
+      mat-menu-item
+      class="user-menu__item-title"
+      [routerLink]="routes.BILLS">
+      <mat-icon class="user-menu-icon">event</mat-icon>Contas
+    </button>
+    <button
+      mat-menu-item
+      class="user-menu__item-title"
+      [routerLink]="routes.PLANS">
+      <mat-icon class="user-menu-icon">description</mat-icon>Planejamentos
+    </button>
+    <button mat-menu-item class="user-menu__item-title">
+      <mat-icon class="user-menu-icon">directions_run</mat-icon>Atividades
+    </button>
+    <div class="sign-button-wrapper">
+      <button class="sign-button" mat-flat-button (click)="signOutEmit()">
+        Sair
+      </button>
+    </div>
+  </mat-menu>
+</ng-container>

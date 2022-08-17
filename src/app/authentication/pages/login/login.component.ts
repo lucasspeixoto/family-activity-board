@@ -1,8 +1,12 @@
+import * as fromApp from '../../../app.state';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthenticationService } from '@authS/authentication.service';
+import { Login } from '@app/authentication/store/auth.actions';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly _formBuilder: FormBuilder,
     private readonly _router: Router,
-    private readonly _authenticationService: AuthenticationService
+    private readonly _authenticationService: AuthenticationService,
+    private readonly _store: Store<fromApp.AppState>
   ) {}
 
   ngOnInit() {
@@ -44,8 +49,11 @@ export class LoginComponent implements OnInit {
 
     const { email, password } = this.loginForm.value;
 
-    this._authenticationService.signIn(email, password);
+    const user = {
+      email,
+      password,
+    };
 
-    this._router.navigateByUrl('/bills');
+    this._store.dispatch(Login({ payload: user }));
   }
 }

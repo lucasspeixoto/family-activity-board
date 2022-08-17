@@ -1,5 +1,10 @@
+import * as fromApp from '@app/app.state';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { ForgotPassword } from '@authSt/auth.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,9 +18,12 @@ export class ForgotPasswordComponent implements OnInit {
 
   public readonly year = new Date().getFullYear();
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private readonly _formBuilder: FormBuilder,
+    private readonly _store: Store<fromApp.AppState>
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.buildForm();
   }
 
@@ -32,6 +40,10 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   public handleForgotPassword(): void {
-    console.log(this.forgotPasswordForm.value);
+    if (!this.forgotPasswordForm.valid) {
+      return;
+    }
+    const { email } = this.forgotPasswordForm.value;
+    this._store.dispatch(ForgotPassword({ payload: email }));
   }
 }

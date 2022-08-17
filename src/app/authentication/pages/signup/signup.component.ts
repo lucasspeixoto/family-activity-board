@@ -1,7 +1,10 @@
+import * as fromApp from '../../../app.state';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthenticationService } from '@authS/authentication.service';
+import { Signup } from '@app/authentication/store/auth.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +21,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private readonly _authenticationService: AuthenticationService
+    private readonly _store: Store<fromApp.AppState>
   ) {}
 
   ngOnInit() {
@@ -27,7 +30,7 @@ export class SignupComponent implements OnInit {
 
   private buildForm(): void {
     this.signupForm = this._formBuilder.group({
-      name: ['Dart Vader', [Validators.required, Validators.minLength(3)]],
+      name: ['Baby Yoda', [Validators.required, Validators.minLength(3)]],
       email: [
         'lspeixotodev@gmail.com',
         [
@@ -44,8 +47,10 @@ export class SignupComponent implements OnInit {
 
     const { name, email, password } = this.signupForm.value;
 
-    this._authenticationService.signUp(name, email, password).then(() => {
-      this._authenticationService.updateProfile(name);
-    });
+    this._store.dispatch(
+      Signup({
+        payload: { name, email, password },
+      })
+    );
   }
 }

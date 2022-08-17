@@ -22,11 +22,14 @@
       "@sharedC/*": ["src/app/shared/components/*"],
       "@sharedD/*": ["src/app/shared/directives/*"],
       "@sharedP/*": ["src/app/shared/pipes/*"],
+      "@sharedS/*": ["src/app/shared/store/*"],
 
       "@auth/*": ["src/app/authentication/*"],
       "@authL/*": ["src/app/authentication/layout/*"],
       "@authP/*": ["src/app/authentication/pages/*"],
-      "@authS/*": ["src/app/authentication/services/*"]
+      "@authS/*": ["src/app/authentication/services/*"],
+      "@authSt/*": ["src/app/authentication/store/*"],
+      "@authM/*": ["src/app/authentication/models/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
