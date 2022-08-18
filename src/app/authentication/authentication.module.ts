@@ -1,5 +1,5 @@
 import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationService } from '@authS/authentication.service';
 import { CommonModule } from '@angular/common';
 import { ForgotPasswordComponent } from '@authP/forgot-password/forgot-password.component';
 import { LoginComponent } from '@authP/login/login.component';

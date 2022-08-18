@@ -22,7 +22,7 @@ import { Messages } from '@app/shared/messages/firebase';
 import { Router } from '@angular/router';
 import { SnackbarService } from '@app/shared/services/snackbar/snackbar.service';
 import { Store } from '@ngrx/store';
-import { User } from '@authM/authentication.model';
+import { User } from '@authM/user.model';
 import { tap } from 'rxjs/operators';
 
 @Injectable()
@@ -192,27 +192,25 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.LoadUser),
         tap(() => {
-          this.afAuth.authState.pipe(
-            tap(user => {
-              if (user) {
-                const { email, photoURL, uid, displayName, emailVerified } =
-                  user as User;
-                if (email && uid && displayName) {
-                  const loggedUser = {
-                    email,
-                    photoURL,
-                    uid,
-                    displayName,
-                    emailVerified,
-                  };
-                  this._store.dispatch(SetUserData({ payload: loggedUser }));
-                }
+          this.afAuth.authState.subscribe(user => {
+            if (user) {
+              const { email, photoURL, uid, displayName, emailVerified } =
+                user as User;
+              if (email && uid && displayName) {
+                const loggedUser = {
+                  email,
+                  photoURL,
+                  uid,
+                  displayName,
+                  emailVerified,
+                };
+                this._store.dispatch(SetUserData({ payload: loggedUser }));
               }
+            }
 
-              const isLogged = user !== null ? true : false;
-              this._store.dispatch(UpdateIsLoggedStatus({ payload: isLogged }));
-            })
-          );
+            const isLogged = user !== null ? true : false;
+            this._store.dispatch(UpdateIsLoggedStatus({ payload: isLogged }));
+          });
         })
       ),
     { dispatch: false }

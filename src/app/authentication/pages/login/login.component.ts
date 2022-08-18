@@ -1,11 +1,9 @@
-import * as fromApp from '../../../app.state';
+import * as fromApp from '@app/app.state';
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthenticationService } from '@authS/authentication.service';
 import { Login } from '@app/authentication/store/auth.actions';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -22,8 +20,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private readonly _formBuilder: FormBuilder,
-    private readonly _router: Router,
-    private readonly _authenticationService: AuthenticationService,
     private readonly _store: Store<fromApp.AppState>
   ) {}
 

@@ -1,6 +1,5 @@
-import { TestBed } from '@angular/core/testing';
-
 import { AuthGuard } from './auth.guard';
+import { TestBed } from '@angular/core/testing';
 
 describe('AuthGuard', () => {
   let guard: AuthGuard;

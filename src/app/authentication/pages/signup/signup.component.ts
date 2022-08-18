@@ -1,4 +1,4 @@
-import * as fromApp from '../../../app.state';
+import * as fromApp from '@app/app.state';
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

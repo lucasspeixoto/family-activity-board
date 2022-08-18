@@ -6,7 +6,7 @@ import {
   UpdateIsLoggedStatus,
 } from './auth.actions';
 
-import { User } from '../models/authentication.model';
+import { User } from '@authM/user.model';
 
 export interface AuthState {
   user: User | undefined;

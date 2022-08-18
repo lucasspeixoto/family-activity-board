@@ -1,5 +1,5 @@
 <div class="app">
-  <div class="app__auth" *ngIf="authState$ | async"></div>
+  <ng-container class="app__auth" *ngIf="user$ | async"></ng-container>
   <ng-container class="app__loading" *ngIf="isLoading$ | async">
     <app-loading></app-loading>
   </ng-container>

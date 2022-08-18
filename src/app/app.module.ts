@@ -10,7 +10,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthEffects } from './authentication/store/auth.effects';
+import { AuthEffects } from '@authSt/auth.effects';
 import { AuthenticationModule } from '@auth/authentication.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,7 +22,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '@sharedM/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
-import { environment } from './../environments/environment';
+import { environment } from '@envs/environment';
 import { reducers } from './app.state';
 
 const MODULES = [
@@ -61,10 +61,12 @@ const STORE = [
   EffectsModule.forRoot([AuthEffects]),
 ];
 
+const PROVIDERS = [ScreenTrackingService, UserTrackingService];
+
 @NgModule({
   declarations: [AppComponent],
   imports: [...MODULES, ...FIREBASE, ...STORE],
-  providers: [ScreenTrackingService, UserTrackingService],
+  providers: [...PROVIDERS],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

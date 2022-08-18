@@ -1,8 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
-import { LoginForm } from '../models/login-form.model';
-import { SignUpForm } from '../models/signup-form.model';
-import { User } from '../models/authentication.model';
+import { LoginForm } from '@authM/login-form.model';
+import { SignUpForm } from '@authM/signup-form.model';
+import { User } from '@authM/user.model';
 
 export enum AuthActions {
   SIGNUP = '[SignUp Page] User Signup',
@@ -14,7 +14,7 @@ export enum AuthActions {
   SET_USER_DATA = '[App Component] Set auth user status',
   LOGIN = '[Login Page] User Login',
   FORGOT_PASSWORD = '[Forgot Password Page] Send user E-mail for change password',
-  LOAD_USER = '[Forgot Password Page] Send user E-mail for change password',
+  LOAD_USER = '[App Component] Load logged user',
 }
 
 export const Login = createAction(
