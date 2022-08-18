@@ -1,4 +1,8 @@
+import * as fromApp from '@app/app.state';
+
 import { Component, OnInit } from '@angular/core';
+
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-plans',
@@ -6,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plans.component.scss'],
 })
 export class PlansComponent implements OnInit {
-  constructor() {}
+  constructor(private readonly _store: Store<fromApp.AppState>) {}
 
   public ngOnInit(): void {
-    console.log('...');
+    console.log('Planejamentos');
+    //this._store.dispatch(LoadUser());
   }
 }

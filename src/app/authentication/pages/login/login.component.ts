@@ -1,6 +1,10 @@
+import * as fromApp from '@app/app.state';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+
+import { Login } from '@app/authentication/store/auth.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private readonly _formBuilder: FormBuilder,
-    private readonly _router: Router
+    private readonly _store: Store<fromApp.AppState>
   ) {}
 
   ngOnInit() {
@@ -26,18 +30,26 @@ export class LoginComponent implements OnInit {
   private buildForm(): void {
     this.loginForm = this._formBuilder.group({
       email: [
-        '',
+        'lspeixotodev@gmail.com',
         [
           Validators.required,
           Validators.pattern(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/),
         ],
       ],
-      password: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['30101991', [Validators.required, Validators.minLength(3)]],
     });
   }
 
   public handleLogin(): void {
     if (this.loginForm.invalid) return;
-    this._router.navigateByUrl('/bills');
+
+    const { email, password } = this.loginForm.value;
+
+    const user = {
+      email,
+      password,
+    };
+
+    this._store.dispatch(Login({ payload: user }));
   }
 }

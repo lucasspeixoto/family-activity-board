@@ -1,10 +1,10 @@
-import { LayoutModule } from './../../layout/layout.module';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlansComponent } from '@plansP/plans/plans.component';
+import { LayoutModule } from './../../layout/layout.module';
 import { MaterialModule } from '@sharedM/material.module';
-import { SharedModule } from '@sharedM/shared.module';
+import { NgModule } from '@angular/core';
+import { PlansComponent } from '@plansP/plans/plans.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '@sharedM/shared.module';
 
 const plansRoutes = [{ path: '', component: PlansComponent }];
 

@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
+import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
+import { AuthenticationService } from '@authS/authentication.service';
 import { CommonModule } from '@angular/common';
-
+import { ForgotPasswordComponent } from '@authP/forgot-password/forgot-password.component';
 import { LoginComponent } from '@authP/login/login.component';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { SharedModule } from '@sharedM/shared.module';
 import { SignupComponent } from '@authP/signup/signup.component';
-import { ForgotPasswordComponent } from '@authP/forgot-password/forgot-password.component';
-import { RouterModule } from '@angular/router';
-import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
+import { SnackbarService } from '@app/shared/services/snackbar/snackbar.service';
 
 const authRoutes = [
   { path: '', component: LoginComponent },
@@ -22,5 +23,6 @@ const authRoutes = [
     ForgotPasswordComponent,
     AuthenticationLayoutComponent,
   ],
+  providers: [AuthenticationService, SnackbarService],
 })
 export class AuthenticationModule {}
