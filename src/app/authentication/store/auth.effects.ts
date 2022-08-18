@@ -10,6 +10,7 @@ import {
   SendEmailVerification,
   SetNewUserData,
   SetUserData,
+  UpdateIsLoggedStatus,
   UpdateProfile,
 } from './auth.actions';
 import { StartLoading, StopLoading } from '@sharedS/loading/loading.actions';
@@ -55,7 +56,6 @@ export class AuthEffects {
               }
             })
             .catch(error => {
-              console.log(error.code);
               this._store.dispatch(StopLoading());
               this._snackBarService.openFailureSnackBar(Messages[error.code]);
             });
@@ -89,7 +89,6 @@ export class AuthEffects {
               }
             })
             .catch(error => {
-              console.log(error.code);
               this._store.dispatch(StopLoading());
               this._snackBarService.openFailureSnackBar(Messages[error.code]);
             });
@@ -183,6 +182,37 @@ export class AuthEffects {
           this.router.navigateByUrl('/');
           this._store.dispatch(StopLoading());
           this._snackBarService.openSuccessSnackBar('Volte Sempre 😁');
+        })
+      ),
+    { dispatch: false }
+  );
+
+  loadUser$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.LoadUser),
+        tap(() => {
+          this.afAuth.authState.pipe(
+            tap(user => {
+              if (user) {
+                const { email, photoURL, uid, displayName, emailVerified } =
+                  user as User;
+                if (email && uid && displayName) {
+                  const loggedUser = {
+                    email,
+                    photoURL,
+                    uid,
+                    displayName,
+                    emailVerified,
+                  };
+                  this._store.dispatch(SetUserData({ payload: loggedUser }));
+                }
+              }
+
+              const isLogged = user !== null ? true : false;
+              this._store.dispatch(UpdateIsLoggedStatus({ payload: isLogged }));
+            })
+          );
         })
       ),
     { dispatch: false }

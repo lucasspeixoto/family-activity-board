@@ -9,6 +9,6 @@ export class BillsComponent implements OnInit {
   constructor() {}
 
   public ngOnInit(): void {
-    console.log('...');
+    console.log('Contas');
   }
 }

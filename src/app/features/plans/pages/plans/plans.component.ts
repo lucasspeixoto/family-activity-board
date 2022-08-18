@@ -1,5 +1,8 @@
+import * as fromApp from '@app/app.state';
+
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '@app/authentication/services/authentication.service';
+
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-plans',
@@ -7,9 +10,10 @@ import { AuthenticationService } from '@app/authentication/services/authenticati
   styleUrls: ['./plans.component.scss'],
 })
 export class PlansComponent implements OnInit {
-  constructor(private readonly _authenticationService: AuthenticationService) {}
+  constructor(private readonly _store: Store<fromApp.AppState>) {}
 
   public ngOnInit(): void {
-    console.log('');
+    console.log('Planejamentos');
+    //this._store.dispatch(LoadUser());
   }
 }

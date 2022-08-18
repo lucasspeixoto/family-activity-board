@@ -9,9 +9,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { User } from './authentication/models/authentication.model';
+import { User } from 'firebase/auth';
 import { getIsLoading } from './shared/store/loading/loading.selectors';
-import { tap } from 'rxjs/operators';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ import { tap } from 'rxjs/operators';
 export class AppComponent {
   public readonly isLoading$ = this._store.select(getIsLoading);
 
-  public authState$ = this.afAuth.authState.pipe(
+  public readonly authState$ = this.afAuth.authState.pipe(
     tap(user => {
       if (user) {
         const { email, photoURL, uid, displayName, emailVerified } =

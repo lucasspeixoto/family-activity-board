@@ -163,4 +163,7 @@ export const Messages: any = {
 
   'auth/wrong-password':
     'Senha Incorreta! Caso tenha esquecido experimente gerar uma nova.',
+
+  'auth/network-request-failed':
+    'Existe uma instabilidade na conexão, verifique a rede e tente novamente.',
 };

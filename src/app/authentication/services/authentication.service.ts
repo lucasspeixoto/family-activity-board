@@ -5,11 +5,11 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Injectable, NgZone } from '@angular/core';
+import { first, map } from 'rxjs/operators';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { User } from '../models/authentication.model';
-import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +21,11 @@ export class AuthenticationService {
     public readonly router: Router,
     public readonly ngZone: NgZone
   ) {}
+
+  public isAuth() {
+    return this.afAuth.authState.pipe(map(user => user != null));
+  }
+
   // Sign in with email/password
   public async signIn(email: string, password: string): Promise<void> {
     return this.afAuth
