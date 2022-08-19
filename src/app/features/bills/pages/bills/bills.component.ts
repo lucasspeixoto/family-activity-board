@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bills.component.scss'],
 })
 export class BillsComponent implements OnInit {
+  public periods: string[] = ['Hoje', 'Semana Anterior', 'Semana Atual', 'Mês'];
+
+  public situations: string[] = ['Pago', 'Pendente'];
+
+  public types: string[] = ['Fixo', 'Variável'];
+
   constructor() {}
 
   public ngOnInit(): void {

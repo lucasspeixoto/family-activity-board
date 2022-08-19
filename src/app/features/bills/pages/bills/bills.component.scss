@@ -2,8 +2,41 @@
 @import 'src/styles/variables';
 @import 'src/styles/font';
 
-.typography-content {
+.bills {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  &__actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 0rem 2rem 0rem;
+    gap: 1rem;
+
+    > button {
+      margin-right: 2rem;
+    }
+  }
+
+  &__filters {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+
+    @media (max-width: 470px) {
+      justify-content: center;
+      width: auto;
+      gap: 1rem;
+    }
+  }
+}
+
+.bills-content {
   &__wrapper {
     display: flex;
     padding: 0 8px;
@@ -13,13 +46,23 @@
     }
   }
 
+  &__actions {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+
   &__item-wrapper {
-    box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
+    box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px #b2b2b21a,
+      0 1px 8px 0 #9a9a9a1a;
     width: 100%;
     margin: 16px;
   }
 
-  &__headings, &__colors, &__settings, &__size {
+  &__headings,
+  &__colors,
+  &__settings,
+  &__size {
     margin-top: 8px;
     border: 1px dashed $blue;
     padding: 32px 16px;

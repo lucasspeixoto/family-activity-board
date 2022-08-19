@@ -1,11 +1,79 @@
 <app-layout>
-  <mat-card-content class="typography-content">
-    <div class="typography-content__wrapper">
-      <mat-card class="typography-content__item-wrapper">
+  <div class="bills">
+    <div class="bills__actions">
+      <button mat-fab aria-label="Incluir conta" appUpElevation>
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <div class="bills__filters">
+      <!-- Período -->
+      <mat-form-field appearance="fill">
+        <mat-label>Período</mat-label>
+        <mat-select>
+          <mat-option>Nenhum</mat-option>
+          <mat-option *ngFor="let period of periods" value="period">{{
+            period
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Situação -->
+      <mat-form-field appearance="fill">
+        <mat-label>Situação</mat-label>
+        <mat-select>
+          <mat-option>Nenhum</mat-option>
+          <mat-option *ngFor="let situation of situations" value="situation">{{
+            situation
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Tipo -->
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo</mat-label>
+        <mat-select>
+          <mat-option>Nenhum</mat-option>
+          <mat-option *ngFor="let type of types" value="type">{{
+            type
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Período -->
+      <mat-form-field appearance="fill">
+        <mat-label>Período</mat-label>
+        <mat-select>
+          <mat-option>Nenhum</mat-option>
+          <mat-option *ngFor="let period of periods" value="period">{{
+            period
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Período</mat-label>
+        <mat-select>
+          <mat-option>Nenhum</mat-option>
+          <mat-option *ngFor="let period of periods" value="period">{{
+            period
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <!-- <mat-card-content class="bills-content">
+    <div class="bills-content__wrapper">
+      <div class="bills-content__actions">
+        <button mat-mini-fab disabled aria-label="Incluir conta">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+      <mat-card class="bills-content__item-wrapper">
         <mat-card-title>
           <p>Contas</p>
         </mat-card-title>
       </mat-card>
     </div>
-  </mat-card-content>
+  </mat-card-content> -->
 </app-layout>

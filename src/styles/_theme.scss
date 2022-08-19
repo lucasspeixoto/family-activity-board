@@ -147,19 +147,19 @@ button.mat-menu-item:hover:not([disabled]),
 }
 
 mat-select.mat-select {
-  width: auto;
-  display: inline;
+  /* width: auto; */
+  /* display: inline; */
   font-size: 16px;
   font-weight: 300;
   color: $dark-grey;
-  border: 1px solid $light-grey;
+  /* border: 1px solid $light-grey; */
   border-radius: 4px;
-  padding: 8px 10px;
+  /* padding: 8px 10px; */
 
-  & .mat-select-value {
+  /* & .mat-select-value {
     width: auto;
     display: inline;
-  }
+  } */
 
   & .mat-select-arrow {
     color: $light-grey;
@@ -170,7 +170,7 @@ mat-select.mat-select {
 .mat-option {
   font-size: 16px;
   height: 36px;
-  padding: 6px 16px;
+  /* padding: 6px 16px; */
   color: $dark-grey;
 
   &.mat-focus-indicator.mat-selected.mat-active {
@@ -350,6 +350,13 @@ button.mat-mini-fab .mat-button-wrapper {
   padding: 0;
 }
 
+button.mat-fab {
+  height: 58px;
+  width: 58px;
+  padding-right: 3px;
+  padding-bottom: 4px;
+}
+
 button.mat-mini-fab {
   height: 36px;
   width: 36px;
@@ -360,7 +367,6 @@ button.mat-mini-fab {
 div.mat-menu-panel {
   margin-top: 20px;
   border-radius: $panel-border-radius;
-
 }
 
 .fa {
