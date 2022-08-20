@@ -23,7 +23,6 @@ export class UpElevationDirective implements OnChanges {
   }
 
   ngOnChanges(_changes: SimpleChanges) {
-    console.log(_changes);
     this.setElevation(this.defaultElevation);
   }
 
