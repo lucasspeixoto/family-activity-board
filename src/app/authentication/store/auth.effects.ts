@@ -33,7 +33,7 @@ export class AuthEffects {
         ofType(AuthActions.Login),
         tap(async action => {
           this._store.dispatch(StartLoading());
-          const { email, password } = action?.payload;
+          const { email, password } = action.payload;
           await this.afAuth
             .signInWithEmailAndPassword(email, password)
             .then(result => {
@@ -70,7 +70,7 @@ export class AuthEffects {
         ofType(AuthActions.Signup),
         tap(action => {
           this._store.dispatch(StartLoading());
-          const { name, email, password } = action?.payload;
+          const { name, email, password } = action.payload;
           this.afAuth
             .createUserWithEmailAndPassword(email, password)
             .then(result => {
@@ -135,7 +135,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.SetNewUserData),
         tap(async action => {
-          const newUser = action?.payload;
+          const newUser = action.payload;
 
           const userRef: AngularFirestoreDocument<User> = this.afs.doc(
             `users/${newUser.uid}`

@@ -46,6 +46,7 @@
     "@html-eslint/parser": "^0.13.2",
     "@ngrx/store-devtools": "^14.1.0",
     "@types/jasmine": "~4.0.0",
+    "@types/lodash": "^4.14.184",
     "@typescript-eslint/eslint-plugin": "5.29.0",
     "@typescript-eslint/parser": "5.29.0",
     "eslint": "^8.21.0",

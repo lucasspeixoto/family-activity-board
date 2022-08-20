@@ -19,8 +19,11 @@
         "plugin:prettier/recommended"
       ],
       "rules": {
-        "@typescript-eslint/no-unused-vars": ["error"],
+        "@typescript-eslint/no-unused-vars": ["warn"],
         "@typescript-eslint/no-inferrable-types": ["warn"],
+        "prefer-const": ["warn"],
+        "no-implicit-coercion": ["warn"],
+        "no-console": ["error"],
         "sort-imports": [
           "warn",
           {

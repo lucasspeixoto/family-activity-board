@@ -24,8 +24,7 @@ export class AuthenticationService {
   }
 
   public googleAuth(): Promise<void> {
-    return this.authLogin(new auth.GoogleAuthProvider()).then((result: any) => {
-      console.log(result);
+    return this.authLogin(new auth.GoogleAuthProvider()).then(() => {
       this.router.navigate(['dashboard']);
     });
   }
@@ -33,8 +32,7 @@ export class AuthenticationService {
   public authLogin(provider: any): Promise<void> {
     return this.afAuth
       .signInWithPopup(provider)
-      .then(result => {
-        console.log(result);
+      .then(() => {
         this.router.navigate(['dashboard']);
         //this.setUserData(result.user);
       })

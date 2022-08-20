@@ -1,8 +1,9 @@
 import * as fromApp from './app.state';
 
+import { Component, OnInit } from '@angular/core';
+
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Component } from '@angular/core';
 import { LoadUser } from '@authSt/auth.actions';
 import { Store } from '@ngrx/store';
 import { getIsLoading } from '@sharedS/loading/loading.selectors';
@@ -13,7 +14,7 @@ import { getUser } from '@authSt/auth.selectors';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public readonly isLoading$ = this._store.select(getIsLoading);
 
   public readonly user$ = this._store.select(getUser);
@@ -22,7 +23,9 @@ export class AppComponent {
     public afAuth: AngularFireAuth,
     public readonly afs: AngularFirestore,
     private readonly _store: Store<fromApp.AppState>
-  ) {
+  ) {}
+
+  public ngOnInit() {
     this._store.dispatch(LoadUser());
   }
 }

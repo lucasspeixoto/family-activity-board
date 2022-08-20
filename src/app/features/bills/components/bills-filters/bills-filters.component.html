@@ -1,0 +1,34 @@
+<div class="bills">
+  <!-- Período -->
+  <mat-form-field appearance="fill">
+    <mat-label>Período</mat-label>
+    <mat-select>
+      <mat-option>Nenhum</mat-option>
+      <mat-option *ngFor="let period of periods" value="period">{{
+        period
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Situação -->
+  <mat-form-field appearance="fill">
+    <mat-label>Situação</mat-label>
+    <mat-select>
+      <mat-option>Nenhum</mat-option>
+      <mat-option *ngFor="let situation of situations" value="situation">{{
+        situation
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Tipo -->
+  <mat-form-field appearance="fill">
+    <mat-label>Tipo</mat-label>
+    <mat-select>
+      <mat-option>Nenhum</mat-option>
+      <mat-option *ngFor="let type of types" value="type">{{
+        type
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
