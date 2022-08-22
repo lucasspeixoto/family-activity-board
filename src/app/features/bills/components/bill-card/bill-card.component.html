@@ -1,3 +1,21 @@
 <div class="card">
-  <h2>{{ title }}</h2>
+  <h4 class="card__title">{{ bill.title }}</h4>
+
+  <div class="card__content">
+    <div class="card__content-value">{{ bill.value | currency: 'BRL' }}</div>
+
+    <div class="card__content-status">
+      {{ bill.status | statusFilter }}
+    </div>
+
+    <div class="card__content-status">
+      {{ bill.type | typeFilter }}
+    </div>
+
+    <div class="card_content-owner">{{ bill.owner }}</div>
+
+    <div class="card__content-date">
+      {{ bill.date }}
+    </div>
+  </div>
 </div>

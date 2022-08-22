@@ -27,6 +27,9 @@
 
       "@billsC/*": ["src/app/features/bills/components/*"],
       "@billsP/*": ["src/app/features/bills/pages/*"],
+      "@billsM/*": ["src/app/features/bills/models/*"],
+      "@billsS/*": ["src/app/features/bills/services/*"],
+      "@billsSt/*": ["src/app/features/bills/store/*"],
 
       "@plansC/*": ["src/app/features/plans/components/*"],
       "@plansP/*": ["src/app/features/plans/pages/*"],

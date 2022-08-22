@@ -12,6 +12,13 @@
         >{{ user?.email }}</a
       >
     </div>
+
+    <div mat-menu-item>
+      <mat-icon>date_range</mat-icon>{{ today | date: 'dd/MM/yyyy - HH:mm' }}
+    </div>
+
+    <mat-divider></mat-divider>
+
     <button mat-menu-item class="user-menu__item-title">
       <mat-icon class="user-menu-icon">person</mat-icon>Perfil
     </button>
@@ -30,6 +37,7 @@
     <button mat-menu-item class="user-menu__item-title">
       <mat-icon class="user-menu-icon">directions_run</mat-icon>Atividades
     </button>
+
     <div class="sign-button-wrapper">
       <button class="sign-button" mat-flat-button (click)="signOutEmit()">
         Sair

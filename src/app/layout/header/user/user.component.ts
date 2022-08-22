@@ -17,6 +17,8 @@ export class UserComponent {
 
   public readonly user$ = this._store.select(getUser);
 
+  public readonly today = new Date();
+
   constructor(private readonly _store: Store<fromApp.AppState>) {}
 
   public signOutEmit(): void {

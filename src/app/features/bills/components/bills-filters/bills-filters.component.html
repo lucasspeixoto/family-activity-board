@@ -4,19 +4,19 @@
     <mat-label>Período</mat-label>
     <mat-select>
       <mat-option>Nenhum</mat-option>
-      <mat-option *ngFor="let period of periods" value="period">{{
-        period
+      <mat-option *ngFor="let date of dateOptions" [value]="date.value">{{
+        date.viewValue
       }}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <!-- Situação -->
+  <!-- Status -->
   <mat-form-field appearance="fill">
-    <mat-label>Situação</mat-label>
+    <mat-label>Status</mat-label>
     <mat-select>
       <mat-option>Nenhum</mat-option>
-      <mat-option *ngFor="let situation of situations" value="situation">{{
-        situation
+      <mat-option *ngFor="let status of statusOptions" [value]="status.value">{{
+        status.viewValue
       }}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -26,8 +26,8 @@
     <mat-label>Tipo</mat-label>
     <mat-select>
       <mat-option>Nenhum</mat-option>
-      <mat-option *ngFor="let type of types" value="type">{{
-        type
+      <mat-option *ngFor="let type of typeOptions" [value]="type.value">{{
+        type.viewValue
       }}</mat-option>
     </mat-select>
   </mat-form-field>
