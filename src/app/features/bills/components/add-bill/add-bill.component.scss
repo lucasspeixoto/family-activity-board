@@ -1,0 +1,30 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+@import 'src/styles/font';
+
+.container {
+  > * {
+    width: 100%;
+  }
+
+  &__title {
+    color: $green;
+  }
+
+  &__form {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+      margin-bottom: 0.7rem;
+    }
+  }
+
+  &__actions {
+    margin: 1.5rem 0rem 0.5rem 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}

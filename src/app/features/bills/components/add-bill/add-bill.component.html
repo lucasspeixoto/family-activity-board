@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 mat-dialog-title class="container__title">Adicionar Conta</h2>
+  <form class="container__form" id="form" [formGroup]="addNewBillForm">
+    <mat-form-field class="form__input form__input--name" appearance="fill">
+      <mat-label>Título</mat-label>
+      <input matInput type="text" formControlName="title" required />
+      <mat-icon matSuffix>title</mat-icon>
+      <mat-error
+        ><app-custom-validation-message
+          controlName="title"></app-custom-validation-message>
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <div class="container__actions">
+    <button mat-raised-button mat-dialog-close color="primary">Cancelar</button>
+    <button mat-raised-button [mat-dialog-close]="true" color="warn">
+      Adicionar
+    </button>
+  </div>
+</div>

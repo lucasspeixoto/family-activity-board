@@ -1,4 +1,6 @@
+import { AddBillComponent } from '@billsC/add-bill/add-bill.component';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-bills',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./bills.component.scss'],
 })
 export class BillsComponent {
-  constructor() {}
+  constructor(public readonly dialog: MatDialog) {}
+
+  public addNewBillHandler(): void {
+    this.dialog.open(AddBillComponent, {
+      width: '50%',
+    });
+  }
 }

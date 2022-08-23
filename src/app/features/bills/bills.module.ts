@@ -1,3 +1,4 @@
+import { AddBillComponent } from './components/add-bill/add-bill.component';
 import { BillCardComponent } from './components/bill-card/bill-card.component';
 import { BillsCardsComponent } from './components/bills-cards/bills-cards.component';
 import { BillsComponent } from '@billsP/bills/bills.component';
@@ -17,6 +18,7 @@ const COMPONENTS = [
   BillsFiltersComponent,
   BillsCardsComponent,
   BillCardComponent,
+  AddBillComponent,
 ];
 
 const PIPES = [TypeFilterPipe];

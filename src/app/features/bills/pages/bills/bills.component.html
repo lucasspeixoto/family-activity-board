@@ -1,7 +1,11 @@
 <app-layout>
   <div class="bills">
     <div class="bills__actions">
-      <button mat-fab aria-label="Incluir conta" appUpElevation>
+      <button
+        mat-fab
+        aria-label="Incluir conta"
+        appUpElevation
+        (click)="addNewBillHandler()">
         <mat-icon>add</mat-icon>
       </button>
     </div>
