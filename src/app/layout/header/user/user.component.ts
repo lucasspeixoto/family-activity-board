@@ -4,7 +4,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { getUser } from '@authSt/auth.selectors';
-import { routes } from '@app/config/routes';
+import { routes } from '@constants/routes';
 
 @Component({
   selector: 'app-user',

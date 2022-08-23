@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Bill } from '@app/features/bills/models/bills.model';
+import { Bill } from '@billsM/bills.model';
 
 @Component({
   selector: 'app-bill-card',

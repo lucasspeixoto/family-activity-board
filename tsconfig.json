@@ -13,6 +13,7 @@
       "@app/*": ["src/app/*"],
 
       "@config/*": ["src/app/config/*"],
+      "@constants/*": ["src/app/config/constants/*"],
 
       "@layout/*": ["src/app/layout/*"],
 

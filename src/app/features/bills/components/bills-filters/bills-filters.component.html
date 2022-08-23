@@ -1,8 +1,19 @@
 <div class="bills">
-  <!-- Período -->
+  <!-- Type -->
+  <mat-form-field appearance="fill">
+    <mat-label>Tipo</mat-label>
+    <mat-select (valueChange)="changeTypeValue($event)">
+      <mat-option [value]="0">Nenhum</mat-option>
+      <mat-option *ngFor="let type of typeOptions" [value]="type.value">{{
+        type.viewValue
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Date -->
   <mat-form-field appearance="fill">
     <mat-label>Período</mat-label>
-    <mat-select>
+    <mat-select (valueChange)="changeDateValue($event)">
       <mat-option>Nenhum</mat-option>
       <mat-option *ngFor="let date of dateOptions" [value]="date.value">{{
         date.viewValue
@@ -13,21 +24,10 @@
   <!-- Status -->
   <mat-form-field appearance="fill">
     <mat-label>Status</mat-label>
-    <mat-select>
+    <mat-select (valueChange)="changeStatusValue($event)">
       <mat-option>Nenhum</mat-option>
       <mat-option *ngFor="let status of statusOptions" [value]="status.value">{{
         status.viewValue
-      }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <!-- Tipo -->
-  <mat-form-field appearance="fill">
-    <mat-label>Tipo</mat-label>
-    <mat-select>
-      <mat-option>Nenhum</mat-option>
-      <mat-option *ngFor="let type of typeOptions" [value]="type.value">{{
-        type.viewValue
       }}</mat-option>
     </mat-select>
   </mat-form-field>
