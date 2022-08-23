@@ -23,6 +23,7 @@
       "@sharedD/*": ["src/app/shared/directives/*"],
       "@sharedP/*": ["src/app/shared/pipes/*"],
       "@sharedS/*": ["src/app/shared/store/*"],
+      "@sharedMd/*": ["src/app/shared/models/*"],
 
       "@features/*": ["src/app/features/*"],
 

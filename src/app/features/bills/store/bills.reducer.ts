@@ -1,80 +1,19 @@
 /* eslint-disable no-console */
+
 import { Action, createReducer, on } from '@ngrx/store';
 import { filterBillsByType, setBills } from './bills.actions';
 
 import { Bill } from '@billsM/bills.model';
+import { MOCK_BILLS } from '@app/config/mocks/bills';
 
 export interface BillsState {
   bills: Bill[];
+  filteredBills: Bill[];
 }
 
 export const initialState: BillsState = {
-  bills: [
-    {
-      title: 'Conta de Água',
-      type: 1,
-      value: 66,
-      date: '22/08/2022',
-      owner: 'Lucas Peixoto',
-      status: 2,
-    },
-    {
-      title: 'Internet',
-      type: 1,
-      value: 126,
-      date: '18/08/2022',
-      owner: 'Lucas Peixoto',
-      status: 1,
-    },
-    {
-      title: 'Aluguel',
-      type: 1,
-      value: 1350,
-      date: '05/08/2022',
-      owner: 'Lucas Peixoto',
-      status: 1,
-    },
-    {
-      title: 'Cartão Itaú Lucas',
-      type: 2,
-      value: 760,
-      date: '29/08/2022',
-      owner: 'Lucas Peixoto',
-      status: 1,
-    },
-    {
-      title: 'Cartão Santander Lucas',
-      type: 2,
-      value: 460,
-      date: '20/08/2022',
-      owner: 'Lucas Peixoto',
-      status: 1,
-    },
-    {
-      title: 'Cartão Bradesco Liana',
-      type: 2,
-      value: 460,
-      date: '17/08/2022',
-      owner: 'Liana Fernandes',
-      status: 1,
-    },
-    {
-      title: 'Cartão Carrefour',
-      type: 4,
-      value: 460,
-      date: '27/08/2022',
-      owner: 'Liana Fernandes',
-      status: 3,
-    },
-    {
-      title: 'Faculdade Liana',
-      type: 1,
-      value: 460,
-      date: '14/08/2022',
-      owner: 'Liana Fernandes',
-      status: 2,
-    },
-  ],
+  bills: MOCK_BILLS,
+  filteredBills: MOCK_BILLS,
 };
 
 const _billsReducer = createReducer(
@@ -82,15 +21,23 @@ const _billsReducer = createReducer(
   on(setBills, (_state, { payload }) => {
     return {
       bills: [payload],
+      filteredBills: [payload],
     };
   }),
-  on(filterBillsByType, (_state, { payload }) => {
-    const { bills } = _state;
-    const filteredBills = bills.filter(bill => bill.type === payload);
-    console.log(filteredBills);
-    return {
-      bills: [...filteredBills],
-    };
+  on(filterBillsByType, (_state, { value }) => {
+    if (value === 0) {
+      return {
+        bills: [..._state.bills],
+        filteredBills: [..._state.bills],
+      };
+    } else {
+      const { bills } = _state;
+      const filteredBills = bills.filter(bill => bill.type === value);
+      return {
+        bills: [..._state.bills],
+        filteredBills: [...filteredBills],
+      };
+    }
   })
 );
 

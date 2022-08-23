@@ -4,5 +4,4 @@ export interface Bill {
   value: number;
   date: string;
   owner: string;
-  status: number;
 }

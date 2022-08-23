@@ -4,7 +4,7 @@ import { Bill } from '@billsM/bills.model';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { getBills } from '../../store/bills.selectors';
+import { getFilteredBills } from '@billsSt/bills.selectors';
 
 @Component({
   selector: 'app-bills-cards',
@@ -12,7 +12,8 @@ import { getBills } from '../../store/bills.selectors';
   styleUrls: ['./bills-cards.component.scss'],
 })
 export class BillsCardsComponent {
-  public readonly bills$: Observable<Bill[]> = this._store.select(getBills);
+  public filteredBills$: Observable<Bill[]> =
+    this._store.select(getFilteredBills);
 
   constructor(private readonly _store: Store<fromApp.AppState>) {}
 }

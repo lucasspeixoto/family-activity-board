@@ -1,9 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 const typeOptions: Record<number, string> = {
-  1: 'Atrasado',
-  2: 'Vence Hoje',
-  3: 'Em dia',
+  1: 'Contas (Ex: Energia, água, etc...',
+  2: 'Cartão de Crédito',
+  3: 'Faculdade',
+  4: 'Cartão Supermercado',
 };
 
 @Pipe({

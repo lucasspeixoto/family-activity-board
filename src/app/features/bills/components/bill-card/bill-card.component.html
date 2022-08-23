@@ -5,10 +5,6 @@
     <div class="card__content-value">{{ bill.value | currency: 'BRL' }}</div>
 
     <div class="card__content-status">
-      {{ bill.status | statusFilter }}
-    </div>
-
-    <div class="card__content-status">
       {{ bill.type | typeFilter }}
     </div>
 

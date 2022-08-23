@@ -20,6 +20,6 @@ export const setBills = createAction(
 export const filterBillsByType = createAction(
   BillsActions.FILTER_BILLS_BY_TYPE,
   props<{
-    payload: number;
+    value: number;
   }>()
 );
