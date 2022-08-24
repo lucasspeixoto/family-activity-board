@@ -3,6 +3,11 @@
 @import 'src/styles/font';
 
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
   > * {
     width: 100%;
   }
@@ -12,11 +17,11 @@
   }
 
   &__form {
-    margin-top: 3rem;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
 
-    &__input {
+    &-input {
       margin-bottom: 0.7rem;
     }
   }

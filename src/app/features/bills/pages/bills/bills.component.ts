@@ -12,7 +12,7 @@ export class BillsComponent {
 
   public addNewBillHandler(): void {
     this.dialog.open(AddBillComponent, {
-      width: '50%',
+      width: '40%',
     });
   }
 }

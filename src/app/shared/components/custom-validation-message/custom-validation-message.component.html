@@ -11,5 +11,7 @@
     </li>
 
     <li *ngIf="control.hasError('pattern')">Padrão Inválido</li>
+
+    <li *ngIf="control.hasError('min')">Insira um valor válido</li>
   </ul>
 </ng-container>
