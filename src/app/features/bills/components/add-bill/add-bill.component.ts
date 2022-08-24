@@ -37,7 +37,9 @@ export class AddBillComponent implements OnInit {
   }
 
   public addNewBillHandler(): void {
+    const { date } = this.addNewBillForm.value;
+    const dateDate = new Date(date);
     // eslint-disable-next-line no-console
-    console.log(this.addNewBillForm.value);
+    console.log(dateDate.getDate());
   }
 }

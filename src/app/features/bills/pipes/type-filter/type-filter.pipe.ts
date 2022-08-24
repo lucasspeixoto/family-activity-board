@@ -11,7 +11,7 @@ const typeOptions: Record<number, string> = {
   name: 'typeFilter',
 })
 export class TypeFilterPipe implements PipeTransform {
-  transform(value: number): string {
+  public transform(value: number): string {
     return typeOptions[value];
   }
 }

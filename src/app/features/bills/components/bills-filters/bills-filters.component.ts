@@ -1,16 +1,14 @@
-/* eslint-disable no-console */
-
 import * as fromApp from '@app/app.state';
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  dateOptions,
+  rangeOptions,
   statusOptions,
   typeOptions,
 } from '@constants/filters-selects';
 
 import { Store } from '@ngrx/store';
-import { filterBillsByType } from '@billsSt/bills.actions';
+import { setFilter } from '@billsSt/bills.actions';
 
 @Component({
   selector: 'app-bills-filters',
@@ -23,19 +21,21 @@ export class BillsFiltersComponent {
 
   public typeOptions = typeOptions;
 
-  public dateOptions = dateOptions;
+  public rangeOptions = rangeOptions;
 
   public statusOptions = statusOptions;
 
   public changeTypeValue(selectedType: number) {
-    this._store.dispatch(filterBillsByType({ value: selectedType }));
+    this._store.dispatch(setFilter({ filter: 'type', value: selectedType }));
   }
 
-  public changeDateValue(selectedDate: number) {
-    console.log(selectedDate);
+  public changeRangeValue(selectedRange: number) {
+    this._store.dispatch(setFilter({ filter: 'range', value: selectedRange }));
   }
 
   public changeStatusValue(selectedStatus: number) {
-    console.log(selectedStatus);
+    this._store.dispatch(
+      setFilter({ filter: 'status', value: selectedStatus })
+    );
   }
 }

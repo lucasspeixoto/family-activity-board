@@ -1,3 +1,15 @@
+import 'moment/locale/pt';
+
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
+import {
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter,
+} from '@angular/material-moment-adapter';
 import {
   ScreenTrackingService,
   UserTrackingService,
@@ -61,7 +73,17 @@ const STORE = [
   EffectsModule.forRoot([AuthEffects]),
 ];
 
-const PROVIDERS = [ScreenTrackingService, UserTrackingService];
+const PROVIDERS = [
+  ScreenTrackingService,
+  UserTrackingService,
+  { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+  {
+    provide: DateAdapter,
+    useClass: MomentDateAdapter,
+    deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+  },
+  { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+];
 
 @NgModule({
   declarations: [AppComponent],

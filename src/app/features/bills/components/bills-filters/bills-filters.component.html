@@ -3,20 +3,20 @@
   <mat-form-field appearance="fill">
     <mat-label>Tipo</mat-label>
     <mat-select (valueChange)="changeTypeValue($event)">
-      <mat-option [value]="0">Nenhum</mat-option>
+      <mat-option>Nenhum</mat-option>
       <mat-option *ngFor="let type of typeOptions" [value]="type.value">{{
         type.viewValue
       }}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <!-- Date -->
+  <!-- Value -->
   <mat-form-field appearance="fill">
-    <mat-label>Período</mat-label>
-    <mat-select (valueChange)="changeDateValue($event)">
+    <mat-label>Faixa</mat-label>
+    <mat-select (valueChange)="changeRangeValue($event)">
       <mat-option>Nenhum</mat-option>
-      <mat-option *ngFor="let date of dateOptions" [value]="date.value">{{
-        date.viewValue
+      <mat-option *ngFor="let range of rangeOptions" [value]="range.value">{{
+        range.viewValue
       }}</mat-option>
     </mat-select>
   </mat-form-field>

@@ -27,7 +27,7 @@ import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthEffects {
-  login$ = createEffect(
+  public login$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.Login),
@@ -64,7 +64,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  signup$ = createEffect(
+  public signup$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.Signup),
@@ -97,7 +97,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  sendEmailVerification$ = createEffect(
+  public sendEmailVerification$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.SendEmailVerification),
@@ -116,7 +116,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  updateProfile$ = createEffect(
+  public updateProfile$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.UpdateProfile),
@@ -130,7 +130,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  setNewUserData$ = createEffect(
+  public setNewUserData$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.SetNewUserData),
@@ -149,7 +149,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  forgotPassword$ = createEffect(
+  public forgotPassword$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.ForgotPassword),
@@ -172,7 +172,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  logout$ = createEffect(
+  public logout$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.Logout),
@@ -187,7 +187,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  loadUser$ = createEffect(
+  public loadUser$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.LoadUser),
