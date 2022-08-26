@@ -1,5 +1,5 @@
 <app-layout>
-  <ng-container *ngIf="user$ | async" class="bills">
+  <div class="bills">
     <div class="bills__actions">
       <button
         mat-fab
@@ -11,5 +11,5 @@
     </div>
 
     <app-bills-cards></app-bills-cards>
-  </ng-container>
+  </div>
 </app-layout>

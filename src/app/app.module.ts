@@ -24,18 +24,19 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthEffects } from '@authSt/auth.effects';
 import { AuthenticationModule } from '@auth/authentication.module';
+import { BillsEffects } from './features/bills/store/bills.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
+import { environment } from '@envs/environment';
 import { LayoutModule } from './layout/layout.module';
 import { MaterialModule } from '@sharedM/material.module';
 import { NgModule } from '@angular/core';
+import { reducers } from './app.state';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@sharedM/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
-import { environment } from '@envs/environment';
-import { reducers } from './app.state';
 
 const MODULES = [
   BrowserModule,
@@ -70,7 +71,7 @@ const STORE = [
     maxAge: 25,
     logOnly: environment.production,
   }),
-  EffectsModule.forRoot([AuthEffects]),
+  EffectsModule.forRoot([AuthEffects, BillsEffects]),
 ];
 
 const PROVIDERS = [

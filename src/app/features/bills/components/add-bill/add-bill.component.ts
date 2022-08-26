@@ -8,12 +8,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from '@authM/user.model';
 import { Store } from '@ngrx/store';
 
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { getUserUid } from '@app/authentication/store/auth.selectors';
 import { typeOptions } from '@constants/filters-selects';
-import { take } from 'rxjs';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-add-bill',
@@ -25,7 +23,11 @@ export class AddBillComponent implements OnInit {
 
   public typeOptions = typeOptions;
 
-  public billData!: AngularFirestoreDocument<any>;
+  public userId!: string | null | undefined;
+
+  public userId$ = this._store
+    .select(getUserUid)
+    .pipe(tap(uid => (this.userId = uid)));
 
   public ngOnInit(): void {
     this.buildForm();
@@ -36,16 +38,7 @@ export class AddBillComponent implements OnInit {
     public readonly afs: AngularFirestore,
     private readonly _store: Store<fromApp.AppState>,
     @Inject(MAT_DIALOG_DATA) public readonly user: User
-  ) {
-    //this._store.select(getUser).subscribe(user => console.log(user));
-    this.afs
-      .collection(`users/${this.user.uid}/bills`)
-      .valueChanges()
-      .pipe(take(1))
-      .subscribe(bills => {
-        console.log(bills);
-      });
-  }
+  ) {}
 
   private buildForm(): void {
     this.addNewBillForm = this._formBuilder.group({
@@ -65,15 +58,7 @@ export class AddBillComponent implements OnInit {
   }
 
   public addNewBillHandler(): void {
-    console.log(this.addNewBillForm.value);
-    console.log(this.user);
-    const url = `users/${this.user.uid}/bills`;
-
-    /* this.billData = this.afs.doc(url);
-    const newItem = [];
-    newItem.push(this.addNewBillForm.value);
-    const bill = { bills: newItem };
-    this.billData.set(bill, { merge: true }); */
+    const url = `users/${this.userId}/bills`;
 
     this.afs.collection(url).add(this.addNewBillForm.value);
   }

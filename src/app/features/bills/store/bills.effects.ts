@@ -6,6 +6,7 @@ import * as fromBills from './bills.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Bill } from '../models/bills.model';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
@@ -25,7 +26,14 @@ export class BillsEffects {
     () =>
       this.actions$.pipe(
         ofType(fromBills.loadBills),
-        tap(() => this._store.dispatch(fromBills.filterBillsList()))
+        tap(action => {
+          this.afs
+            .collection<Bill>(`users/${action.payload}/bills`)
+            .valueChanges()
+            .subscribe(bills => {
+              this._store.dispatch(fromBills.setBills({ payload: bills }));
+            });
+        })
       ),
     { dispatch: false }
   );

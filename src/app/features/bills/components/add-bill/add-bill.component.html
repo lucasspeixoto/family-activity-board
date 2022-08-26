@@ -1,4 +1,4 @@
-<div class="container">
+<ng-container class="container" *ngIf="userId$ | async">
   <h2 mat-dialog-title class="container__title">Adicionar Conta</h2>
   <form class="container__form" id="form" [formGroup]="addNewBillForm">
     <mat-form-field class="container__form-input" appearance="fill">
@@ -63,4 +63,4 @@
       Adicionar
     </button>
   </div>
-</div>
+</ng-container>

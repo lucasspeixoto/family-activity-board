@@ -18,6 +18,7 @@ import { StartLoading, StopLoading } from '@sharedS/loading/loading.actions';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthActions } from './action-types';
 import { AuthenticationService } from '@authS/authentication.service';
+import { loadBills } from '@app/features/bills/store/bills.actions';
 import { Messages } from '@app/shared/messages/firebase';
 import { Router } from '@angular/router';
 import { SnackbarService } from '@app/shared/services/snackbar/snackbar.service';
@@ -204,6 +205,7 @@ export class AuthEffects {
                   emailVerified,
                 };
                 this._store.dispatch(SetUserData({ payload: loggedUser }));
+                this._store.dispatch(loadBills({ payload: uid }));
               }
             }
 

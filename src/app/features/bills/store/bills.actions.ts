@@ -9,7 +9,10 @@ export enum BillsActions {
   FILTER_BILLS_LIST = '[BILLS] Filter bills list',
 }
 
-export const loadBills = createAction(BillsActions.LOAD_BILLS);
+export const loadBills = createAction(
+  BillsActions.LOAD_BILLS,
+  props<{ payload: string }>()
+);
 
 export const setBills = createAction(
   BillsActions.SET_BILLS,

@@ -1,14 +1,10 @@
 import * as fromApp from '@app/app.state';
 
-import { Component, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-
 import { AddBillComponent } from '@billsC/add-bill/add-bill.component';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Bill } from '../../models/bills.model';
-import { getUser } from '@authSt/auth.selectors';
+import { Component } from '@angular/core';
+import { getBills } from '../../store/bills.selectors';
 import { MatDialog } from '@angular/material/dialog';
-import { setBills } from '@billsSt/bills.actions';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { User } from '@authM/user.model';
 
@@ -17,33 +13,17 @@ import { User } from '@authM/user.model';
   templateUrl: './bills.component.html',
   styleUrls: ['./bills.component.scss'],
 })
-export class BillsComponent implements OnInit {
+export class BillsComponent {
   public user!: User | undefined;
+
   public user$!: Observable<User | undefined>;
-  public bills$!: Observable<Bill[]>;
+
+  public bills$ = this._store.select(getBills);
 
   constructor(
     public readonly dialog: MatDialog,
-    private readonly _store: Store<fromApp.AppState>,
-    public readonly afs: AngularFirestore
+    private readonly _store: Store<fromApp.AppState>
   ) {}
-
-  public ngOnInit(): void {
-    // Combine Observables
-    this.user$ = this._store.select(getUser).pipe(
-      tap(user => {
-        this.user = user;
-        this.afs
-          .collection<Bill>(`users/${this.user?.uid}/bills`)
-          .valueChanges()
-          .subscribe(bills => {
-            // eslint-disable-next-line no-console
-            console.log(bills);
-            this._store.dispatch(setBills({ payload: bills }));
-          });
-      })
-    );
-  }
 
   public addNewBillHandler(): void {
     this.dialog.open(AddBillComponent, {
