@@ -37,7 +37,8 @@
         ],
         "prefer-const": ["warn"],
         "no-implicit-coercion": ["warn"],
-        "no-console": ["error"],
+        "no-console": ["warn"],
+        "no-multi-spaces": ["warn"],
         "sort-imports": [
           "warn",
           {
