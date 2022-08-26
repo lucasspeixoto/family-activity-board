@@ -23,7 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
     private readonly _store: Store<fromApp.AppState>
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.buildForm();
   }
 

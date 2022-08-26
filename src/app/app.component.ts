@@ -4,11 +4,11 @@ import { Component, OnInit } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { getIsLoading } from '@sharedS/loading/loading.selectors';
+import { getUser } from '@authSt/auth.selectors';
 import { LoadUser } from '@authSt/auth.actions';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { Store } from '@ngrx/store';
-import { getIsLoading } from '@sharedS/loading/loading.selectors';
-import { getUser } from '@authSt/auth.selectors';
 
 export const MY_DATE_FORMATS = {
   parse: {

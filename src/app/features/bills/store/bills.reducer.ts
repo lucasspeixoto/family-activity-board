@@ -5,7 +5,6 @@ import { filterBillsList, setBills, setFilter } from './bills.actions';
 import { filterByRange, filterByStatus, filterByType } from '@billsH/filters';
 
 import { Bill } from '@billsM/bills.model';
-import { MOCK_BILLS } from '@app/config/mocks/bills';
 
 interface Filters {
   type: number | null;
@@ -20,8 +19,8 @@ export interface BillsState {
 }
 
 export const initialState: BillsState = {
-  bills: MOCK_BILLS,
-  filteredBills: MOCK_BILLS,
+  bills: [], //MOCK_BILLS,
+  filteredBills: [], //MOCK_BILLS,
   filters: {
     type: null,
     range: null,
@@ -34,8 +33,8 @@ const _billsReducer = createReducer(
   on(setBills, (_state, { payload }) => {
     const { filters } = _state;
     return {
-      bills: [payload],
-      filteredBills: [payload],
+      bills: [...payload],
+      filteredBills: [...payload],
       filters,
     };
   }),

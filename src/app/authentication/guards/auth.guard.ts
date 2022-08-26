@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate, CanLoad {
     private readonly router: Router,
     private readonly authService: AuthenticationService
   ) {}
-  canActivate(
+  public canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):
@@ -41,7 +41,7 @@ export class AuthGuard implements CanActivate, CanLoad {
       first()
     );
   }
-  canLoad(
+  public canLoad(
     route: Route,
     segments: UrlSegment[]
   ):

@@ -22,8 +22,8 @@ import { Messages } from '@app/shared/messages/firebase';
 import { Router } from '@angular/router';
 import { SnackbarService } from '@app/shared/services/snackbar/snackbar.service';
 import { Store } from '@ngrx/store';
-import { User } from '@authM/user.model';
 import { tap } from 'rxjs/operators';
+import { User } from '@authM/user.model';
 
 @Injectable()
 export class AuthEffects {
@@ -137,13 +137,12 @@ export class AuthEffects {
         tap(async action => {
           const newUser = action.payload;
 
-          const userRef: AngularFirestoreDocument<User> = this.afs.doc(
-            `users/${newUser.uid}`
-          );
+          const userRef: AngularFirestoreDocument<{ user: User }> =
+            this.afs.doc(`users/${newUser.uid}`);
           this._store.dispatch(UpdateProfile({ payload: newUser }));
           this._store.dispatch(SetUserData({ payload: newUser }));
 
-          return userRef.set(newUser, { merge: true });
+          return userRef.set({ user: newUser }, { merge: true });
         })
       ),
     { dispatch: false }

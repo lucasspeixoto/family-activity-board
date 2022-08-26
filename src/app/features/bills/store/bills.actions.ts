@@ -13,9 +13,7 @@ export const loadBills = createAction(BillsActions.LOAD_BILLS);
 
 export const setBills = createAction(
   BillsActions.SET_BILLS,
-  props<{
-    payload: Bill;
-  }>()
+  props<{ payload: Bill[] }>()
 );
 
 export const setFilter = createAction(

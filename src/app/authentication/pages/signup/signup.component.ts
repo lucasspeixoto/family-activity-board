@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     private readonly _store: Store<fromApp.AppState>
   ) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.buildForm();
   }
 

@@ -41,8 +41,8 @@
         "sort-imports": [
           "warn",
           {
-            "ignoreCase": false,
-            "ignoreDeclarationSort": false
+            "ignoreCase": true,
+            "ignoreDeclarationSort": true
           }
         ],
         "no-unused-vars": "off",
