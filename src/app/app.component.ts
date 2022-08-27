@@ -2,8 +2,6 @@ import * as fromApp from './app.state';
 
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { getIsLoading } from '@sharedS/loading/loading.selectors';
 import { getUser } from '@authSt/auth.selectors';
 import { LoadUser } from '@authSt/auth.actions';
@@ -22,11 +20,7 @@ export class AppComponent implements OnInit {
 
   public readonly user$ = this._store.select(getUser);
 
-  constructor(
-    public afAuth: AngularFireAuth,
-    public readonly afs: AngularFirestore,
-    private readonly _store: Store<fromApp.AppState>
-  ) {}
+  constructor(private readonly _store: Store<fromApp.AppState>) {}
 
   public ngOnInit() {
     this._store.dispatch(LoadUser());

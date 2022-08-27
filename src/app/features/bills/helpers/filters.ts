@@ -29,17 +29,22 @@ export const filterByType = (items: Bill[], type: number | null): Bill[] => {
 
 export const filterByStatus = (items: Bill[], type: number | null): Bill[] => {
   let newBillsList = items;
-  const today = new Date().getDate();
-
+  const today = new Date().setHours(0, 0, 0, 0);
   switch (type) {
     case 1:
-      newBillsList = newBillsList.filter(bill => getDay(bill.date) < today);
+      newBillsList = newBillsList.filter(
+        bill => getDateFromString(bill.date) < today
+      );
       break;
     case 2:
-      newBillsList = newBillsList.filter(bill => getDay(bill.date) === today);
+      newBillsList = newBillsList.filter(
+        bill => getDateFromString(bill.date) === today
+      );
       break;
     case 3:
-      newBillsList = newBillsList.filter(bill => getDay(bill.date) > today);
+      newBillsList = newBillsList.filter(
+        bill => getDateFromString(bill.date) > today
+      );
       break;
     default:
   }
@@ -85,8 +90,8 @@ export const filterByRange = (items: Bill[], type: number | null): Bill[] => {
   return newBillsList;
 };
 
-const padTo2Digits = (num: number) => {
-  return num.toString().padStart(2, '0');
+const padTo2Digits = (value: number) => {
+  return value.toString().padStart(2, '0');
 };
 
 export const formatDate = (date: Date) => {
@@ -99,4 +104,14 @@ export const formatDate = (date: Date) => {
 
 export const getDay = (date: string): number => {
   return Number(date.split('/')[0]);
+};
+
+export const getDateFromString = (date: string) => {
+  const [day, month, year] = date.split('/');
+  const dayWithoutHours = new Date(
+    Number(year),
+    Number(month) - 1,
+    Number(day)
+  );
+  return dayWithoutHours.setHours(0, 0, 0, 0);
 };

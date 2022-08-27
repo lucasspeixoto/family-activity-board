@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import * as fromApp from '@app/app.state';
 
 import { Component, Inject, OnInit } from '@angular/core';
@@ -77,7 +76,5 @@ export class AddBillComponent implements OnInit {
         bill: newBill,
       })
     );
-
-    //this.afs.collection(url).add(this.addNewBillForm.value);
   }
 }

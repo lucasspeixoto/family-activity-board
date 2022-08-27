@@ -59,7 +59,11 @@
   </form>
   <div class="container__actions">
     <button mat-raised-button mat-dialog-close color="primary">Cancelar</button>
-    <button mat-raised-button color="warn" (click)="addNewBillHandler()">
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="addNewBillHandler()"
+      [disabled]="addNewBillForm.value.invalid">
       Adicionar
     </button>
   </div>
