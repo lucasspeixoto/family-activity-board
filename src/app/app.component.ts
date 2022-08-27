@@ -8,19 +8,8 @@ import { getIsLoading } from '@sharedS/loading/loading.selectors';
 import { getUser } from '@authSt/auth.selectors';
 import { LoadUser } from '@authSt/auth.actions';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { MY_DATE_FORMATS } from './config/constants/dates';
 import { Store } from '@ngrx/store';
-
-export const MY_DATE_FORMATS = {
-  parse: {
-    dateInput: 'DD/MM/YYYY',
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MMMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
 
 @Component({
   selector: 'app-root',

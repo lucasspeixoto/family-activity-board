@@ -38,6 +38,17 @@ export class BillsEffects {
     { dispatch: false }
   );
 
+  public addBill$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(fromBills.addBill),
+        tap(async action => {
+          await this.afs.collection(action.url).add(action.bill);
+        })
+      ),
+    { dispatch: false }
+  );
+
   constructor(
     private readonly actions$: Actions,
     private readonly _store: Store<fromApp.AppState>,

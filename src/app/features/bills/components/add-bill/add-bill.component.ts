@@ -10,8 +10,11 @@ import { Store } from '@ngrx/store';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { getUserUid } from '@app/authentication/store/auth.selectors';
+
 import { typeOptions } from '@constants/filters-selects';
 import { tap } from 'rxjs';
+import { formatDate } from '../../helpers/filters';
+import { addBill } from '../../store/bills.actions';
 
 @Component({
   selector: 'app-add-bill',
@@ -58,8 +61,23 @@ export class AddBillComponent implements OnInit {
   }
 
   public addNewBillHandler(): void {
-    const url = `users/${this.userId}/bills`;
+    const { title, owner, value, type, date } = this.addNewBillForm.value;
 
-    this.afs.collection(url).add(this.addNewBillForm.value);
+    const newBill = {
+      title,
+      owner,
+      value,
+      type,
+      date: formatDate(date),
+    };
+
+    this._store.dispatch(
+      addBill({
+        url: `users/${this.userId}/bills`,
+        bill: newBill,
+      })
+    );
+
+    //this.afs.collection(url).add(this.addNewBillForm.value);
   }
 }

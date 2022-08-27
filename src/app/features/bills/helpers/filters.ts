@@ -33,13 +33,13 @@ export const filterByStatus = (items: Bill[], type: number | null): Bill[] => {
 
   switch (type) {
     case 1:
-      newBillsList = newBillsList.filter(bill => getDate(bill.date) < today);
+      newBillsList = newBillsList.filter(bill => getDay(bill.date) < today);
       break;
     case 2:
-      newBillsList = newBillsList.filter(bill => getDate(bill.date) === today);
+      newBillsList = newBillsList.filter(bill => getDay(bill.date) === today);
       break;
     case 3:
-      newBillsList = newBillsList.filter(bill => getDate(bill.date) > today);
+      newBillsList = newBillsList.filter(bill => getDay(bill.date) > today);
       break;
     default:
   }
@@ -83,4 +83,20 @@ export const filterByRange = (items: Bill[], type: number | null): Bill[] => {
       newBillsList = newBillsList;
   }
   return newBillsList;
+};
+
+const padTo2Digits = (num: number) => {
+  return num.toString().padStart(2, '0');
+};
+
+export const formatDate = (date: Date) => {
+  return [
+    padTo2Digits(date.getDate()),
+    padTo2Digits(date.getMonth() + 1),
+    date.getFullYear(),
+  ].join('/');
+};
+
+export const getDay = (date: string): number => {
+  return Number(date.split('/')[0]);
 };

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 import { Action, createReducer, on } from '@ngrx/store';
-import { filterBillsList, setBills, setFilter } from './bills.actions';
+import { addBill, filterBillsList, setBills, setFilter } from './bills.actions';
 import { filterByRange, filterByStatus, filterByType } from '@billsH/filters';
 
 import { Bill } from '@billsM/bills.model';
@@ -19,8 +19,8 @@ export interface BillsState {
 }
 
 export const initialState: BillsState = {
-  bills: [], //MOCK_BILLS,
-  filteredBills: [], //MOCK_BILLS,
+  bills: [],
+  filteredBills: [],
   filters: {
     type: null,
     range: null,
@@ -107,6 +107,14 @@ const _billsReducer = createReducer(
     return {
       bills,
       filteredBills: [...newBillsList],
+      filters,
+    };
+  }),
+  on(addBill, (_state, { bill }) => {
+    const { bills, filteredBills, filters } = _state;
+    return {
+      bills: [...bills, bill],
+      filteredBills,
       filters,
     };
   })

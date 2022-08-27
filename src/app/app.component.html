@@ -1,9 +1,9 @@
 <div class="app">
-  <ng-container class="app__auth" *ngIf="user$ | async"></ng-container>
   <ng-container class="app__loading" *ngIf="isLoading$ | async">
     <app-loading></app-loading>
   </ng-container>
-  <div class="app__container">
-    <router-outlet></router-outlet>
-  </div>
+
+  <ng-container class="app__container" *ngIf="user$ | async"
+    ><router-outlet></router-outlet
+  ></ng-container>
 </div>

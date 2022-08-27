@@ -7,6 +7,7 @@ export enum BillsActions {
   SET_BILLS = '[BILLS] Set a new bills version',
   SET_FILTER = '[BILLS] Set a filter',
   FILTER_BILLS_LIST = '[BILLS] Filter bills list',
+  ADD_BILL = '[BILLS] Add a new bill',
 }
 
 export const loadBills = createAction(
@@ -17,6 +18,11 @@ export const loadBills = createAction(
 export const setBills = createAction(
   BillsActions.SET_BILLS,
   props<{ payload: Bill[] }>()
+);
+
+export const addBill = createAction(
+  BillsActions.ADD_BILL,
+  props<{ url: string; bill: Bill }>()
 );
 
 export const setFilter = createAction(
