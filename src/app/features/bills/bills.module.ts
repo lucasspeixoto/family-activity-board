@@ -11,6 +11,7 @@ import { MaterialModule } from '@sharedM/material.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@sharedM/shared.module';
+import { SpentFilterPipe } from './pipes/spent-filter/spent-filter.pipe';
 import { TypeFilterPipe } from './pipes/type-filter/type-filter.pipe';
 
 const stickyRoutes = [{ path: '', component: BillsComponent }];
@@ -23,7 +24,7 @@ const COMPONENTS = [
   AddBillComponent,
 ];
 
-const PIPES = [TypeFilterPipe];
+const PIPES = [TypeFilterPipe, SpentFilterPipe];
 
 @NgModule({
   imports: [

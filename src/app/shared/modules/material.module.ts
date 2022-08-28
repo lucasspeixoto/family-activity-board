@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -33,6 +34,7 @@ const MODULES = [
   MatSnackBarModule,
   MatDialogModule,
   MatDatepickerModule,
+  MatRadioModule,
 ];
 
 const DATE_PROVIDERS = [MatDatepickerModule, MatNativeDateModule];

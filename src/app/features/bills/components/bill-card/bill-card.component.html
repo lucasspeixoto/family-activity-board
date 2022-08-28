@@ -8,6 +8,10 @@
       {{ bill.type | typeFilter }}
     </div>
 
+    <div class="card__content-spent">
+      {{ bill.spent | spentFilter }}
+    </div>
+
     <div class="card_content-owner">{{ bill.owner }}</div>
 
     <div class="card__content-date">

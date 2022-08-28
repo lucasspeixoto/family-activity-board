@@ -3,12 +3,13 @@ import * as fromApp from '@app/app.state';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   rangeOptions,
+  spentOptions,
   statusOptions,
   typeOptions,
 } from '@constants/filters-selects';
 
-import { Store } from '@ngrx/store';
 import { setFilter } from '@billsSt/bills.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-bills-filters',
@@ -19,11 +20,13 @@ import { setFilter } from '@billsSt/bills.actions';
 export class BillsFiltersComponent {
   constructor(private readonly _store: Store<fromApp.AppState>) {}
 
-  public typeOptions = typeOptions;
+  public readonly typeOptions = typeOptions;
 
-  public rangeOptions = rangeOptions;
+  public readonly rangeOptions = rangeOptions;
 
-  public statusOptions = statusOptions;
+  public readonly statusOptions = statusOptions;
+
+  public readonly spentOptions = spentOptions;
 
   public changeTypeValue(selectedType: number) {
     this._store.dispatch(setFilter({ filter: 'type', value: selectedType }));
@@ -37,5 +40,9 @@ export class BillsFiltersComponent {
     this._store.dispatch(
       setFilter({ filter: 'status', value: selectedStatus })
     );
+  }
+
+  public changeSpentValue(selectedSpent: number) {
+    this._store.dispatch(setFilter({ filter: 'spent', value: selectedSpent }));
   }
 }

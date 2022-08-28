@@ -45,10 +45,13 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field color="accent" appearance="fill">
+    <mat-form-field
+      class="container__form-input"
+      color="accent"
+      appearance="fill">
       <mat-label>Vencimento</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="date" />
-      <mat-hint>DD/MM/YYYY</mat-hint>
+
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker color="primary"></mat-datepicker>
       <mat-error
@@ -56,14 +59,25 @@
           controlName="date"></app-custom-validation-message>
       </mat-error>
     </mat-form-field>
+
+    <div class="container__form-input">
+      <mat-radio-group aria-label="Gasto" formControlName="spent">
+        <mat-radio-button
+          *ngFor="let spent of spentOptions"
+          [value]="spent.value"
+          >{{ spent.viewValue }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
   </form>
   <div class="container__actions">
     <button mat-raised-button mat-dialog-close color="primary">Cancelar</button>
     <button
       mat-raised-button
       color="warn"
+      [mat-dialog-close]="true"
       (click)="addNewBillHandler()"
-      [disabled]="addNewBillForm.value.invalid">
+      [disabled]="addNewBillForm.invalid">
       Adicionar
     </button>
   </div>

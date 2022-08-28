@@ -31,4 +31,15 @@
       }}</mat-option>
     </mat-select>
   </mat-form-field>
+
+  <!-- Gasto -->
+  <mat-form-field appearance="fill">
+    <mat-label>Gasto</mat-label>
+    <mat-select (valueChange)="changeSpentValue($event)">
+      <mat-option>Nenhum</mat-option>
+      <mat-option *ngFor="let spent of spentOptions" [value]="spent.value">{{
+        spent.viewValue
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>

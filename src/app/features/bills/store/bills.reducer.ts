@@ -2,7 +2,12 @@
 
 import { Action, createReducer, on } from '@ngrx/store';
 import { addBill, filterBillsList, setBills, setFilter } from './bills.actions';
-import { filterByRange, filterByStatus, filterByType } from '@billsH/filters';
+import {
+  filterByRange,
+  filterBySpent,
+  filterByStatus,
+  filterByType,
+} from '@billsH/filters';
 
 import { Bill } from '@billsM/bills.model';
 
@@ -10,6 +15,7 @@ interface Filters {
   type: number | null;
   range: number | null;
   status: number | null;
+  spent: number | null;
 }
 
 export interface BillsState {
@@ -25,6 +31,7 @@ export const initialState: BillsState = {
     type: null,
     range: null,
     status: null,
+    spent: null,
   },
 };
 
@@ -43,7 +50,7 @@ const _billsReducer = createReducer(
       bills,
       filteredBills,
       filters,
-      filters: { type, range, status },
+      filters: { type, range, status, spent },
     } = _state;
     const filterValue = value ? value : null;
     let newfilters = undefined;
@@ -54,6 +61,7 @@ const _billsReducer = createReducer(
           type: filterValue,
           range,
           status,
+          spent,
         };
         break;
       case 'range':
@@ -61,6 +69,7 @@ const _billsReducer = createReducer(
           type,
           range: filterValue,
           status,
+          spent,
         };
         break;
       case 'status':
@@ -68,6 +77,15 @@ const _billsReducer = createReducer(
           type,
           range,
           status: filterValue,
+          spent,
+        };
+        break;
+      case 'spent':
+        newfilters = {
+          type,
+          range,
+          status,
+          spent: filterValue,
         };
         break;
       default:
@@ -84,7 +102,7 @@ const _billsReducer = createReducer(
     const {
       bills,
       filters,
-      filters: { type, range, status },
+      filters: { type, range, status, spent },
     } = _state;
 
     let newBillsList = bills;
@@ -102,6 +120,11 @@ const _billsReducer = createReducer(
     //Filter Range
     if (range !== null) {
       newBillsList = filterByRange(newBillsList, range);
+    }
+
+    //Filter Spent
+    if (spent !== null) {
+      newBillsList = filterBySpent(newBillsList, spent);
     }
 
     return {

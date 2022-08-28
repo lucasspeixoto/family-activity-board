@@ -10,6 +10,4 @@ import { Bill } from '@billsM/bills.model';
 export class BillCardComponent {
   @Input()
   public bill!: Bill;
-
-  constructor() {}
 }

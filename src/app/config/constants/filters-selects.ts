@@ -21,3 +21,8 @@ export const statusOptions: Select[] = [
   { value: 2, viewValue: 'Vence Hoje' },
   { value: 3, viewValue: 'Em dia' },
 ];
+
+export const spentOptions: Select[] = [
+  { value: 1, viewValue: 'Fixo' },
+  { value: 2, viewValue: 'Variável' },
+];

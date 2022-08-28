@@ -131,9 +131,13 @@ $ama-blue: (
 $ama-primary: mat-palette($ama-blue);
 $ama-accent: mat-palette($ama-yellow);
 $ama-warn: mat-palette($ama-pink);
-
 $ama-theme: mat-light-theme($ama-primary, $ama-accent, $ama-warn);
 @include angular-material-theme($ama-theme);
+
+
+.mat-radio-label {
+  padding-right: 8px;
+}
 
 button.mat-menu-item {
   font-size: 16px;
@@ -147,19 +151,10 @@ button.mat-menu-item:hover:not([disabled]),
 }
 
 mat-select.mat-select {
-  /* width: auto; */
-  /* display: inline; */
   font-size: 16px;
   font-weight: 300;
   color: $dark-grey;
-  /* border: 1px solid $light-grey; */
   border-radius: 4px;
-  /* padding: 8px 10px; */
-
-  /* & .mat-select-value {
-    width: auto;
-    display: inline;
-  } */
 
   & .mat-select-arrow {
     color: $light-grey;
@@ -170,7 +165,6 @@ mat-select.mat-select {
 .mat-option {
   font-size: 16px;
   height: 36px;
-  /* padding: 6px 16px; */
   color: $dark-grey;
 
   &.mat-focus-indicator.mat-selected.mat-active {

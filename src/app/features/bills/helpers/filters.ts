@@ -1,15 +1,5 @@
 import { Bill } from '@billsM/bills.model';
 
-export const getRangeValidation = (
-  start: number,
-  end: number,
-  value: number
-): boolean => {
-  return value > start && value <= end ? true : false;
-};
-
-export const getDate = (date: string): number => new Date(date).getDate();
-
 export const filterByType = (items: Bill[], type: number | null): Bill[] => {
   let newBillsList = items;
 
@@ -90,20 +80,27 @@ export const filterByRange = (items: Bill[], type: number | null): Bill[] => {
   return newBillsList;
 };
 
-const padTo2Digits = (value: number) => {
-  return value.toString().padStart(2, '0');
+export const filterBySpent = (items: Bill[], spent: number | null): Bill[] => {
+  let newBillsList = items;
+
+  switch (spent) {
+    case 1:
+    case 2:
+      newBillsList = items.filter(bill => bill.spent === spent);
+      break;
+    default:
+      newBillsList = items;
+  }
+
+  return newBillsList;
 };
 
-export const formatDate = (date: Date) => {
-  return [
-    padTo2Digits(date.getDate()),
-    padTo2Digits(date.getMonth() + 1),
-    date.getFullYear(),
-  ].join('/');
-};
-
-export const getDay = (date: string): number => {
-  return Number(date.split('/')[0]);
+export const getRangeValidation = (
+  start: number,
+  end: number,
+  value: number
+): boolean => {
+  return value > start && value <= end ? true : false;
 };
 
 export const getDateFromString = (date: string) => {
