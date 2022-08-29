@@ -13,13 +13,6 @@
 }
 
 .authentication_layout {
-  width: 100%;
-  height: 100vh;
-  padding: 2rem;
-  background-image: url(../assets/images/background.jpg);
-  background-size: cover;
-  position: relative;
-
   &__card {
     width: 30vw;
     border-radius: $borderRadius;
@@ -32,11 +25,11 @@
     }
 
     @media screen and (min-width: map-get($auth-card-breakpoints, xxl)) {
-      width: 50vw;
+      width: 30vw;
     }
 
     @media screen and (min-width: map-get($auth-card-breakpoints, lg)) and (max-width: map-get($auth-card-breakpoints, xl)) {
-      width: 50vw;
+      width: 40vw;
     }
 
     @media screen and (min-width: map-get($auth-card-breakpoints, md)) and (max-width: map-get($auth-card-breakpoints, lg)) {
