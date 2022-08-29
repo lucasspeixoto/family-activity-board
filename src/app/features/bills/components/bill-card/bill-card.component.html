@@ -5,7 +5,7 @@
   <mat-card-subtitle rtl>
     <div class="value">
       <p>Valor</p>
-      <h6>{{ bill.value | currency: 'BRL' }}</h6>
+      <h6>R$ {{ bill.value !== null ? bill.value : '----' }}</h6>
     </div>
 
     <div class="percent">
