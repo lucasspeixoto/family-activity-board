@@ -1,58 +1,83 @@
 @import 'src/styles/colors';
 @import 'src/styles/variables';
 
-.card {
-  width: 30rem;
-  height: 25rem;
-  background-color: $white;
-  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px #b2b2b21a,
-    0 1px 8px 0 #9a9a9a1a;
-  border-radius: $card-border-radius;
+mat-card {
+  margin: 0 0 20px 0;
+  width: 15rem;
+  height: 12rem;
   display: flex;
   flex-direction: column;
-  padding: .5rem .5rem 0rem .5rem;
-  gap: 1.1rem;
+  align-items: left;
+  border-radius: $card-border-radius;
 
-  &:hover {
-    transform: scale(1.02);
-  }
-
-  &__title {
+  mat-card-title {
+    position: relative;
     text-align: start;
-    padding: 0.5rem;
-    color: $grey;
-    word-break: break-all;
   }
 
-  &__value {
+  mat-card-subtitle {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
     text-align: center;
-    padding: 0.5rem;
-    word-break: break-all;
-  }
+    min-height: 60px;
 
-  &__type-icon {
-    padding: 1rem;
+    > .value {
+      text-align: start;
+      height: 90em;
+      margin-top: 0.3rem;
 
-    > .mat-icon {
-      color: $dark-pink;
+      p {
+        margin-bottom: 0.5rem;
+        font-size: 18px;
+
+        color: $dark-grey;
+        font-weight: bold;
+      }
+    }
+
+    mat-progress-spinner {
+      height: 10rem;
+      width: 10rem;
     }
   }
 
-  &__owner {
-    font-weight: 400;
-    font-size: 26px;
-    color: $yellow;
-    text-align: start;
-    padding: 0.5rem;
-    word-break: break-all;
+  mat-card-actions {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0.4rem 0.4rem 0rem 0.4rem;
+    justify-content: space-between;
+    flex-direction: row;
+
+    mat-icon {
+      width: 30px;
+      height: 30px;
+      color: $grey;
+    }
+
+    .value {
+      align-items: center;
+      margin-bottom: 1px;
+      color: $blue;
+
+      &-dot {
+        height: 5px;
+        width: 5px;
+        padding: 5.5px;
+        margin-left: 5px;
+        background-color: rgb(51, 173, 27);
+        border-radius: 50%;
+        display: inline-block;
+      }
+    }
   }
 
-  &__date {
-    font-weight: 400;
-    font-size: 20px;
-    text-align: end;
-    padding: 0.5rem;
-    word-break: break-all;
-    margin-bottom: 0;
+  @media (max-width: 535px) {
+    width: 95vw;
+  }
+
+  &:hover {
+    transform: scale(1.02);
   }
 }

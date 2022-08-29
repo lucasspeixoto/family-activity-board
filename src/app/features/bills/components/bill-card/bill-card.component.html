@@ -1,4 +1,4 @@
-<div class="card">
+<!-- <div class="card">
   <div class="card__title">{{ bill.title }}</div>
 
   <h6 class="card__value">{{ bill.value | currency: 'BRL' }}</h6>
@@ -10,4 +10,30 @@
   <div class="card__owner">{{ bill.owner }}</div>
 
   <div class="card__date">{{ bill.date | dateStatus }}</div>
-</div>
+</div> -->
+
+<mat-card>
+  <mat-card-title>
+    <!-- <code *ngIf="feature.version">{{feature.version}}</code>{{feature.name | translate}} -->
+    {{ bill.title }}
+  </mat-card-title>
+  <mat-card-subtitle rtl>
+    <div class="value">
+      <p>Valor</p>
+      <h6>{{ bill.value | currency: 'BRL' }}</h6>
+    </div>
+
+    <div class="percent">
+      <mat-progress-spinner
+        diameter="60"
+        color="accent"
+        mode="determinate"
+        [value]="100">
+      </mat-progress-spinner>
+    </div>
+  </mat-card-subtitle>
+  <mat-card-actions>
+    <p class="value">{{ bill.date }} <span class="value-dot"></span></p>
+    <div><mat-icon>calendar_today</mat-icon></div>
+  </mat-card-actions>
+</mat-card>
