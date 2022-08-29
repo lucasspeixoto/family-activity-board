@@ -1,20 +1,5 @@
-<!-- <div class="card">
-  <div class="card__title">{{ bill.title }}</div>
-
-  <h6 class="card__value">{{ bill.value | currency: 'BRL' }}</h6>
-
-  <div class="card__type-icon">
-    <mat-icon>{{ billTypeIcons[bill.type] }}</mat-icon>
-  </div>
-
-  <div class="card__owner">{{ bill.owner }}</div>
-
-  <div class="card__date">{{ bill.date | dateStatus }}</div>
-</div> -->
-
 <mat-card>
   <mat-card-title>
-    <!-- <code *ngIf="feature.version">{{feature.version}}</code>{{feature.name | translate}} -->
     {{ bill.title }}
   </mat-card-title>
   <mat-card-subtitle rtl>
@@ -33,7 +18,18 @@
     </div>
   </mat-card-subtitle>
   <mat-card-actions>
-    <p class="value">{{ bill.date }} <span class="value-dot"></span></p>
-    <div><mat-icon>calendar_today</mat-icon></div>
+    <p class="value">
+      {{ bill.date }}
+      <span
+        class="value-dot"
+        [ngClass]="{
+          late: dateStatus === 1,
+          today: dateStatus === 2,
+          inDay: dateStatus === 3
+        }"></span>
+    </p>
+    <div class="type-icon">
+      <mat-icon>{{ billTypeIcons[bill.type] }}</mat-icon>
+    </div>
   </mat-card-actions>
 </mat-card>

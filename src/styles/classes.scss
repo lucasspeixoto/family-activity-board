@@ -2,7 +2,6 @@
 @import 'font';
 @import 'variables';
 
-//Classes
 .app-button {
   font-size: 15px;
   transition: all 0.1s;
@@ -70,4 +69,16 @@
   background-color: $dark-pink !important;
   color: $white !important;
   border: none !important;
+}
+
+.late {
+  background-color: $dark-pink;
+}
+
+.today {
+  background-color: $yellow;
+}
+
+.inDay {
+  background-color: $green;
 }

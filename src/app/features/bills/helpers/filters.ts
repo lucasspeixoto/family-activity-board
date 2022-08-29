@@ -115,11 +115,10 @@ export const getDateFromString = (date: string) => {
 
 export const getDateStatus = (date: string): number => {
   const today = new Date().setHours(0, 0, 0, 0);
-  const cardDate = getDateFromString(date);
 
-  if (cardDate < today) {
+  if (getDateFromString(date) < today) {
     return 1;
-  } else if (cardDate === today) {
+  } else if (getDateFromString(date) === today) {
     return 2;
   } else {
     return 3;

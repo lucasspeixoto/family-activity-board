@@ -24,8 +24,7 @@ mat-card {
 
     > .value {
       text-align: start;
-      height: 90em;
-      margin-top: 0.3rem;
+      margin-top: 0.5rem;
 
       p {
         margin-bottom: 0.5rem;
@@ -53,7 +52,7 @@ mat-card {
     mat-icon {
       width: 30px;
       height: 30px;
-      color: $grey;
+      color: $dark-grey;
     }
 
     .value {
@@ -66,7 +65,6 @@ mat-card {
         width: 5px;
         padding: 5.5px;
         margin-left: 5px;
-        background-color: rgb(51, 173, 27);
         border-radius: 50%;
         display: inline-block;
       }
