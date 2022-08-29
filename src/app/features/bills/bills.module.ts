@@ -5,6 +5,7 @@ import { BillsComponent } from '@billsP/bills/bills.component';
 import { BillsEffects } from './store/bills.effects';
 import { BillsFiltersComponent } from './components/bills-filters/bills-filters.component';
 import { CommonModule } from '@angular/common';
+import { DatePipe } from './pipes/date/date.pipe';
 import { EffectsModule } from '@ngrx/effects';
 import { LayoutModule } from '@layout/layout.module';
 import { MaterialModule } from '@sharedM/material.module';
@@ -24,7 +25,7 @@ const COMPONENTS = [
   AddBillComponent,
 ];
 
-const PIPES = [TypeFilterPipe, SpentFilterPipe];
+const PIPES = [TypeFilterPipe, SpentFilterPipe, DatePipe];
 
 @NgModule({
   imports: [

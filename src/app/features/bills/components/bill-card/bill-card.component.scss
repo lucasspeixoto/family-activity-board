@@ -1,16 +1,58 @@
-@import "src/styles/colors";
-@import "src/styles/variables";
+@import 'src/styles/colors';
+@import 'src/styles/variables';
 
 .card {
   width: 30rem;
   height: 25rem;
   background-color: $white;
   box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px #b2b2b21a,
-  0 1px 8px 0 #9a9a9a1a;
+    0 1px 8px 0 #9a9a9a1a;
   border-radius: $card-border-radius;
+  display: flex;
+  flex-direction: column;
+  padding: .5rem .5rem 0rem .5rem;
+  gap: 1.1rem;
 
   &:hover {
     transform: scale(1.02);
   }
 
+  &__title {
+    text-align: start;
+    padding: 0.5rem;
+    color: $grey;
+    word-break: break-all;
+  }
+
+  &__value {
+    text-align: center;
+    padding: 0.5rem;
+    word-break: break-all;
+  }
+
+  &__type-icon {
+    padding: 1rem;
+
+    > .mat-icon {
+      color: $dark-pink;
+    }
+  }
+
+  &__owner {
+    font-weight: 400;
+    font-size: 26px;
+    color: $yellow;
+    text-align: start;
+    padding: 0.5rem;
+    word-break: break-all;
+  }
+
+  &__date {
+    font-weight: 400;
+    font-size: 20px;
+    text-align: end;
+    padding: 0.5rem;
+    word-break: break-all;
+    margin-bottom: 0;
+  }
 }

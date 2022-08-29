@@ -1,21 +1,13 @@
 <div class="card">
-  <h4 class="card__title">{{ bill.title }}</h4>
+  <div class="card__title">{{ bill.title }}</div>
 
-  <div class="card__content">
-    <div class="card__content-value">{{ bill.value | currency: 'BRL' }}</div>
+  <h6 class="card__value">{{ bill.value | currency: 'BRL' }}</h6>
 
-    <div class="card__content-status">
-      {{ bill.type | typeFilter }}
-    </div>
-
-    <div class="card__content-spent">
-      {{ bill.spent | spentFilter }}
-    </div>
-
-    <div class="card_content-owner">{{ bill.owner }}</div>
-
-    <div class="card__content-date">
-      {{ bill.date }}
-    </div>
+  <div class="card__type-icon">
+    <mat-icon>{{ billTypeIcons[bill.type] }}</mat-icon>
   </div>
+
+  <div class="card__owner">{{ bill.owner }}</div>
+
+  <div class="card__date">{{ bill.date | dateStatus }}</div>
 </div>

@@ -112,3 +112,16 @@ export const getDateFromString = (date: string) => {
   );
   return dayWithoutHours.setHours(0, 0, 0, 0);
 };
+
+export const getDateStatus = (date: string): number => {
+  const today = new Date().setHours(0, 0, 0, 0);
+  const cardDate = getDateFromString(date);
+
+  if (cardDate < today) {
+    return 1;
+  } else if (cardDate === today) {
+    return 2;
+  } else {
+    return 3;
+  }
+};
