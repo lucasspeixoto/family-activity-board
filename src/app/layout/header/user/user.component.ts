@@ -2,9 +2,9 @@ import * as fromApp from '@app/app.state';
 
 import { Component, EventEmitter, Output } from '@angular/core';
 
-import { Store } from '@ngrx/store';
 import { getUser } from '@authSt/auth.selectors';
 import { routes } from '@constants/routes';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-user',
@@ -12,7 +12,8 @@ import { routes } from '@constants/routes';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent {
-  @Output() signOut: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public readonly signOut: EventEmitter<void> =
+    new EventEmitter<void>();
   public routes: typeof routes = routes;
 
   public readonly user$ = this._store.select(getUser);

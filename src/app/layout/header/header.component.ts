@@ -11,8 +11,8 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() isMenuOpened!: boolean;
-  @Output() isShowSidebar = new EventEmitter<boolean>();
+  @Input() public isMenuOpened!: boolean;
+  @Output() public isShowSidebar = new EventEmitter<boolean>();
 
   constructor(private readonly _store: Store<fromApp.AppState>) {}
 

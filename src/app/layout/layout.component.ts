@@ -14,7 +14,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnDestroy {
-  @ViewChild('sidenav') sidenav!: MatSidenav;
+  @ViewChild('sidenav') public sidenav!: MatSidenav;
   public isShowSidebar!: boolean;
   public mobileQuery: MediaQueryList;
   private mobileQueryListener!: () => void;
