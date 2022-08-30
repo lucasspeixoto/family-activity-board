@@ -10,6 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { LayoutModule } from '@layout/layout.module';
 import { MaterialModule } from '@sharedM/material.module';
 import { NgModule } from '@angular/core';
+import { PercentPipe } from './pipes/percent/percent.pipe';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@sharedM/shared.module';
 import { SpentFilterPipe } from './pipes/spent-filter/spent-filter.pipe';
@@ -25,7 +26,7 @@ const COMPONENTS = [
   AddBillComponent,
 ];
 
-const PIPES = [TypeFilterPipe, SpentFilterPipe, DatePipe];
+const PIPES = [TypeFilterPipe, SpentFilterPipe, DatePipe, PercentPipe];
 
 @NgModule({
   imports: [

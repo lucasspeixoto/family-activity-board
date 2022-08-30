@@ -13,7 +13,7 @@ import {
   UpdateIsLoggedStatus,
   UpdateProfile,
 } from './auth.actions';
-import { StartLoading, StopLoading } from '@sharedS/loading/loading.actions';
+import { StartLoading, StopLoading } from '@sharedSt/loading/loading.actions';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthActions } from './action-types';

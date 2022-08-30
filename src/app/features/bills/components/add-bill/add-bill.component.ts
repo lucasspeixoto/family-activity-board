@@ -11,9 +11,9 @@ import { getUserUid } from '@app/authentication/store/auth.selectors';
 
 import { spentOptions, typeOptions } from '@constants/filters-selects';
 import { tap } from 'rxjs';
-import { addBill } from '../../store/bills.actions';
-import { DateService } from '@app/shared/services/date/date.service';
-import { addBillForm } from '../../helpers/forms';
+import { addBill } from '@billsSt/bills.actions';
+import { DateService } from '@sharedS/date/date.service';
+import { addBillForm } from '@billsH/forms';
 
 @Component({
   selector: 'app-add-bill',

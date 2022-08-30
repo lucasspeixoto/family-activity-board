@@ -33,6 +33,25 @@ mat-card {
         color: $dark-grey;
         font-weight: bold;
       }
+
+      h6 {
+        color: $green;
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+
+    > .percent {
+      border-radius: 50%;
+      width: 65px;
+      height: 65px;
+      padding-top: 18px;
+      border: 5px double rgba($grey, 0.5);
+      color: $grey;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
     }
 
     mat-progress-spinner {

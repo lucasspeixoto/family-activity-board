@@ -5,16 +5,11 @@
   <mat-card-subtitle rtl>
     <div class="value">
       <p>Valor</p>
-      <h6>R$ {{ bill.value !== null ? bill.value : '----' }}</h6>
+      <h6><span>R$ </span>{{ bill.value !== null ? bill.value : '----' }}</h6>
     </div>
 
-    <div class="percent">
-      <mat-progress-spinner
-        diameter="60"
-        color="accent"
-        mode="determinate"
-        [value]="100">
-      </mat-progress-spinner>
+    <div class="percent" *ngIf="billsAmount$ | async as billsAmount">
+      {{ bill.value / billsAmount | percent }}%
     </div>
   </mat-card-subtitle>
   <mat-card-actions>

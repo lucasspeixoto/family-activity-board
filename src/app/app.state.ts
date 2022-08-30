@@ -1,6 +1,6 @@
 import * as fromAuth from '@authSt/auth.reducer';
 import * as fromBills from '@billsSt/bills.reducer';
-import * as fromLoading from '@sharedS/loading/loading.reducer';
+import * as fromLoading from '@sharedSt/loading/loading.reducer';
 
 import { ActionReducerMap } from '@ngrx/store';
 

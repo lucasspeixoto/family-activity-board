@@ -2,7 +2,7 @@ import * as fromApp from './app.state';
 
 import { Component, OnInit } from '@angular/core';
 
-import { getIsLoading } from '@sharedS/loading/loading.selectors';
+import { getIsLoading } from '@sharedSt/loading/loading.selectors';
 import { getUser } from '@authSt/auth.selectors';
 import { LoadUser } from '@authSt/auth.actions';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
