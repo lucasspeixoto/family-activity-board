@@ -1,6 +1,38 @@
 <mat-card>
   <mat-card-title>
-    {{ bill.title }}
+    <div class="title">
+      <div class="title__name">{{ bill.title }}</div>
+      <ng-container *ngIf="userId$ | async" class="title__menu">
+        <button
+          mat-mini-fab
+          [matMenuTriggerFor]="updateBillMenu"
+          color="primary"
+          class="title__menu-button">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu
+          #updateBillMenu="matMenu"
+          xPosition="before"
+          yPosition="below">
+          <button mat-menu-item>
+            <mat-icon class="user-menu-icon" color="accent">create</mat-icon
+            >Editar
+          </button>
+
+          <!-- <button
+            mat-menu-item
+            class="user-menu__item-title"
+            [routerLink]="routes.PLANS">
+            <mat-icon class="user-menu-icon">description</mat-icon>Planejamentos
+          </button> -->
+          <button mat-menu-item (click)="handleDeleteBill('0ms', '0ms')">
+            <mat-icon class="user-menu-icon" color="warn"
+              >delete_forever</mat-icon
+            >Excluir
+          </button>
+        </mat-menu>
+      </ng-container>
+    </div>
   </mat-card-title>
   <mat-card-subtitle rtl>
     <div class="value">

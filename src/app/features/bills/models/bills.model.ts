@@ -5,4 +5,5 @@ export interface Bill {
   spent: number;
   date: string;
   owner: string;
+  billId?: string;
 }

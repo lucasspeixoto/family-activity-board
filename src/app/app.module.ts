@@ -30,6 +30,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from '@envs/environment';
 import { LayoutModule } from './layout/layout.module';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from '@sharedM/material.module';
 import { NgModule } from '@angular/core';
 import { reducers } from './app.state';
@@ -84,6 +85,10 @@ const PROVIDERS = [
     deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
   },
   { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+  {
+    provide: MatDialogRef,
+    useValue: {},
+  },
 ];
 
 @NgModule({

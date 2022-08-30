@@ -8,6 +8,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Bill } from '../models/bills.model';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 
@@ -29,10 +30,31 @@ export class BillsEffects {
         tap(action => {
           this.afs
             .collection<Bill>(`users/${action.payload}/bills`)
-            .valueChanges()
-            .subscribe(bills => {
+            .snapshotChanges()
+            .pipe(
+              map(actions =>
+                actions.map(actionData => {
+                  const billData = actionData.payload.doc.data();
+                  const billId = actionData.payload.doc.id;
+                  const bill = {
+                    ...billData,
+                    billId: billId,
+                  };
+                  return { ...bill };
+                })
+              )
+            )
+            .subscribe((bills: Bill[]) => {
               this._store.dispatch(fromBills.setBills({ payload: bills }));
             });
+
+          /* this.afs
+            .collection<Bill>(`users/${action.payload}/bills`)
+            .valueChanges()
+            .subscribe(bills => {
+              console.log(bills);
+              this._store.dispatch(fromBills.setBills({ payload: bills }));
+            }); */
         })
       ),
     { dispatch: false }
@@ -44,6 +66,17 @@ export class BillsEffects {
         ofType(fromBills.addBill),
         tap(async action => {
           await this.afs.collection(action.url).add(action.bill);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  public deleteBill$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(fromBills.deleteBill),
+        tap(async action => {
+          console.log(action.billId);
         })
       ),
     { dispatch: false }

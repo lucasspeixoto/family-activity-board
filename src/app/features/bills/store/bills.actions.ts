@@ -8,6 +8,7 @@ export enum BillsActions {
   SET_FILTER = '[BILLS] Set a filter',
   FILTER_BILLS_LIST = '[BILLS] Filter bills list',
   ADD_BILL = '[BILLS] Add a new bill',
+  DELETE_BILL = '[BILLS] Delete a bill',
 }
 
 export const loadBills = createAction(
@@ -34,3 +35,11 @@ export const setFilter = createAction(
 );
 
 export const filterBillsList = createAction(BillsActions.FILTER_BILLS_LIST);
+
+export const deleteBill = createAction(
+  BillsActions.DELETE_BILL,
+  props<{
+    userId: string;
+    billId: string;
+  }>()
+);

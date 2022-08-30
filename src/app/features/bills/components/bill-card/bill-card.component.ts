@@ -1,11 +1,17 @@
 import * as fromApp from '@app/app.state';
 
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { Bill } from '@billsM/bills.model';
+import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
+import { deleteBill } from '../../store/bills.actions';
 import { getDateStatus } from '@billsH/filters';
 import { getTotalBillAmount } from '@billsSt/bills.selectors';
+import { getUserUid } from '@app/authentication/store/auth.selectors';
 import { Store } from '@ngrx/store';
+import { take } from 'rxjs/operators';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-bill-card',
@@ -28,9 +34,44 @@ export class BillCardComponent implements OnInit {
   public readonly percent!: number;
   public billsAmount$ = this._store.select(getTotalBillAmount);
 
-  constructor(private readonly _store: Store<fromApp.AppState>) {}
+  public userId!: string;
+  public readonly userId$ = this._store
+    .select(getUserUid)
+    .pipe(tap(uid => (this.userId = uid!)));
+
+  constructor(
+    private readonly _store: Store<fromApp.AppState>,
+    public readonly dialog: MatDialog,
+    public dialogRef: MatDialogRef<ConfirmationComponent>
+  ) {}
 
   public ngOnInit(): void {
     this.dateStatus = getDateStatus(this.bill.date);
+  }
+
+  public handleDeleteBill(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialogRef = this.dialog.open(ConfirmationComponent, {
+      width: '350px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        title: 'Excluir Conta',
+        subtitle: 'Deseja realmente excluir está conta ?',
+        cancelButtonTitle: 'Cancelar',
+        confirmationButtonTitle: 'Confirmar',
+        data: this.userId,
+      },
+    });
+
+    this.dialogRef.componentInstance.confirmClicked
+      .pipe(take(1))
+      .subscribe(() => {
+        this._store.dispatch(
+          deleteBill({ userId: this.userId, billId: this.bill.billId! })
+        );
+      });
   }
 }

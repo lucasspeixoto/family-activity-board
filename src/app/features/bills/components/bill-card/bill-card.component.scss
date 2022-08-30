@@ -13,6 +13,19 @@ mat-card {
   mat-card-title {
     position: relative;
     text-align: start;
+
+    > .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      button.mat-mini-fab {
+        background-color: transparent;
+        color: $dark-grey;
+        box-shadow: none;
+        margin-top: -0.5rem;
+      }
+    }
   }
 
   mat-card-subtitle {
