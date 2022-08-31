@@ -29,6 +29,7 @@
     "@ngrx/entity": "^14.1.0",
     "@ngrx/store": "^14.1.0",
     "firebase": "9.8.1",
+    "include-media": "^1.4.10",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "rxjs": "~7.5.0",

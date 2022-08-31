@@ -1,5 +1,7 @@
-<ng-container class="container" *ngIf="userId$ | async">
-  <h2 mat-dialog-title class="container__title">Adicionar Conta</h2>
+<ng-container class="dialog-form" *ngIf="userId$ | async">
+  <h2 mat-dialog-title class="container__title">
+    {{ data.type === 'add' ? 'Nova Conta' : 'Atualizar Conta' }}
+  </h2>
   <form class="container__form" id="form" [formGroup]="addNewBillForm">
     <mat-form-field class="container__form-input" appearance="fill">
       <mat-label>Título</mat-label>
@@ -78,7 +80,7 @@
       [mat-dialog-close]="true"
       (click)="addNewBillHandler()"
       [disabled]="addNewBillForm.invalid">
-      Adicionar
+      {{ data.type === 'add' ? 'Adicionar' : 'Salvar' }}
     </button>
   </div>
 </ng-container>

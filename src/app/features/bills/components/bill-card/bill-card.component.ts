@@ -3,16 +3,18 @@ import * as fromApp from '@app/app.state';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
+import { AddBillComponent } from '../add-bill/add-bill.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Bill } from '@billsM/bills.model';
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
 import { deleteBill } from '../../store/bills.actions';
 import { getDateStatus } from '@billsH/filters';
 import { getTotalBillAmount } from '@billsSt/bills.selectors';
-import { getUserUid } from '@app/authentication/store/auth.selectors';
+import { getUser } from '@app/authentication/store/auth.selectors';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 import { tap } from 'rxjs';
+import { User } from '@app/authentication/models/user.model';
 
 @Component({
   selector: 'app-bill-card',
@@ -35,10 +37,11 @@ export class BillCardComponent implements OnInit {
   public readonly percent!: number;
   public billsAmount$ = this._store.select(getTotalBillAmount);
 
-  public userId!: string;
+  //* Dados de usuário
+  public user!: User;
   public readonly userId$ = this._store
-    .select(getUserUid)
-    .pipe(tap(uid => (this.userId = uid!)));
+    .select(getUser)
+    .pipe(tap(user => (this.user = user!)));
 
   constructor(
     private readonly _store: Store<fromApp.AppState>,
@@ -64,7 +67,7 @@ export class BillCardComponent implements OnInit {
         subtitle: 'Deseja realmente excluir está conta ?',
         cancelButtonTitle: 'Cancelar',
         confirmationButtonTitle: 'Confirmar',
-        data: this.userId,
+        data: this.user.uid,
       },
     });
 
@@ -73,10 +76,20 @@ export class BillCardComponent implements OnInit {
       .subscribe(() => {
         this._store.dispatch(
           deleteBill({
-            url: `users/${this.userId}/bills`,
+            url: `users/${this.user.uid}/bills`,
             billId: this.bill.billId!,
           })
         );
       });
+  }
+
+  public handleEditBill(): void {
+    this.dialog.open(AddBillComponent, {
+      minWidth: '45%',
+      data: {
+        type: 'edit',
+        bill: this.bill,
+      },
+    });
   }
 }
