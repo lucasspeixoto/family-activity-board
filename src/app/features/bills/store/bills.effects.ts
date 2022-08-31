@@ -4,11 +4,17 @@ import * as fromApp from '@app/app.state';
 import * as fromBills from './bills.actions';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import {
+  StartLoading,
+  StopLoading,
+} from '@app/shared/store/loading/loading.actions';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Bill } from '../models/bills.model';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Messages } from '@app/shared/messages/firebase';
+import { SnackbarService } from '@app/shared/services/snackbar/snackbar.service';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 
@@ -30,31 +36,22 @@ export class BillsEffects {
         tap(action => {
           this.afs
             .collection<Bill>(`users/${action.payload}/bills`)
-            .snapshotChanges()
+            .snapshotChanges() //! valueChanges()
             .pipe(
-              map(actions =>
-                actions.map(actionData => {
+              map(action =>
+                action.map(actionData => {
                   const billData = actionData.payload.doc.data();
                   const billId = actionData.payload.doc.id;
-                  const bill = {
+                  return {
                     ...billData,
                     billId: billId,
                   };
-                  return { ...bill };
                 })
               )
             )
             .subscribe((bills: Bill[]) => {
               this._store.dispatch(fromBills.setBills({ payload: bills }));
             });
-
-          /* this.afs
-            .collection<Bill>(`users/${action.payload}/bills`)
-            .valueChanges()
-            .subscribe(bills => {
-              console.log(bills);
-              this._store.dispatch(fromBills.setBills({ payload: bills }));
-            }); */
         })
       ),
     { dispatch: false }
@@ -65,7 +62,20 @@ export class BillsEffects {
       this.actions$.pipe(
         ofType(fromBills.addBill),
         tap(async action => {
-          await this.afs.collection(action.url).add(action.bill);
+          this._store.dispatch(StartLoading());
+          await this.afs
+            .collection(action.url)
+            .add(action.bill)
+            .then(() => {
+              this._store.dispatch(StopLoading());
+              this._snackBarService.openSuccessSnackBar(
+                'Conta Adicionada com sucesso!'
+              );
+            })
+            .catch(error => {
+              this._store.dispatch(StopLoading());
+              this._snackBarService.openFailureSnackBar(Messages[error.code]);
+            });
         })
       ),
     { dispatch: false }
@@ -76,7 +86,21 @@ export class BillsEffects {
       this.actions$.pipe(
         ofType(fromBills.deleteBill),
         tap(async action => {
-          console.log(action.billId);
+          this._store.dispatch(StartLoading());
+          this.afs
+            .collection(action.url)
+            .doc(action.billId)
+            .delete()
+            .then(() => {
+              this._store.dispatch(StopLoading());
+              this._snackBarService.openSuccessSnackBar(
+                'Conta Excluída com sucesso!'
+              );
+            })
+            .catch(error => {
+              this._store.dispatch(StopLoading());
+              this._snackBarService.openFailureSnackBar(Messages[error.code]);
+            });
         })
       ),
     { dispatch: false }
@@ -85,6 +109,7 @@ export class BillsEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly _store: Store<fromApp.AppState>,
+    private readonly _snackBarService: SnackbarService,
     public readonly afs: AngularFirestore
   ) {}
 }

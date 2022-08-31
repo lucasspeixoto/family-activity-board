@@ -3,6 +3,7 @@ import * as fromApp from '@app/app.state';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Bill } from '@billsM/bills.model';
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
 import { deleteBill } from '../../store/bills.actions';
@@ -42,7 +43,8 @@ export class BillCardComponent implements OnInit {
   constructor(
     private readonly _store: Store<fromApp.AppState>,
     public readonly dialog: MatDialog,
-    public dialogRef: MatDialogRef<ConfirmationComponent>
+    public dialogRef: MatDialogRef<ConfirmationComponent>,
+    public readonly afs: AngularFirestore
   ) {}
 
   public ngOnInit(): void {
@@ -70,7 +72,10 @@ export class BillCardComponent implements OnInit {
       .pipe(take(1))
       .subscribe(() => {
         this._store.dispatch(
-          deleteBill({ userId: this.userId, billId: this.bill.billId! })
+          deleteBill({
+            url: `users/${this.userId}/bills`,
+            billId: this.bill.billId!,
+          })
         );
       });
   }

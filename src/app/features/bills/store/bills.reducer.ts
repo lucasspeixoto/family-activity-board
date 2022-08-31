@@ -1,7 +1,13 @@
 /* eslint-disable no-console */
 
 import { Action, createReducer, on } from '@ngrx/store';
-import { addBill, filterBillsList, setBills, setFilter } from './bills.actions';
+import {
+  addBill,
+  deleteBill,
+  filterBillsList,
+  setBills,
+  setFilter,
+} from './bills.actions';
 import {
   filterByRange,
   filterBySpent,
@@ -137,6 +143,15 @@ const _billsReducer = createReducer(
     const { bills, filteredBills, filters } = _state;
     return {
       bills: [...bills, bill],
+      filteredBills,
+      filters,
+    };
+  }),
+  on(deleteBill, (_state, { billId }) => {
+    const { bills, filteredBills, filters } = _state;
+    const newBills = bills.filter(bill => bill.billId !== billId);
+    return {
+      bills: [...newBills],
       filteredBills,
       filters,
     };

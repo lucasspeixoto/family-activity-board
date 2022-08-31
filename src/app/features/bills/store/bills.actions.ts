@@ -39,7 +39,7 @@ export const filterBillsList = createAction(BillsActions.FILTER_BILLS_LIST);
 export const deleteBill = createAction(
   BillsActions.DELETE_BILL,
   props<{
-    userId: string;
+    url: string;
     billId: string;
   }>()
 );
