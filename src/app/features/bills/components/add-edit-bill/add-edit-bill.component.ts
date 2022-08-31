@@ -71,7 +71,6 @@ export class AddEditBillComponent implements OnInit {
       this.addNewBillForm.value;
 
     const bill = {
-      billId: this.data.bill.billId!,
       title: title!,
       owner: owner!,
       value: value!,
@@ -79,6 +78,7 @@ export class AddEditBillComponent implements OnInit {
       date: this._dateService.formatDate(new Date(date!)),
       spent: spent!,
     };
+
     if (this.data.type === 'add') {
       this.addNewBillHandler(bill);
     } else {
@@ -96,10 +96,14 @@ export class AddEditBillComponent implements OnInit {
   }
 
   public editBillHandler(bill: Bill): void {
+    const editedBillId = {
+      ...bill,
+      billId: this.data.bill?.billId,
+    };
     this._store.dispatch(
       editBill({
         url: `users/${this.userId}/bills`,
-        bill,
+        bill: { ...editedBillId },
       })
     );
   }
