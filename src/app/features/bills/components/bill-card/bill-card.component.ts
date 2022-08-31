@@ -3,7 +3,7 @@ import * as fromApp from '@app/app.state';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-import { AddBillComponent } from '../add-bill/add-bill.component';
+import { AddEditBillComponent } from '../add-edit-bill/add-edit-bill.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Bill } from '@billsM/bills.model';
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
@@ -84,7 +84,7 @@ export class BillCardComponent implements OnInit {
   }
 
   public handleEditBill(): void {
-    this.dialog.open(AddBillComponent, {
+    this.dialog.open(AddEditBillComponent, {
       minWidth: '45%',
       data: {
         type: 'edit',

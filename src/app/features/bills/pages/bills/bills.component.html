@@ -1,5 +1,5 @@
 <app-layout>
-  <div class="bills">
+  <ng-container class="bills" *ngIf="bills$ | async; else loading">
     <div class="bills__actions">
       <button
         mat-fab
@@ -11,5 +11,9 @@
     </div>
 
     <app-bills-cards></app-bills-cards>
-  </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
 </app-layout>

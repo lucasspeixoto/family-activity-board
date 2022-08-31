@@ -4,6 +4,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import {
   addBill,
   deleteBill,
+  editBill,
   filterBillsList,
   setBills,
   setFilter,
@@ -152,6 +153,19 @@ const _billsReducer = createReducer(
     const newBills = bills.filter(bill => bill.billId !== billId);
     return {
       bills: [...newBills],
+      filteredBills,
+      filters,
+    };
+  }),
+  on(editBill, (_state, { bill }) => {
+    const { bills, filteredBills, filters } = _state;
+
+    const newBillsList = bills.map(item =>
+      item.billId === bill.billId ? bill : item
+    );
+
+    return {
+      bills: [...newBillsList],
       filteredBills,
       filters,
     };

@@ -87,7 +87,7 @@ export class BillsEffects {
         ofType(fromBills.deleteBill),
         tap(async action => {
           this._store.dispatch(StartLoading());
-          this.afs
+          await this.afs
             .collection(action.url)
             .doc(action.billId)
             .delete()
@@ -95,6 +95,32 @@ export class BillsEffects {
               this._store.dispatch(StopLoading());
               this._snackBarService.openSuccessSnackBar(
                 'Conta Excluída com sucesso!'
+              );
+            })
+            .catch(error => {
+              this._store.dispatch(StopLoading());
+              this._snackBarService.openFailureSnackBar(Messages[error.code]);
+            });
+        })
+      ),
+    { dispatch: false }
+  );
+
+  public editBill$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(fromBills.editBill),
+        tap(async action => {
+          const { url, bill } = action;
+          this._store.dispatch(StartLoading());
+          await this.afs
+            .collection(url)
+            .doc(bill.billId)
+            .update(bill)
+            .then(() => {
+              this._store.dispatch(StopLoading());
+              this._snackBarService.openSuccessSnackBar(
+                'Alteração realizada com sucesso!'
               );
             })
             .catch(error => {

@@ -8,13 +8,13 @@ import { Store } from '@ngrx/store';
 
 import { getUserUid } from '@app/authentication/store/auth.selectors';
 
-import { spentOptions, typeOptions } from '@constants/filters-selects';
-import { tap } from 'rxjs';
-import { addBill } from '@billsSt/bills.actions';
-import { DateService } from '@sharedS/date/date.service';
 import { addBillForm } from '@billsH/forms';
-import { Bill } from '../../models/bills.model';
+import { addBill, editBill } from '@billsSt/bills.actions';
+import { spentOptions, typeOptions } from '@constants/filters-selects';
+import { DateService } from '@sharedS/date/date.service';
+import { tap } from 'rxjs';
 import { getDateFromString } from '../../helpers/filters';
+import { Bill } from '../../models/bills.model';
 
 interface UpdateBillData {
   type: 'add' | 'edit';
@@ -22,11 +22,11 @@ interface UpdateBillData {
 }
 
 @Component({
-  selector: 'app-add-bill',
-  templateUrl: './add-bill.component.html',
-  styleUrls: ['./add-bill.component.scss'],
+  selector: 'app-add-edit-bill',
+  templateUrl: './add-edit-bill.component.html',
+  styleUrls: ['./add-edit-bill.component.scss'],
 })
-export class AddBillComponent implements OnInit {
+export class AddEditBillComponent implements OnInit {
   public addNewBillForm = this._formBuilder.group({ ...addBillForm });
 
   public readonly typeOptions = typeOptions;
@@ -49,24 +49,29 @@ export class AddBillComponent implements OnInit {
   public ngOnInit(): void {
     const { bill, type } = this.data;
     if (type === 'edit') {
-      const { title, owner, value, type, spent, date } = bill;
-
-      this.addNewBillForm.setValue({
-        title,
-        owner,
-        value,
-        type,
-        spent,
-        date: new Date(getDateFromString(date)),
-      });
+      this.setEditBillValues(bill);
     }
   }
 
-  public addNewBillHandler(): void {
+  public setEditBillValues(bill: Bill): void {
+    const { title, owner, value, type, spent, date } = bill;
+
+    this.addNewBillForm.setValue({
+      title,
+      owner,
+      value,
+      type,
+      spent,
+      date: new Date(getDateFromString(date)),
+    });
+  }
+
+  public updateBillHandler(): void {
     const { title, owner, value, type, date, spent } =
       this.addNewBillForm.value;
 
-    const newBill = {
+    const bill = {
+      billId: this.data.bill.billId!,
       title: title!,
       owner: owner!,
       value: value!,
@@ -74,10 +79,27 @@ export class AddBillComponent implements OnInit {
       date: this._dateService.formatDate(new Date(date!)),
       spent: spent!,
     };
+    if (this.data.type === 'add') {
+      this.addNewBillHandler(bill);
+    } else {
+      this.editBillHandler(bill);
+    }
+  }
+
+  public addNewBillHandler(bill: Bill): void {
     this._store.dispatch(
       addBill({
         url: `users/${this.userId}/bills`,
-        bill: { ...newBill },
+        bill: bill,
+      })
+    );
+  }
+
+  public editBillHandler(bill: Bill): void {
+    this._store.dispatch(
+      editBill({
+        url: `users/${this.userId}/bills`,
+        bill,
       })
     );
   }

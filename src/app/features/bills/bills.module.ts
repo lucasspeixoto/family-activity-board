@@ -1,4 +1,4 @@
-import { AddBillComponent } from '@billsC/add-bill/add-bill.component';
+import { AddEditBillComponent } from './components/add-edit-bill/add-edit-bill.component';
 import { BillCardComponent } from '@billsC/bill-card/bill-card.component';
 import { BillsCardsComponent } from '@billsC/bills-cards/bills-cards.component';
 import { BillsComponent } from '@billsP/bills/bills.component';
@@ -24,7 +24,7 @@ const COMPONENTS = [
   BillsFiltersComponent,
   BillsCardsComponent,
   BillCardComponent,
-  AddBillComponent,
+  AddEditBillComponent,
   EditBillComponent,
 ];
 

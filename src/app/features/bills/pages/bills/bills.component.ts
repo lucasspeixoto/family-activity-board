@@ -1,6 +1,6 @@
 import * as fromApp from '@app/app.state';
 
-import { AddBillComponent } from '@billsC/add-bill/add-bill.component';
+import { AddEditBillComponent } from '../../components/add-edit-bill/add-edit-bill.component';
 import { Component } from '@angular/core';
 import { getBills } from '../../store/bills.selectors';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,7 +20,7 @@ export class BillsComponent {
   ) {}
 
   public addNewBillHandler(): void {
-    this.dialog.open(AddBillComponent, {
+    this.dialog.open(AddEditBillComponent, {
       minWidth: '45%',
       data: {
         type: 'add',

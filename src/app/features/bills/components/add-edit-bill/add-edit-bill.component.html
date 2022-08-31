@@ -78,7 +78,7 @@
       mat-raised-button
       color="warn"
       [mat-dialog-close]="true"
-      (click)="addNewBillHandler()"
+      (click)="updateBillHandler()"
       [disabled]="addNewBillForm.invalid">
       {{ data.type === 'add' ? 'Adicionar' : 'Salvar' }}
     </button>
