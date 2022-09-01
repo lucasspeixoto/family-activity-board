@@ -1,20 +1,21 @@
 import * as fromApp from '@app/app.state';
 
 import { Component, Input, OnInit } from '@angular/core';
+import { deleteBill, editBill } from '@billsSt/bills.actions';
+import { getDateStatus, getNextMonthDateFromString } from '@billsH/filters';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-import { AddEditBillComponent } from '../add-edit-bill/add-edit-bill.component';
+import { AddEditBillComponent } from '@billsC/add-edit-bill/add-edit-bill.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Bill } from '@billsM/bills.model';
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
-import { deleteBill } from '../../store/bills.actions';
-import { getDateStatus } from '@billsH/filters';
+import { DateService } from '@sharedS/date/date.service';
+import { first } from 'rxjs/operators';
 import { getTotalBillAmount } from '@billsSt/bills.selectors';
-import { getUser } from '@app/authentication/store/auth.selectors';
+import { getUser } from '@authSt/auth.selectors';
 import { Store } from '@ngrx/store';
-import { take } from 'rxjs/operators';
 import { tap } from 'rxjs';
-import { User } from '@app/authentication/models/user.model';
+import { User } from '@authM/user.model';
 
 @Component({
   selector: 'app-bill-card',
@@ -47,7 +48,8 @@ export class BillCardComponent implements OnInit {
     private readonly _store: Store<fromApp.AppState>,
     public readonly dialog: MatDialog,
     public dialogRef: MatDialogRef<ConfirmationComponent>,
-    public readonly afs: AngularFirestore
+    public readonly afs: AngularFirestore,
+    private readonly _dateService: DateService
   ) {}
 
   public ngOnInit(): void {
@@ -72,7 +74,7 @@ export class BillCardComponent implements OnInit {
     });
 
     this.dialogRef.componentInstance.confirmClicked
-      .pipe(take(1))
+      .pipe(first())
       .subscribe(() => {
         this._store.dispatch(
           deleteBill({
@@ -94,14 +96,29 @@ export class BillCardComponent implements OnInit {
   }
 
   public handleMarkAsPaid(): void {
-    // Verificar Fixo ou Variável
     const { spent } = this.bill; // 1 - Fixo | 2 - Variável
 
     if (spent === 1) {
-      //Editar com Data para o próximo mês
-      console.log(this.bill.date);
+      const updatedDate = this._dateService.formatDate(
+        new Date(getNextMonthDateFromString(this.bill.date))
+      );
+      const newBill = {
+        ...this.bill,
+        date: updatedDate,
+      };
+      this._store.dispatch(
+        editBill({
+          url: `users/${this.user.uid}/bills`,
+          bill: { ...newBill },
+        })
+      );
     } else if (spent === 2) {
-      // Excluir ja que é fixo
+      this._store.dispatch(
+        deleteBill({
+          url: `users/${this.user.uid}/bills`,
+          billId: this.bill.billId!,
+        })
+      );
     }
   }
 }

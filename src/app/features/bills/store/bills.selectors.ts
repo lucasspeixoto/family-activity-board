@@ -11,6 +11,11 @@ export const getFilteredBills = createSelector(
   state => state.filteredBills
 );
 
-export const getTotalBillAmount = createSelector(getBillsState, state =>
-  state.bills.map(item => item.value).reduce((a, b) => a + b)
-);
+export const getTotalBillAmount = createSelector(getBillsState, state => {
+  const billsValues = state?.bills.map(item => item.value);
+  if (billsValues.length) {
+    return billsValues.reduce((a, b) => a + b);
+  } else {
+    return 0;
+  }
+});

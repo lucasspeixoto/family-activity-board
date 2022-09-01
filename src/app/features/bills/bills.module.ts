@@ -3,10 +3,10 @@ import { BillCardComponent } from '@billsC/bill-card/bill-card.component';
 import { BillsCardsComponent } from '@billsC/bills-cards/bills-cards.component';
 import { BillsComponent } from '@billsP/bills/bills.component';
 import { BillsEffects } from './store/bills.effects';
+import { BillService } from './services/bill.service';
 import { BillsFiltersComponent } from '@billsC/bills-filters/bills-filters.component';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from './pipes/date/date.pipe';
-import { EditBillComponent } from '@billsC/edit-bill/edit-bill.component';
 import { EffectsModule } from '@ngrx/effects';
 import { LayoutModule } from '@layout/layout.module';
 import { MaterialModule } from '@sharedM/material.module';
@@ -25,7 +25,6 @@ const COMPONENTS = [
   BillsCardsComponent,
   BillCardComponent,
   AddEditBillComponent,
-  EditBillComponent,
 ];
 
 const PIPES = [TypeFilterPipe, SpentFilterPipe, DatePipe, PercentPipe];
@@ -40,5 +39,6 @@ const PIPES = [TypeFilterPipe, SpentFilterPipe, DatePipe, PercentPipe];
     EffectsModule.forFeature([BillsEffects]),
   ],
   declarations: [...COMPONENTS, ...PIPES],
+  providers: [BillService],
 })
 export class BillsModule {}

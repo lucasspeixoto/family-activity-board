@@ -6,15 +6,16 @@ import { NonNullableFormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 
-import { getUserUid } from '@app/authentication/store/auth.selectors';
+import { getUserUid } from '@authSt/auth.selectors';
 
 import { addBillForm } from '@billsH/forms';
-import { addBill, editBill } from '@billsSt/bills.actions';
+
 import { spentOptions, typeOptions } from '@constants/filters-selects';
-import { DateService } from '@sharedS/date/date.service';
+
 import { tap } from 'rxjs';
-import { getDateFromString } from '../../helpers/filters';
-import { Bill } from '../../models/bills.model';
+import { getDateFromString } from '@billsH/filters';
+import { Bill } from '@billsM/bills.model';
+import { BillService } from '@billsS/bill.service';
 
 interface UpdateBillData {
   type: 'add' | 'edit';
@@ -42,7 +43,7 @@ export class AddEditBillComponent implements OnInit {
   constructor(
     private readonly _formBuilder: NonNullableFormBuilder,
     private readonly _store: Store<fromApp.AppState>,
-    private readonly _dateService: DateService,
+    private readonly _billService: BillService,
     @Inject(MAT_DIALOG_DATA) public readonly data: UpdateBillData
   ) {}
 
@@ -57,7 +58,7 @@ export class AddEditBillComponent implements OnInit {
     const { title, owner, value, type, spent, date } = bill;
 
     this.addNewBillForm.setValue({
-      title,
+      title: title!,
       owner,
       value,
       type,
@@ -67,44 +68,11 @@ export class AddEditBillComponent implements OnInit {
   }
 
   public updateBillHandler(): void {
-    const { title, owner, value, type, date, spent } =
-      this.addNewBillForm.value;
-
-    const bill = {
-      title: title!,
-      owner: owner!,
-      value: value!,
-      type: type!,
-      date: this._dateService.formatDate(new Date(date!)),
-      spent: spent!,
-    };
-
-    if (this.data.type === 'add') {
-      this.addNewBillHandler(bill);
-    } else {
-      this.editBillHandler(bill);
-    }
-  }
-
-  public addNewBillHandler(bill: Bill): void {
-    this._store.dispatch(
-      addBill({
-        url: `users/${this.userId}/bills`,
-        bill: bill,
-      })
-    );
-  }
-
-  public editBillHandler(bill: Bill): void {
-    const editedBillId = {
-      ...bill,
-      billId: this.data.bill?.billId,
-    };
-    this._store.dispatch(
-      editBill({
-        url: `users/${this.userId}/bills`,
-        bill: { ...editedBillId },
-      })
+    this._billService.updateBill(
+      this.addNewBillForm.value,
+      this.data.type,
+      this.userId,
+      this.data.bill?.billId!
     );
   }
 }

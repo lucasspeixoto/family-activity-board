@@ -1,9 +1,9 @@
 export interface Bill {
-  title: string;
+  title: string | undefined;
   type: number;
   value: number;
   spent: number;
-  date: string;
+  date: string | Date;
   owner: string;
   billId?: string;
 }
