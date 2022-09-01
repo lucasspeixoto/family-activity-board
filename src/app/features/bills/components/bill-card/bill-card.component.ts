@@ -92,4 +92,16 @@ export class BillCardComponent implements OnInit {
       },
     });
   }
+
+  public handleMarkAsPaid(): void {
+    // Verificar Fixo ou Variável
+    const { spent } = this.bill; // 1 - Fixo | 2 - Variável
+
+    if (spent === 1) {
+      //Editar com Data para o próximo mês
+      console.log(this.bill.date);
+    } else if (spent === 2) {
+      // Excluir ja que é fixo
+    }
+  }
 }
