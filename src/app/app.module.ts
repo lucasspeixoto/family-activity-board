@@ -33,6 +33,7 @@ import { LayoutModule } from './layout/layout.module';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from '@sharedM/material.module';
 import { NgModule } from '@angular/core';
+import { NotificationsEffects } from './shared/store/notifications/notifications.effects';
 import { reducers } from './app.state';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@sharedM/shared.module';
@@ -72,7 +73,7 @@ const STORE = [
     maxAge: 25,
     logOnly: environment.production,
   }),
-  EffectsModule.forRoot([AuthEffects, BillsEffects]),
+  EffectsModule.forRoot([AuthEffects, BillsEffects, NotificationsEffects]),
 ];
 
 const PROVIDERS = [

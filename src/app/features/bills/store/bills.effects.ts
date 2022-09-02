@@ -2,6 +2,7 @@
 
 import * as fromApp from '@app/app.state';
 import * as fromBills from './bills.actions';
+import * as fromNotifications from '@sharedSt/notifications/notifications.actions';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
@@ -34,6 +35,7 @@ export class BillsEffects {
       this.actions$.pipe(
         ofType(fromBills.loadBills),
         tap(action => {
+          this._store.dispatch(StartLoading());
           this.afs
             .collection<Bill>(`users/${action.payload}/bills`)
             .snapshotChanges() //! valueChanges()
@@ -44,13 +46,17 @@ export class BillsEffects {
                   const billId = actionData.payload.doc.id;
                   return {
                     ...billData,
-                    billId: billId,
+                    billId,
                   };
                 })
               )
             )
             .subscribe((bills: Bill[]) => {
               this._store.dispatch(fromBills.setBills({ payload: bills }));
+              this._store.dispatch(
+                fromNotifications.loadBillsNotifications({ payload: bills })
+              );
+              this._store.dispatch(StopLoading());
             });
         })
       ),
@@ -111,8 +117,8 @@ export class BillsEffects {
       this.actions$.pipe(
         ofType(fromBills.editBill),
         tap(async action => {
-          const { url, bill } = action;
           this._store.dispatch(StartLoading());
+          const { url, bill } = action;
           await this.afs
             .collection(url)
             .doc(bill.billId)
