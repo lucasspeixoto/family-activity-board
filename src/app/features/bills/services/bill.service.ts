@@ -1,9 +1,10 @@
 import * as fromApp from '@app/app.state';
 
-import { addBill, editBill } from '@billsSt/bills.actions';
+import { addBill, deleteBill, editBill } from '@billsSt/bills.actions';
 
 import { Bill } from '@billsM/bills.model';
 import { DateService } from '@sharedS/date/date.service';
+import { getNextMonthDateFromString } from '../helpers/filters';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
@@ -38,7 +39,7 @@ export class BillService {
     }
   }
 
-  public addNewBillHandler(bill: Bill, userId: string): void {
+  private addNewBillHandler(bill: Bill, userId: string): void {
     this._store.dispatch(
       addBill({
         url: `users/${userId}/bills`,
@@ -47,7 +48,7 @@ export class BillService {
     );
   }
 
-  public editBillHandler(bill: Bill, userId: string, billId: string): void {
+  private editBillHandler(bill: Bill, userId: string, billId: string): void {
     const editedBillId = {
       ...bill,
       billId: billId,
@@ -58,5 +59,41 @@ export class BillService {
         bill: { ...editedBillId },
       })
     );
+  }
+
+  public deleteBillHandler(userId: string, billId: string): void {
+    this._store.dispatch(
+      deleteBill({
+        url: `users/${userId}/bills`,
+        billId: billId!,
+      })
+    );
+  }
+
+  public handleMarkAsPaid(bill: Bill, userId: string): void {
+    const { spent } = bill; // 1 - Fixo | 2 - Variável
+
+    if (spent === 1) {
+      const updatedDate = this._dateService.formatDate(
+        new Date(getNextMonthDateFromString(bill.date))
+      );
+      const newBill = {
+        ...bill,
+        date: updatedDate,
+      };
+      this._store.dispatch(
+        editBill({
+          url: `users/${userId}/bills`,
+          bill: { ...newBill },
+        })
+      );
+    } else if (spent === 2) {
+      this._store.dispatch(
+        deleteBill({
+          url: `users/${userId}/bills`,
+          billId: bill.billId!,
+        })
+      );
+    }
   }
 }

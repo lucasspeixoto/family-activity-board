@@ -1,16 +1,16 @@
 import * as fromApp from '@app/app.state';
 
 import { Component, Input, OnInit } from '@angular/core';
-import { deleteBill, editBill } from '@billsSt/bills.actions';
-import { getDateStatus, getNextMonthDateFromString } from '@billsH/filters';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { AddEditBillComponent } from '@billsC/add-edit-bill/add-edit-bill.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Bill } from '@billsM/bills.model';
+import { BillService } from '@billsS/bill.service';
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
-import { DateService } from '@sharedS/date/date.service';
+import { DialogService } from '@app/shared/services/dialog/dialog.service';
 import { first } from 'rxjs/operators';
+import { getDateStatus } from '@billsH/filters';
 import { getTotalBillAmount } from '@billsSt/bills.selectors';
 import { getUser } from '@authSt/auth.selectors';
 import { Store } from '@ngrx/store';
@@ -49,7 +49,8 @@ export class BillCardComponent implements OnInit {
     public readonly dialog: MatDialog,
     public dialogRef: MatDialogRef<ConfirmationComponent>,
     public readonly afs: AngularFirestore,
-    private readonly _dateService: DateService
+    private readonly billService: BillService,
+    private readonly dialogService: DialogService
   ) {}
 
   public ngOnInit(): void {
@@ -64,24 +65,13 @@ export class BillCardComponent implements OnInit {
       width: '350px',
       enterAnimationDuration,
       exitAnimationDuration,
-      data: {
-        title: 'Excluir Conta',
-        subtitle: 'Deseja realmente excluir está conta ?',
-        cancelButtonTitle: 'Cancelar',
-        confirmationButtonTitle: 'Confirmar',
-        data: this.user.uid,
-      },
+      data: this.dialogService.getDeleteDialogData(this.user.uid!),
     });
 
     this.dialogRef.componentInstance.confirmClicked
       .pipe(first())
       .subscribe(() => {
-        this._store.dispatch(
-          deleteBill({
-            url: `users/${this.user.uid}/bills`,
-            billId: this.bill.billId!,
-          })
-        );
+        this.billService.deleteBillHandler(this.user.uid!, this.bill.billId!);
       });
   }
 
@@ -96,29 +86,6 @@ export class BillCardComponent implements OnInit {
   }
 
   public handleMarkAsPaid(): void {
-    const { spent } = this.bill; // 1 - Fixo | 2 - Variável
-
-    if (spent === 1) {
-      const updatedDate = this._dateService.formatDate(
-        new Date(getNextMonthDateFromString(this.bill.date))
-      );
-      const newBill = {
-        ...this.bill,
-        date: updatedDate,
-      };
-      this._store.dispatch(
-        editBill({
-          url: `users/${this.user.uid}/bills`,
-          bill: { ...newBill },
-        })
-      );
-    } else if (spent === 2) {
-      this._store.dispatch(
-        deleteBill({
-          url: `users/${this.user.uid}/bills`,
-          billId: this.bill.billId!,
-        })
-      );
-    }
+    this.billService.handleMarkAsPaid(this.bill, this.user.uid!);
   }
 }
