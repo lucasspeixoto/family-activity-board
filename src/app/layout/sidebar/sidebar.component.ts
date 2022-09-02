@@ -1,5 +1,5 @@
+import { appRoutes } from '@routes/app-routes';
 import { Component } from '@angular/core';
-import { routes } from '@constants/routes';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,5 +7,5 @@ import { routes } from '@constants/routes';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  public routes: typeof routes = routes;
+  public appRoutes: typeof appRoutes = appRoutes;
 }

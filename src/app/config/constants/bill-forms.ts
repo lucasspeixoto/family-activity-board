@@ -1,6 +1,6 @@
 import { Validators } from '@angular/forms';
 
-export const addBillForm = {
+export const addEdditBillForm = {
   title: ['', [Validators.required, Validators.minLength(3)]],
   owner: [
     '',

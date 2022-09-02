@@ -8,14 +8,13 @@ import { Store } from '@ngrx/store';
 
 import { getUserUid } from '@authSt/auth.selectors';
 
-import { addBillForm } from '@billsH/forms';
-
 import { spentOptions, typeOptions } from '@constants/filters-selects';
 
 import { tap } from 'rxjs';
 import { getDateFromString } from '@billsH/filters';
 import { Bill } from '@billsM/bills.model';
 import { BillService } from '@billsS/bill.service';
+import { addEdditBillForm } from '@constants/bill-forms';
 
 interface UpdateBillData {
   type: 'add' | 'edit';
@@ -28,7 +27,7 @@ interface UpdateBillData {
   styleUrls: ['./add-edit-bill.component.scss'],
 })
 export class AddEditBillComponent implements OnInit {
-  public addNewBillForm = this._formBuilder.group({ ...addBillForm });
+  public addNewBillForm = this._formBuilder.group({ ...addEdditBillForm });
 
   public readonly typeOptions = typeOptions;
 

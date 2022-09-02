@@ -3,16 +3,19 @@
 
 mat-card {
   margin: 0 0 20px 0;
-  width: 15rem;
-  height: 12rem;
+  width: 18rem;
+  height: auto;
+  min-height: 14rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: left;
   border-radius: $card-border-radius;
 
   mat-card-title {
     position: relative;
     text-align: start;
+    word-break: break-all;
 
     > .title {
       display: flex;
