@@ -10,11 +10,12 @@ export enum BillsActions {
   ADD_BILL = '[BILLS] Add a new bill',
   DELETE_BILL = '[BILLS] Delete a bill',
   EDIT_BILL = '[BILLS] Edit a bill',
+  CLEAR_BILL_DATA = '[BILLS] Clear Bill Data from Store',
 }
 
 export const loadBills = createAction(
   BillsActions.LOAD_BILLS,
-  props<{ payload: string }>()
+  props<{ payload: string | null }>()
 );
 
 export const setBills = createAction(
@@ -52,3 +53,5 @@ export const editBill = createAction(
     bill: Bill;
   }>()
 );
+
+export const clearBillData = createAction(BillsActions.CLEAR_BILL_DATA);

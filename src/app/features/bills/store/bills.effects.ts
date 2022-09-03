@@ -1,8 +1,5 @@
-/* eslint-disable no-console */
-
 import * as fromApp from '@app/app.state';
 import * as fromBills from './bills.actions';
-import * as fromNotifications from '@sharedSt/notifications/notifications.actions';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
@@ -53,9 +50,6 @@ export class BillsEffects {
             )
             .subscribe((bills: Bill[]) => {
               this._store.dispatch(fromBills.setBills({ payload: bills }));
-              this._store.dispatch(
-                fromNotifications.loadBillsNotifications({ payload: bills })
-              );
               this._store.dispatch(StopLoading());
             });
         })

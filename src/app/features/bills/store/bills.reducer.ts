@@ -3,6 +3,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import {
   addBill,
+  clearBillData,
   deleteBill,
   editBill,
   filterBillsList,
@@ -168,6 +169,11 @@ const _billsReducer = createReducer(
       bills: [...newBillsList],
       filteredBills,
       filters,
+    };
+  }),
+  on(clearBillData, () => {
+    return {
+      ...initialState,
     };
   })
 );

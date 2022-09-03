@@ -1,9 +1,8 @@
-import * as fromApp from '@app/app.state';
+import { combineLatest, of } from 'rxjs';
+import { Component, ElementRef } from '@angular/core';
 
-import { Component } from '@angular/core';
-import { getBillsWithoutValueAmount } from '@billsSt/bills.selectors';
-import { Store } from '@ngrx/store';
-import { tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { NotificationsService } from '@app/shared/services/notifications/notifications.service';
 
 @Component({
   selector: 'app-notifications',
@@ -11,10 +10,29 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./notifications.component.scss'],
 })
 export class NotificationsComponent {
-  public billsWithoutValue!: number;
-  public readonly billsWithoutValue$ = this._store
-    .select(getBillsWithoutValueAmount)
-    .pipe(tap(value => (this.billsWithoutValue = value)));
+  //? ------------------------ Contas ------------------------ ?//
+  public billsWithoutValue$ = this.notificationsService.getBillsWithoutValue();
+  public billsToPayToday$ = this.notificationsService.getBillsToPayToday();
+  public billsLate$ = this.notificationsService.getBillsLate();
+  public billsNotificationsAmount$ =
+    this.notificationsService.getBillsNotificationsAmount();
 
-  constructor(private readonly _store: Store<fromApp.AppState>) {}
+  //* -------------------- Planejamentos -------------------- *//
+  /**
+   *
+   */
+
+  public readonly notificationsAmount$ = combineLatest([
+    this.billsNotificationsAmount$,
+    of(0), //Simulação de Próxima feature para quadro de notificações
+  ]).pipe(
+    map(([billsAmount, plansAmount]) => {
+      return billsAmount + plansAmount;
+    })
+  );
+
+  constructor(
+    public readonly notificationsService: NotificationsService,
+    public elementRef: ElementRef
+  ) {}
 }

@@ -5,6 +5,7 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+import { clearBillData, loadBills } from '@billsSt/bills.actions';
 import { Injectable, NgZone } from '@angular/core';
 import {
   SendEmailVerification,
@@ -18,7 +19,6 @@ import { StartLoading, StopLoading } from '@sharedSt/loading/loading.actions';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthActions } from './action-types';
 import { AuthenticationService } from '@authS/authentication.service';
-import { loadBills } from '@billsSt/bills.actions';
 import { Messages } from '@shared/messages/firebase';
 import { Router } from '@angular/router';
 import { SnackbarService } from '@sharedS/snackbar/snackbar.service';
@@ -177,11 +177,11 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.Logout),
         tap(async () => {
-          this._store.dispatch(StopLoading());
           await this.afAuth.signOut();
           this.router.navigateByUrl('/');
           this._store.dispatch(StopLoading());
           this._snackBarService.openSuccessSnackBar('Volte Sempre 😁');
+          this._store.dispatch(clearBillData());
         })
       ),
     { dispatch: false }

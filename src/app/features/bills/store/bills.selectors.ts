@@ -33,11 +33,28 @@ export const getBillsToPayToday = createSelector(getBills, bills => {
     bill => getDateFromString(bill.date) === today
   );
 
-  return billsToPayToday;
+  return billsToPayToday.length;
 });
 
 export const getLateBills = createSelector(getBills, bills => {
   const today = new Date().setHours(0, 0, 0, 0);
   const lateBills = bills.filter(bill => getDateFromString(bill.date) < today);
-  return lateBills;
+  return lateBills.length;
+});
+
+export const getBillsNotificationsAmount = createSelector(getBills, bills => {
+  const today = new Date().setHours(0, 0, 0, 0);
+  const billsWithoutValues =
+    bills.filter(item => item.value === null).length > 0 ? 1 : 0;
+  const billsToPayToday =
+    bills.filter(bill => getDateFromString(bill.date) === today).length > 0
+      ? 1
+      : 0;
+
+  const billsLate =
+    bills.filter(bill => getDateFromString(bill.date) < today).length > 0
+      ? 1
+      : 0;
+
+  return billsWithoutValues + billsToPayToday + billsLate;
 });

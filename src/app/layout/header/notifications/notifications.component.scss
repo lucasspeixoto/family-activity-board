@@ -2,46 +2,49 @@
 @import 'src/styles/font';
 @import 'src/styles/variables';
 
-.notification-button {
-  background-color: $blue;
-  box-shadow: none;
-  margin-left: 32px;
+.notification {
+  &-button {
+    background-color: $blue;
+    box-shadow: none;
+    margin-left: 32px;
 
-  &__icon {
-    color: $white-35;
-  }
+    &__icon {
+      color: $white-35;
+    }
 
-  &:hover {
-    background-color: $black-08;
-  }
-
-  @media (max-width: $small) {
-    margin-top: 0;
-  }
-}
-
-.notification-menu {
-  &__button {
     &:hover {
-      background-color: $blue-white;
+      background-color: $black-08;
+    }
+
+    @media (max-width: $small) {
+      margin-top: 0;
     }
   }
 
-  &__icon {
-    &_yellow {
-      color: $yellow;
+  &-menu {
+    &__button {
+      &:hover {
+        background-color: $blue-white;
+      }
     }
 
-    &_green {
-      color: $green;
-    }
+    &__icon {
+      &_yellow {
+        color: $yellow;
+      }
 
-    &_pink {
-      color: $pink;
-    }
+      &_green {
+        color: $green;
+      }
 
-    &_blue {
-      color: $blue;
+      &_pink {
+        color: $pink;
+      }
+
+      &_blue {
+        color: $blue;
+      }
     }
   }
+
 }
