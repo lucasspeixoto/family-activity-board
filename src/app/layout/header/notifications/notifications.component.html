@@ -20,36 +20,21 @@
     </mat-icon>
   </button>
 </ng-template>
+
 <mat-menu #bell="matMenu" xPosition="before" class="notification-menu">
-  <ng-container *ngIf="billsWithoutValue$ | async as billsWithoutValue">
-    <button
-      mat-menu-item
-      class="notification-menu__button"
-      *ngIf="billsWithoutValue > 0">
-      <mat-icon class="notification-menu__icon_blue"
-        >notifications_none</mat-icon
-      >
-      {{ billsWithoutValue }} Conta(s) sem valor!
-    </button>
-  </ng-container>
-  <ng-container *ngIf="billsToPayToday$ | async as billsToPayToday">
-    <button
-      mat-menu-item
-      class="notification-menu__button"
-      *ngIf="billsToPayToday > 0">
-      <mat-icon class="notification-menu__icon_yellow"
-        >notification_important</mat-icon
-      >{{ billsToPayToday }} Conta(s) vence(m) hoje
-    </button>
-  </ng-container>
-  <ng-container *ngIf="billsLate$ | async as billsLate">
-    <button
-      mat-menu-item
-      class="notification-menu__button"
-      *ngIf="billsLate > 0">
-      <mat-icon class="notification-menu__icon_pink">warning</mat-icon
-      >{{ billsLate }} Conta(s) atrasada(s)!
-    </button>
+  <ng-container *ngIf="billsNotifications$ | async as billsNotifications">
+    <ng-container
+      *ngFor="let billsDescription of billsNotifications.description">
+      <button
+        *ngIf="billsDescription.value > 0"
+        mat-menu-item
+        class="notification-menu__button">
+        <mat-icon [color]="billsDescription.color">{{
+          billsDescription.icon
+        }}</mat-icon>
+        {{ billsDescription.message }}
+      </button>
+    </ng-container>
   </ng-container>
 </mat-menu>
 

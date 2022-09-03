@@ -11,11 +11,8 @@ import { NotificationsService } from '@app/shared/services/notifications/notific
 })
 export class NotificationsComponent {
   //? ------------------------ Contas ------------------------ ?//
-  public billsWithoutValue$ = this.notificationsService.getBillsWithoutValue();
-  public billsToPayToday$ = this.notificationsService.getBillsToPayToday();
-  public billsLate$ = this.notificationsService.getBillsLate();
-  public billsNotificationsAmount$ =
-    this.notificationsService.getBillsNotificationsAmount();
+  public readonly billsNotifications$ =
+    this.notificationsService.getBillsNotifications();
 
   //* -------------------- Planejamentos -------------------- *//
   /**
@@ -23,11 +20,11 @@ export class NotificationsComponent {
    */
 
   public readonly notificationsAmount$ = combineLatest([
-    this.billsNotificationsAmount$,
+    this.billsNotifications$,
     of(0), //Simulação de Próxima feature para quadro de notificações
   ]).pipe(
     map(([billsAmount, plansAmount]) => {
-      return billsAmount + plansAmount;
+      return billsAmount.amount + plansAmount;
     })
   );
 

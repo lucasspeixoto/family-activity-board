@@ -3,6 +3,7 @@ import * as fromBills from './bills.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { getDateFromString } from '../helpers/filters';
+import { Notification } from '@sharedMd/notification';
 
 const getBillsState = createFeatureSelector<fromBills.BillsState>('bills');
 
@@ -22,27 +23,7 @@ export const getTotalBillAmount = createSelector(getBillsState, state => {
   }
 });
 
-export const getBillsWithoutValueAmount = createSelector(getBills, bills => {
-  const billsWithoutValues = bills.filter(item => item.value === null);
-  return billsWithoutValues.length;
-});
-
-export const getBillsToPayToday = createSelector(getBills, bills => {
-  const today = new Date().setHours(0, 0, 0, 0);
-  const billsToPayToday = bills.filter(
-    bill => getDateFromString(bill.date) === today
-  );
-
-  return billsToPayToday.length;
-});
-
-export const getLateBills = createSelector(getBills, bills => {
-  const today = new Date().setHours(0, 0, 0, 0);
-  const lateBills = bills.filter(bill => getDateFromString(bill.date) < today);
-  return lateBills.length;
-});
-
-export const getBillsNotificationsAmount = createSelector(getBills, bills => {
+export const getBillsNotifications = createSelector(getBills, bills => {
   const today = new Date().setHours(0, 0, 0, 0);
   const billsWithoutValues =
     bills.filter(item => item.value === null).length > 0 ? 1 : 0;
@@ -56,5 +37,29 @@ export const getBillsNotificationsAmount = createSelector(getBills, bills => {
       ? 1
       : 0;
 
-  return billsWithoutValues + billsToPayToday + billsLate;
+  const billsNotifications: Notification = {
+    amount: billsWithoutValues + billsToPayToday + billsLate,
+    description: [
+      {
+        icon: 'notifications_none',
+        value: billsWithoutValues,
+        message: `${billsWithoutValues} Conta(s) sem valor!`,
+        color: 'primary',
+      },
+      {
+        icon: 'notification_important',
+        value: billsToPayToday,
+        message: `${billsToPayToday} Conta(s) vence(m) hoje`,
+        color: 'accent',
+      },
+      {
+        icon: 'warning',
+        value: billsLate,
+        message: `${billsLate} Conta(s) atrasada(s)!`,
+        color: 'warn',
+      },
+    ],
+  };
+
+  return billsNotifications;
 });
