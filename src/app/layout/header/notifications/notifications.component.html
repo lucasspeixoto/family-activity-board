@@ -29,7 +29,7 @@
         *ngIf="billsDescription.value > 0"
         mat-menu-item
         class="notification-menu__button">
-        <mat-icon [color]="billsDescription.color">{{
+        <mat-icon [class]="billsDescription.class">{{
           billsDescription.icon
         }}</mat-icon>
         {{ billsDescription.message }}

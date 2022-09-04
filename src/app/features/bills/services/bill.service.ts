@@ -2,9 +2,9 @@ import * as fromApp from '@app/app.state';
 
 import { addBill, deleteBill, editBill } from '@billsSt/bills.actions';
 
-import { Bill } from '@billsM/bills.model';
+import { Bill } from '@billsMd/bills.model';
 import { DateService } from '@sharedS/date/date.service';
-import { getNextMonthDateFromString } from '../helpers/filters';
+import { getNextMonthDateFromString } from '@sharedH/date.helper';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 

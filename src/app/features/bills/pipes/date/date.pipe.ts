@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { getDateFromString } from '../../helpers/filters';
+import { getDateFromString } from '@app/shared/helpers/date.helper';
 
 @Pipe({
   name: 'dateStatus',

@@ -10,16 +10,12 @@ import { getUserUid } from '@authSt/auth.selectors';
 
 import { spentOptions, typeOptions } from '@constants/filters-selects';
 
-import { tap } from 'rxjs';
-import { getDateFromString } from '@billsH/filters';
-import { Bill } from '@billsM/bills.model';
+import { Bill } from '@billsMd/bills.model';
+import { UpdateBillData } from '@billsMd/update-bill.model';
 import { BillService } from '@billsS/bill.service';
 import { addEdditBillForm } from '@constants/bill-forms';
-
-interface UpdateBillData {
-  type: 'add' | 'edit';
-  bill: Bill;
-}
+import { getDateFromString } from '@sharedH/date.helper';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-add-edit-bill',

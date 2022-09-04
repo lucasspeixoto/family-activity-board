@@ -1,10 +1,10 @@
 import * as fromApp from '@app/app.state';
 
-import { Bill } from '@billsM/bills.model';
+import { Bill } from '@billsMd/bills.model';
 import { Component } from '@angular/core';
+import { getFilteredBills } from '@billsSt/bills.selectors';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { getFilteredBills } from '@billsSt/bills.selectors';
 
 @Component({
   selector: 'app-bills-cards',

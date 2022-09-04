@@ -5,17 +5,17 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { AddEditBillComponent } from '@billsC/add-edit-bill/add-edit-bill.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Bill } from '@billsM/bills.model';
+import { Bill } from '@billsMd/bills.model';
 import { BillService } from '@billsS/bill.service';
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
 import { DialogService } from '@app/shared/services/dialog/dialog.service';
 import { first } from 'rxjs/operators';
-import { getDateStatus } from '@billsH/filters';
+import { getDateStatus } from '@sharedH/date.helper';
 import { getTotalBillAmount } from '@billsSt/bills.selectors';
 import { getUser } from '@authSt/auth.selectors';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
-import { User } from '@authM/user.model';
+import { User } from '@authMd/user.model';
 
 @Component({
   selector: 'app-bill-card',

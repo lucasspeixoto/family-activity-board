@@ -15,9 +15,9 @@ import {
   filterBySpent,
   filterByStatus,
   filterByType,
-} from '@billsH/filters';
+} from '@billsH/filters.helper';
 
-import { Bill } from '@billsM/bills.model';
+import { Bill } from '@billsMd/bills.model';
 
 interface Filters {
   type: number | null;

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Bill } from '@billsM/bills.model';
+import { Bill } from '@billsMd/bills.model';
 
 export enum BillsActions {
   LOAD_BILLS = '[BILLS] Load all bills',

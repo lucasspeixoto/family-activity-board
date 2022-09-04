@@ -2,7 +2,7 @@ export interface NotificationsDescriptions {
   icon: string;
   value: number;
   message: string;
-  color: string;
+  class: string;
 }
 
 export interface Notification {

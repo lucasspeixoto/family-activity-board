@@ -24,7 +24,7 @@ import { Router } from '@angular/router';
 import { SnackbarService } from '@sharedS/snackbar/snackbar.service';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs/operators';
-import { User } from '@authM/user.model';
+import { User } from '@authMd/user.model';
 
 @Injectable()
 export class AuthEffects {

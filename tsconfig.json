@@ -26,12 +26,13 @@
       "@sharedS/*": ["src/app/shared/services/*"],
       "@sharedSt/*": ["src/app/shared/store/*"],
       "@sharedMd/*": ["src/app/shared/models/*"],
+      "@sharedH/*": ["src/app/shared/helpers/*"],
 
       "@features/*": ["src/app/features/*"],
 
       "@billsC/*": ["src/app/features/bills/components/*"],
       "@billsP/*": ["src/app/features/bills/pages/*"],
-      "@billsM/*": ["src/app/features/bills/models/*"],
+      "@billsMd/*": ["src/app/features/bills/models/*"],
       "@billsS/*": ["src/app/features/bills/services/*"],
       "@billsSt/*": ["src/app/features/bills/store/*"],
       "@billsH/*": ["src/app/features/bills/helpers/*"],
@@ -44,7 +45,7 @@
       "@authP/*": ["src/app/authentication/pages/*"],
       "@authS/*": ["src/app/authentication/services/*"],
       "@authSt/*": ["src/app/authentication/store/*"],
-      "@authM/*": ["src/app/authentication/models/*"]
+      "@authMd/*": ["src/app/authentication/models/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

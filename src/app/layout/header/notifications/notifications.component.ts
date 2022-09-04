@@ -1,8 +1,6 @@
-import { combineLatest, of } from 'rxjs';
 import { Component, ElementRef } from '@angular/core';
 
-import { map } from 'rxjs/operators';
-import { NotificationsService } from '@app/shared/services/notifications/notifications.service';
+import { NotificationsService } from '@sharedS/notifications/notifications.service';
 
 @Component({
   selector: 'app-notifications',
@@ -10,23 +8,11 @@ import { NotificationsService } from '@app/shared/services/notifications/notific
   styleUrls: ['./notifications.component.scss'],
 })
 export class NotificationsComponent {
-  //? ------------------------ Contas ------------------------ ?//
   public readonly billsNotifications$ =
     this.notificationsService.getBillsNotifications();
 
-  //* -------------------- Planejamentos -------------------- *//
-  /**
-   *
-   */
-
-  public readonly notificationsAmount$ = combineLatest([
-    this.billsNotifications$,
-    of(0), //Simulação de Próxima feature para quadro de notificações
-  ]).pipe(
-    map(([billsAmount, plansAmount]) => {
-      return billsAmount.amount + plansAmount;
-    })
-  );
+  public readonly notificationsAmount$ =
+    this.notificationsService.getNotificationsAmount();
 
   constructor(
     public readonly notificationsService: NotificationsService,
