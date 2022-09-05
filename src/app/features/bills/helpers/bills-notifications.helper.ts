@@ -53,3 +53,10 @@ export const getBillsNotifications = (bills: Bill[]) => {
 
   return billsNotification;
 };
+
+export const orderBillsByDate = (bills: Bill[]): Bill[] => {
+  const orderedBills = [...bills];
+  return orderedBills.sort((first, second) =>
+    getDateFromString(first.date)! > getDateFromString(second.date)! ? 1 : -1
+  );
+};

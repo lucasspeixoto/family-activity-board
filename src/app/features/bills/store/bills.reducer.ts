@@ -47,6 +47,7 @@ const _billsReducer = createReducer(
   initialState,
   on(setBills, (_state, { payload }) => {
     const { filters } = _state;
+
     return {
       bills: [...payload],
       filteredBills: [...payload],

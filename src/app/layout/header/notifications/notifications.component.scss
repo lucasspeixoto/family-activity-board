@@ -22,6 +22,15 @@
   }
 
   &-menu {
+    &__title {
+      color: $sidebar-title-color;
+      font-size: $fs-normal;
+      text-transform: uppercase;
+      margin-top: 10px;
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+
     &__button {
       &:hover {
         background-color: $blue-white;
@@ -50,4 +59,9 @@
       }
     }
   }
+}
+
+.mat-divider {
+  display: flex;
+  margin: 1rem;
 }

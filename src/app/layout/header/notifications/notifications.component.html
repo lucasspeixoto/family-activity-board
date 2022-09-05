@@ -22,6 +22,8 @@
 </ng-template>
 
 <mat-menu #bell="matMenu" xPosition="before" class="notification-menu">
+  <p class="notification-menu__title">Contas</p>
+
   <ng-container *ngIf="billsNotifications$ | async as billsNotifications">
     <ng-container
       *ngFor="let billsDescription of billsNotifications.description">
@@ -36,6 +38,7 @@
       </button>
     </ng-container>
   </ng-container>
+  <!-- <mat-divider></mat-divider> -->
 </mat-menu>
 
 <mat-menu #none="matMenu" xPosition="before" class="notification-menu">

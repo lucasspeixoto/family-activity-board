@@ -5,6 +5,8 @@
   <ng-container
     class="container__cards"
     *ngIf="filteredBills$ | async as bills">
-    <app-bill-card *ngFor="let bill of bills" [bill]="bill"></app-bill-card>
+    <app-bill-card
+      *ngFor="let bill of bills | dateOrderFilter"
+      [bill]="bill"></app-bill-card>
   </ng-container>
 </div>

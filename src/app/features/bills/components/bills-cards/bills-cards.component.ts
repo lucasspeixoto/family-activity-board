@@ -2,7 +2,9 @@ import * as fromApp from '@app/app.state';
 
 import { Bill } from '@billsMd/bills.model';
 import { Component } from '@angular/core';
+import { getDateFromString } from '@app/shared/helpers/date.helper';
 import { getFilteredBills } from '@billsSt/bills.selectors';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
