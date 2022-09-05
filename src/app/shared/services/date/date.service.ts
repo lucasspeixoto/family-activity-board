@@ -8,11 +8,11 @@ export class DateService {
     return new Date(date).getDate();
   }
 
-  public padTo2Digits(value: number) {
+  public padTo2Digits(value: number): string {
     return value.toString().padStart(2, '0');
   }
 
-  public formatDate(date: Date) {
+  public formatDate(date: Date): string {
     return [
       this.padTo2Digits(date.getDate()),
       this.padTo2Digits(date.getMonth() + 1),

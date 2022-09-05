@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SnackbarService {
   constructor(private readonly snackBar: MatSnackBar) {}
 
-  public openSuccessSnackBar(message: string) {
+  public openSuccessSnackBar(message: string): void {
     this.snackBar.open(message, 'OK', {
       horizontalPosition: 'right',
       verticalPosition: 'top',
@@ -15,7 +15,7 @@ export class SnackbarService {
     });
   }
 
-  public openFailureSnackBar(message: any) {
+  public openFailureSnackBar(message: any): void {
     this.snackBar.open(message, 'OK', {
       horizontalPosition: 'right',
       verticalPosition: 'top',

@@ -2,7 +2,7 @@ import { Bill } from '@billsMd/bills.model';
 import { getDateFromString } from '@sharedH/date.helper';
 import { Notification } from '@sharedMd/notification';
 
-export const getBillsNotifications = (bills: Bill[]) => {
+export const getBillsNotifications = (bills: Bill[]): Notification => {
   const today = new Date().setHours(0, 0, 0, 0);
 
   const billsWithoutValue = bills.filter(item => item.value === null).length;

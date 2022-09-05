@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   constructor(private readonly _store: Store<fromApp.AppState>) {}
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this._store.dispatch(LoadUser());
   }
 }

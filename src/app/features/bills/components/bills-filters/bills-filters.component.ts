@@ -28,21 +28,21 @@ export class BillsFiltersComponent {
 
   public readonly spentOptions = spentOptions;
 
-  public changeTypeValue(selectedType: number) {
+  public changeTypeValue(selectedType: number): void {
     this._store.dispatch(setFilter({ filter: 'type', value: selectedType }));
   }
 
-  public changeRangeValue(selectedRange: number) {
+  public changeRangeValue(selectedRange: number): void {
     this._store.dispatch(setFilter({ filter: 'range', value: selectedRange }));
   }
 
-  public changeStatusValue(selectedStatus: number) {
+  public changeStatusValue(selectedStatus: number): void {
     this._store.dispatch(
       setFilter({ filter: 'status', value: selectedStatus })
     );
   }
 
-  public changeSpentValue(selectedSpent: number) {
+  public changeSpentValue(selectedSpent: number): void {
     this._store.dispatch(setFilter({ filter: 'spent', value: selectedSpent }));
   }
 }
