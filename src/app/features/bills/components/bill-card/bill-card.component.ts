@@ -1,6 +1,11 @@
 import * as fromApp from '@app/app.state';
 
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { AddEditBillComponent } from '@billsC/add-edit-bill/add-edit-bill.component';
@@ -8,7 +13,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Bill } from '@billsMd/bills.model';
 import { BillService } from '@billsS/bill.service';
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
-import { DialogService } from '@app/shared/services/dialog/dialog.service';
+import { DialogService } from '@sharedS/dialog/dialog.service';
 import { first } from 'rxjs/operators';
 import { getDateStatus } from '@sharedH/date.helper';
 import { getTotalBillAmount } from '@billsSt/bills.selectors';
@@ -21,6 +26,7 @@ import { User } from '@authMd/user.model';
   selector: 'app-bill-card',
   templateUrl: './bill-card.component.html',
   styleUrls: ['./bill-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BillCardComponent implements OnInit {
   public readonly billTypeIcons: Record<number, string> = {

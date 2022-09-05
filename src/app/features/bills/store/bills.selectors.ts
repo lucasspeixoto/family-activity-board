@@ -16,7 +16,9 @@ export const getFilteredBills = createSelector(
 export const getTotalBillAmount = createSelector(getBillsState, state => {
   const billsValues = state?.bills.map(bill => bill.value);
   if (billsValues.length) {
-    return billsValues.reduce((a, b) => a + b);
+    return billsValues.reduce(
+      (firstBill, secondBill) => firstBill + secondBill
+    );
   } else {
     return 0;
   }

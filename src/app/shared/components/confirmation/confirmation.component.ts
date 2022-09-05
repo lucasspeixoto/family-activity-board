@@ -1,5 +1,10 @@
-import { EventEmitter, Output } from '@angular/core';
-import { Component, Inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Inject,
+  Output,
+} from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 interface ConfirmationData {
@@ -14,6 +19,7 @@ interface ConfirmationData {
   selector: 'app-confirmation',
   templateUrl: './confirmation.component.html',
   styleUrls: ['./confirmation.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmationComponent {
   @Output()

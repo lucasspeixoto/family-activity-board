@@ -10,7 +10,7 @@ export class DateOrderFilterPipe implements PipeTransform {
   public transform(bills: Bill[]): Bill[] {
     const copiedBills = [...bills];
     return copiedBills.sort((first, second) =>
-      getDateFromString(first.date)! > getDateFromString(second.date)! ? 1 : -1
+      getDateFromString(first.date) > getDateFromString(second.date) ? 1 : -1
     );
   }
 }

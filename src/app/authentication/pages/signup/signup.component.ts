@@ -1,6 +1,7 @@
 import * as fromApp from '@app/app.state';
 
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { FormBuilder } from '@angular/forms';
 import { Signup } from '@authSt/auth.actions';
 import { signUpForm } from '@constants/auth-forms';
@@ -10,6 +11,7 @@ import { Store } from '@ngrx/store';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupComponent {
   public readonly title = 'Cadastro';

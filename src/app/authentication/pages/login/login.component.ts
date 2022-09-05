@@ -1,6 +1,7 @@
 import * as fromApp from '@app/app.state';
 
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { FormBuilder } from '@angular/forms';
 import { Login } from '@authSt/auth.actions';
 import { loginForm } from '@constants/auth-forms';
@@ -10,6 +11,7 @@ import { Store } from '@ngrx/store';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   public hide = true;

@@ -2,17 +2,14 @@ import * as fromApp from '@app/app.state';
 import * as fromBills from './bills.actions';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import {
-  StartLoading,
-  StopLoading,
-} from '@app/shared/store/loading/loading.actions';
+import { StartLoading, StopLoading } from '@sharedSt/loading/loading.actions';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Bill } from '../models/bills.model';
+import { Bill } from '@billsMd/bills.model';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Messages } from '@app/shared/messages/firebase';
-import { SnackbarService } from '@app/shared/services/snackbar/snackbar.service';
+import { Messages } from '@sharedMs/firebase';
+import { SnackbarService } from '@sharedS/snackbar/snackbar.service';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 
@@ -136,6 +133,6 @@ export class BillsEffects {
     private readonly actions$: Actions,
     private readonly _store: Store<fromApp.AppState>,
     private readonly _snackBarService: SnackbarService,
-    public readonly afs: AngularFirestore
+    private readonly afs: AngularFirestore
   ) {}
 }

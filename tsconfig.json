@@ -27,6 +27,7 @@
       "@sharedSt/*": ["src/app/shared/store/*"],
       "@sharedMd/*": ["src/app/shared/models/*"],
       "@sharedH/*": ["src/app/shared/helpers/*"],
+      "@sharedMs/*": ["src/app/shared/messages/*"],
 
       "@features/*": ["src/app/features/*"],
 

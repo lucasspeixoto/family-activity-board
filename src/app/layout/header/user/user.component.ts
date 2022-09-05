@@ -1,6 +1,11 @@
 import * as fromApp from '@app/app.state';
 
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 
 import { appRoutes } from '@routes/app-routes';
 import { getUser } from '@authSt/auth.selectors';
@@ -10,6 +15,7 @@ import { Store } from '@ngrx/store';
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserComponent {
   @Output() public readonly signOut: EventEmitter<void> =

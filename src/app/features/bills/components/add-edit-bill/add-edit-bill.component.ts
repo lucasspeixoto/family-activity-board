@@ -1,6 +1,11 @@
 import * as fromApp from '@app/app.state';
 
-import { Component, Inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -21,6 +26,7 @@ import { tap } from 'rxjs';
   selector: 'app-add-edit-bill',
   templateUrl: './add-edit-bill.component.html',
   styleUrls: ['./add-edit-bill.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddEditBillComponent implements OnInit {
   public addNewBillForm = this._formBuilder.group({ ...addEdditBillForm });
