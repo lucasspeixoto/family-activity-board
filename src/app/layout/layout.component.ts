@@ -25,7 +25,7 @@ export class LayoutComponent implements OnDestroy {
 
   constructor(ChangeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 1024px)');
-    this.mobileQueryListener = () => ChangeDetectorRef.detectChanges();
+    this.mobileQueryListener = (): void => ChangeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener(this.eventType, this.mobileQueryListener);
 
     this.isShowSidebar = !this.mobileQuery.matches;

@@ -23,21 +23,21 @@ export class UpElevationDirective implements OnChanges {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public ngOnChanges(_changes: SimpleChanges) {
+  public ngOnChanges(_changes: SimpleChanges): void {
     this.setElevation(this.defaultElevation);
   }
 
   @HostListener('mouseenter')
-  public onMouseEnter() {
+  public onMouseEnter(): void {
     this.setElevation(this.raisedElevation);
   }
 
   @HostListener('mouseleave')
-  public onMouseLeave() {
+  public onMouseLeave(): void {
     this.setElevation(this.defaultElevation);
   }
 
-  public setElevation(elevatedValue: number) {
+  public setElevation(elevatedValue: number): void {
     const classesToRemove = Array.from(
       (<HTMLElement>this.element.nativeElement).classList
     ).filter(elementClass => elementClass.startsWith('mat-elevation-z'));

@@ -19,9 +19,6 @@
 
     <mat-divider></mat-divider>
 
-    <button mat-menu-item class="user-menu__item-title">
-      <mat-icon class="user-menu-icon">person</mat-icon>Perfil
-    </button>
     <button
       mat-menu-item
       class="user-menu__item-title"
@@ -34,8 +31,14 @@
       [routerLink]="appRoutes.PLANS">
       <mat-icon class="user-menu-icon">description</mat-icon>Planejamentos
     </button>
+    <button
+      mat-menu-item
+      class="user-menu__item-title"
+      [routerLink]="appRoutes.PROFILE">
+      <mat-icon class="user-menu-icon">person</mat-icon>Perfil
+    </button>
     <button mat-menu-item class="user-menu__item-title">
-      <mat-icon class="user-menu-icon">directions_run</mat-icon>Atividades
+      <mat-icon class="user-menu-icon">dashboard</mat-icon>Relatórios
     </button>
 
     <div class="sign-button-wrapper">

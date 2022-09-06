@@ -12,12 +12,13 @@
       [routerLinkActiveOptions]="{ exact: true }">
       <mat-icon>description</mat-icon> Planejamentos
     </mat-list-item>
-    <mat-list-item>
-      <mat-icon>directions_run</mat-icon> Atividades
+    <mat-list-item
+      [routerLink]="appRoutes.PROFILE"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <mat-icon>person</mat-icon> Perfil
     </mat-list-item>
-    <mat-list-item>
-      <mat-icon>notifications_none</mat-icon> Notificações
-    </mat-list-item>
+    <mat-list-item> <mat-icon>dashboard</mat-icon> Relatórios </mat-list-item>
   </mat-list>
 
   <p class="sidebar__title">Ajuda</p>
