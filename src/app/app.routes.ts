@@ -1,5 +1,5 @@
-import { AuthGuard } from './authentication/guards/auth.guard';
-import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { AuthGuard } from '@authG/auth.guard';
+import { NotFoundComponent } from '@sharedC/not-found/not-found.component';
 import { Routes } from '@angular/router';
 
 export const appRoutes: Routes = [

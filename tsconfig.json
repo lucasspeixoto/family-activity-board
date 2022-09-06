@@ -24,6 +24,7 @@
       "@authS/*": ["src/app/authentication/services/*"],
       "@authSt/*": ["src/app/authentication/store/*"],
       "@authMd/*": ["src/app/authentication/models/*"],
+      "@authG/*": ["src/app/authentication/guards/*"],
 
       "@shared/*": ["src/app/shared/*"],
       "@sharedM/*": ["src/app/shared/modules/*"],
@@ -71,11 +72,7 @@
       "@profileMd/*": ["src/app/features/profile/models/*"],
       "@profileS/*": ["src/app/features/profile/services/*"],
       "@profileSt/*": ["src/app/features/profile/store/*"],
-      "@profileH/*": ["src/app/features/profile/helpers/*"],
-
-
-
-
+      "@profileH/*": ["src/app/features/profile/helpers/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

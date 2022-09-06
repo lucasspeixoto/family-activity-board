@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@sharedM/shared.module';
 import { SignupComponent } from '@authP/signup/signup.component';
-import { SnackbarService } from '@app/shared/services/snackbar/snackbar.service';
+import { SnackbarService } from '@sharedS/snackbar/snackbar.service';
 
 const authRoutes = [
   { path: '', component: LoginComponent },
