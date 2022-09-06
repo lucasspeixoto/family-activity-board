@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
-import { routes } from '@config/routes';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { appRoutes } from '@routes/app-routes';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
-  public routes: typeof routes = routes;
+  public appRoutes: typeof appRoutes = appRoutes;
 }

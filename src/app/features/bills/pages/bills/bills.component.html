@@ -1,28 +1,19 @@
 <app-layout>
-  <div class="bills">
+  <ng-container class="bills" *ngIf="bills$ | async; else loading">
     <div class="bills__actions">
-      <button mat-fab aria-label="Incluir conta" appUpElevation>
+      <button
+        mat-fab
+        aria-label="Incluir conta"
+        appUpElevation
+        (click)="addNewBillHandler()">
         <mat-icon>add</mat-icon>
       </button>
     </div>
 
-    <app-bills-filters></app-bills-filters>
-
     <app-bills-cards></app-bills-cards>
-  </div>
+  </ng-container>
 
-  <!-- <mat-card-content class="bills-content">
-    <div class="bills-content__wrapper">
-      <div class="bills-content__actions">
-        <button mat-mini-fab disabled aria-label="Incluir conta">
-          <mat-icon>home</mat-icon>
-        </button>
-      </div>
-      <mat-card class="bills-content__item-wrapper">
-        <mat-card-title>
-          <p>Contas</p>
-        </mat-card-title>
-      </mat-card>
-    </div>
-  </mat-card-content> -->
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
 </app-layout>

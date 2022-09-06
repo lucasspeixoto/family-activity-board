@@ -1,0 +1,60 @@
+<mat-card>
+  <mat-card-title>
+    <div class="title">
+      <div class="title__name">{{ bill.title }}</div>
+      <ng-container *ngIf="userId$ | async" class="title__menu">
+        <button
+          mat-mini-fab
+          [matMenuTriggerFor]="updateBillMenu"
+          color="primary"
+          class="title__menu-button">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu
+          #updateBillMenu="matMenu"
+          xPosition="before"
+          yPosition="below">
+          <button mat-menu-item (click)="handleEditBill()">
+            <mat-icon class="user-menu-icon" color="accent">create</mat-icon
+            >Editar
+          </button>
+          <button mat-menu-item (click)="handleDeleteBill('0ms', '0ms')">
+            <mat-icon class="user-menu-icon" color="warn"
+              >delete_forever</mat-icon
+            >Excluir
+          </button>
+          <button mat-menu-item (click)="handleMarkAsPaid()">
+            <mat-icon class="user-menu-icon" color="primary"
+              >account_balance_wallet</mat-icon
+            >Marcar Como Pago
+          </button>
+        </mat-menu>
+      </ng-container>
+    </div>
+  </mat-card-title>
+  <mat-card-subtitle rtl>
+    <div class="value">
+      <p>Valor</p>
+      <h6><span>R$ </span>{{ bill.value !== null ? bill.value : '----' }}</h6>
+    </div>
+
+    <div class="percent" *ngIf="billsAmount$ | async as billsAmount">
+      {{ bill.value / billsAmount | percent }}%
+    </div>
+  </mat-card-subtitle>
+  <mat-card-actions>
+    <p class="value">
+      {{ bill.date }}
+      <span
+        class="value-dot"
+        [ngClass]="{
+          late: dateStatus === 1,
+          today: dateStatus === 2,
+          inDay: dateStatus === 3
+        }"></span>
+    </p>
+    <div class="type-icon">
+      <mat-icon>{{ billTypeIcons[bill.type] }}</mat-icon>
+    </div>
+  </mat-card-actions>
+</mat-card>

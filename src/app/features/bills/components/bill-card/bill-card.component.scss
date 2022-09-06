@@ -1,0 +1,116 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+
+mat-card {
+  margin: 0 0 20px 0;
+  width: 18rem;
+  height: auto;
+  min-height: 14rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  border-radius: $card-border-radius;
+
+  mat-card-title {
+    position: relative;
+    text-align: start;
+    word-break: break-all;
+
+    > .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      button.mat-mini-fab {
+        background-color: transparent;
+        color: $dark-grey;
+        box-shadow: none;
+        margin-top: -0.5rem;
+      }
+    }
+  }
+
+  mat-card-subtitle {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    min-height: 60px;
+
+    > .value {
+      text-align: start;
+      margin-top: 0.5rem;
+
+      p {
+        margin-bottom: 0.5rem;
+        font-size: 18px;
+
+        color: $dark-grey;
+        font-weight: bold;
+      }
+
+      h6 {
+        color: $green;
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+
+    > .percent {
+      border-radius: 50%;
+      width: 65px;
+      height: 65px;
+      padding-top: 18px;
+      border: 5px double rgba($grey, 0.5);
+      color: $blue;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    mat-progress-spinner {
+      height: 10rem;
+      width: 10rem;
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0.4rem 0.4rem 0rem 0.4rem;
+    justify-content: space-between;
+    flex-direction: row;
+
+    mat-icon {
+      width: 30px;
+      height: 30px;
+      color: $dark-grey;
+    }
+
+    .value {
+      align-items: center;
+      margin-bottom: 1px;
+      color: $blue;
+
+      &-dot {
+        height: 5px;
+        width: 5px;
+        padding: 5.5px;
+        margin-left: 5px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (max-width: 535px) {
+    width: 95vw;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}

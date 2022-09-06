@@ -166,4 +166,6 @@ export const Messages: any = {
 
   'auth/network-request-failed':
     'Existe uma instabilidade na conexão, verifique a rede e tente novamente.',
+
+  'not-found': 'Item não encontrado!',
 };

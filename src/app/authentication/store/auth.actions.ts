@@ -1,8 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
-import { LoginForm } from '@authM/login-form.model';
-import { SignUpForm } from '@authM/signup-form.model';
-import { User } from '@authM/user.model';
+import { LoginForm } from '@authMd/login-form.model';
+import { SignUpForm } from '@authMd/signup-form.model';
+import { User } from '@authMd/user.model';
 
 export enum AuthActions {
   SIGNUP = '[SignUp Page] User Signup',

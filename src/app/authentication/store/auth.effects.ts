@@ -5,6 +5,7 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+import { clearBillData, loadBills } from '@billsSt/bills.actions';
 import { Injectable, NgZone } from '@angular/core';
 import {
   SendEmailVerification,
@@ -13,21 +14,21 @@ import {
   UpdateIsLoggedStatus,
   UpdateProfile,
 } from './auth.actions';
-import { StartLoading, StopLoading } from '@sharedS/loading/loading.actions';
+import { StartLoading, StopLoading } from '@sharedSt/loading/loading.actions';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthActions } from './action-types';
 import { AuthenticationService } from '@authS/authentication.service';
-import { Messages } from '@app/shared/messages/firebase';
+import { Messages } from '@shared/messages/firebase';
 import { Router } from '@angular/router';
-import { SnackbarService } from '@app/shared/services/snackbar/snackbar.service';
+import { SnackbarService } from '@sharedS/snackbar/snackbar.service';
 import { Store } from '@ngrx/store';
-import { User } from '@authM/user.model';
 import { tap } from 'rxjs/operators';
+import { User } from '@authMd/user.model';
 
 @Injectable()
 export class AuthEffects {
-  login$ = createEffect(
+  public login$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.Login),
@@ -64,7 +65,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  signup$ = createEffect(
+  public signup$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.Signup),
@@ -97,7 +98,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  sendEmailVerification$ = createEffect(
+  public sendEmailVerification$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.SendEmailVerification),
@@ -116,7 +117,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  updateProfile$ = createEffect(
+  public updateProfile$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.UpdateProfile),
@@ -130,26 +131,25 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  setNewUserData$ = createEffect(
+  public setNewUserData$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.SetNewUserData),
         tap(async action => {
           const newUser = action.payload;
 
-          const userRef: AngularFirestoreDocument<User> = this.afs.doc(
-            `users/${newUser.uid}`
-          );
+          const userRef: AngularFirestoreDocument<{ user: User }> =
+            this.afs.doc(`users/${newUser.uid}`);
           this._store.dispatch(UpdateProfile({ payload: newUser }));
           this._store.dispatch(SetUserData({ payload: newUser }));
 
-          return userRef.set(newUser, { merge: true });
+          return userRef.set({ user: newUser }, { merge: true });
         })
       ),
     { dispatch: false }
   );
 
-  forgotPassword$ = createEffect(
+  public forgotPassword$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.ForgotPassword),
@@ -172,22 +172,22 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  logout$ = createEffect(
+  public logout$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.Logout),
         tap(async () => {
-          this._store.dispatch(StopLoading());
           await this.afAuth.signOut();
           this.router.navigateByUrl('/');
           this._store.dispatch(StopLoading());
           this._snackBarService.openSuccessSnackBar('Volte Sempre 😁');
+          this._store.dispatch(clearBillData());
         })
       ),
     { dispatch: false }
   );
 
-  loadUser$ = createEffect(
+  public loadUser$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.LoadUser),
@@ -205,6 +205,7 @@ export class AuthEffects {
                   emailVerified,
                 };
                 this._store.dispatch(SetUserData({ payload: loggedUser }));
+                this._store.dispatch(loadBills({ payload: uid }));
               }
             }
 

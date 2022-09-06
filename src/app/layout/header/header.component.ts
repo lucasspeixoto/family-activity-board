@@ -1,6 +1,12 @@
 import * as fromApp from '@app/app.state';
 
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { Logout } from '@authSt/auth.actions';
 import { Store } from '@ngrx/store';
@@ -9,10 +15,11 @@ import { Store } from '@ngrx/store';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  @Input() isMenuOpened!: boolean;
-  @Output() isShowSidebar = new EventEmitter<boolean>();
+  @Input() public isMenuOpened!: boolean;
+  @Output() public isShowSidebar = new EventEmitter<boolean>();
 
   constructor(private readonly _store: Store<fromApp.AppState>) {}
 

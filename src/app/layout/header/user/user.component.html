@@ -12,24 +12,35 @@
         >{{ user?.email }}</a
       >
     </div>
-    <button mat-menu-item class="user-menu__item-title">
-      <mat-icon class="user-menu-icon">person</mat-icon>Perfil
-    </button>
+
+    <div mat-menu-item>
+      <mat-icon>date_range</mat-icon>{{ today | date: 'dd/MM/yyyy - HH:mm' }}
+    </div>
+
+    <mat-divider></mat-divider>
+
     <button
       mat-menu-item
       class="user-menu__item-title"
-      [routerLink]="routes.BILLS">
+      [routerLink]="appRoutes.BILLS">
       <mat-icon class="user-menu-icon">event</mat-icon>Contas
     </button>
     <button
       mat-menu-item
       class="user-menu__item-title"
-      [routerLink]="routes.PLANS">
+      [routerLink]="appRoutes.PLANS">
       <mat-icon class="user-menu-icon">description</mat-icon>Planejamentos
     </button>
-    <button mat-menu-item class="user-menu__item-title">
-      <mat-icon class="user-menu-icon">directions_run</mat-icon>Atividades
+    <button
+      mat-menu-item
+      class="user-menu__item-title"
+      [routerLink]="appRoutes.PROFILE">
+      <mat-icon class="user-menu-icon">person</mat-icon>Perfil
     </button>
+    <button mat-menu-item class="user-menu__item-title">
+      <mat-icon class="user-menu-icon">dashboard</mat-icon>Relatórios
+    </button>
+
     <div class="sign-button-wrapper">
       <button class="sign-button" mat-flat-button (click)="signOutEmit()">
         Sair

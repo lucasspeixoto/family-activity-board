@@ -1,0 +1,25 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+
+.container {
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title {
+    color: $dark-grey;
+  }
+
+  &__content {
+    color: $grey;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+  }
+}

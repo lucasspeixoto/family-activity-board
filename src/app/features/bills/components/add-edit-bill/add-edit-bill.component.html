@@ -1,0 +1,86 @@
+<ng-container class="dialog-form" *ngIf="userId$ | async">
+  <h2 mat-dialog-title class="container__title">
+    {{ data.type === 'add' ? 'Nova Conta' : 'Atualizar Conta' }}
+  </h2>
+  <form class="container__form" id="form" [formGroup]="addNewBillForm">
+    <mat-form-field class="container__form-input" appearance="fill">
+      <mat-label>Título</mat-label>
+      <input matInput type="text" formControlName="title" required />
+      <mat-icon matSuffix>title</mat-icon>
+      <mat-error
+        ><app-custom-validation-message
+          controlName="title"></app-custom-validation-message>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="container__form-input" appearance="fill">
+      <mat-label>Responsável</mat-label>
+      <input matInput type="text" formControlName="owner" required />
+      <mat-icon matSuffix>person_add</mat-icon>
+      <mat-error
+        ><app-custom-validation-message
+          controlName="owner"></app-custom-validation-message>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="container__form-input" appearance="fill">
+      <mat-label>Valor</mat-label>
+      <span matPrefix>R$ &nbsp;</span>
+      <input type="number" matInput formControlName="value" />
+      <mat-icon matSuffix>attach_money</mat-icon>
+      <mat-error
+        ><app-custom-validation-message
+          controlName="value"></app-custom-validation-message>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="container__form-input" appearance="fill">
+      <mat-label>Tipo</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of typeOptions" [value]="type.value">{{
+          type.viewValue
+        }}</mat-option>
+      </mat-select>
+      <mat-error
+        ><app-custom-validation-message
+          controlName="type"></app-custom-validation-message>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      class="container__form-input"
+      color="accent"
+      appearance="fill">
+      <mat-label>Vencimento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker color="primary"></mat-datepicker>
+      <mat-error
+        ><app-custom-validation-message
+          controlName="date"></app-custom-validation-message>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="container__form-input">
+      <mat-radio-group aria-label="Gasto" formControlName="spent">
+        <mat-radio-button
+          *ngFor="let spent of spentOptions"
+          [value]="spent.value"
+          >{{ spent.viewValue }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+  </form>
+  <div class="container__actions">
+    <button mat-raised-button mat-dialog-close color="primary">Cancelar</button>
+    <button
+      mat-raised-button
+      color="warn"
+      [mat-dialog-close]="true"
+      (click)="updateBillHandler()"
+      [disabled]="addNewBillForm.invalid">
+      {{ data.type === 'add' ? 'Adicionar' : 'Salvar' }}
+    </button>
+  </div>
+</ng-container>

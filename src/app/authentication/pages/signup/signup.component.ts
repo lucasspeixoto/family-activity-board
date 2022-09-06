@@ -1,22 +1,23 @@
 import * as fromApp from '@app/app.state';
 
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { Signup } from '@app/authentication/store/auth.actions';
+import { FormBuilder } from '@angular/forms';
+import { Signup } from '@authSt/auth.actions';
+import { signUpForm } from '@constants/auth-forms';
 import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent {
   public readonly title = 'Cadastro';
   public hide = true;
 
-  public signupForm!: FormGroup;
-
+  public signupForm = this._formBuilder.group({ ...signUpForm });
   public readonly year = new Date().getFullYear();
 
   constructor(
@@ -24,32 +25,18 @@ export class SignupComponent implements OnInit {
     private readonly _store: Store<fromApp.AppState>
   ) {}
 
-  ngOnInit() {
-    this.buildForm();
-  }
-
-  private buildForm(): void {
-    this.signupForm = this._formBuilder.group({
-      name: ['Baby Yoda', [Validators.required, Validators.minLength(3)]],
-      email: [
-        'lspeixotodev@gmail.com',
-        [
-          Validators.required,
-          Validators.pattern(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/),
-        ],
-      ],
-      password: ['30101991', [Validators.required, Validators.minLength(6)]],
-    });
-  }
-
   public async handleSignup(): Promise<void> {
-    if (this.signupForm.invalid) return;
-
     const { name, email, password } = this.signupForm.value;
+
+    const user = {
+      name: name!,
+      email: email!,
+      password: password!,
+    };
 
     this._store.dispatch(
       Signup({
-        payload: { name, email, password },
+        payload: user,
       })
     );
   }

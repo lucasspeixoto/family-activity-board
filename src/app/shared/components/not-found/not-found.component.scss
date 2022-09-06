@@ -2,7 +2,7 @@
 @import 'src/styles/font';
 
 .not-found-page {
-  background-color: $blue;
+  background-color: rgba($blue, .5);
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -44,10 +44,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
       justify-content: center;
     }
 
     &-title {
+      width: 80%;
       font-size: 107px;
       font-weight: 500;
       color: $blue;
@@ -56,6 +58,7 @@
     }
 
     &-sub-title {
+      width: 80%;
       margin-top: 30px;
       font-size: $fs-normal;
       font-weight: 400;

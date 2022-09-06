@@ -4,9 +4,10 @@ import { Injectable, NgZone } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
-import { User } from '@authM/user.model';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { User } from '@authMd/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class AuthenticationService {
     public readonly ngZone: NgZone
   ) {}
 
-  public isAuth() {
+  public isAuth(): Observable<boolean> {
     return this.afAuth.authState.pipe(map(user => user != null));
   }
 
