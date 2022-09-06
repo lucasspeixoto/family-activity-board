@@ -1,23 +1,53 @@
-<button class="notification-button" mat-mini-fab [matMenuTriggerFor]="bell">
-  <mat-icon matBadge="4" matBadgeColor="warn" class="notification-button__icon"
-    >notifications_none</mat-icon
-  >
+<button
+  class="notification-button"
+  mat-mini-fab
+  *ngIf="
+    notificationsAmount$ | async as notificationsAmount;
+    else emptyNotification
+  "
+  [matMenuTriggerFor]="bell">
+  <mat-icon
+    [matBadge]="notificationsAmount"
+    matBadgeColor="warn"
+    class="notification-button__icon">
+    notifications_none
+  </mat-icon>
 </button>
+<ng-template #emptyNotification>
+  <button class="notification-button" mat-mini-fab [matMenuTriggerFor]="none">
+    <mat-icon matBadgeColor="warn" class="notification-button__icon">
+      notifications_none
+    </mat-icon>
+  </button>
+</ng-template>
+
 <mat-menu #bell="matMenu" xPosition="before" class="notification-menu">
-  <button mat-menu-item class="notification-menu__button">
-    <mat-icon class="notification-menu__icon_yellow">local_offer</mat-icon>Check
-    out this awesome ticket
-  </button>
-  <button mat-menu-item class="notification-menu__button">
-    <mat-icon class="notification-menu__icon_green">thumb_up</mat-icon>What is
-    the best way to get ...
-  </button>
-  <button mat-menu-item class="notification-menu__button">
-    <mat-icon class="notification-menu__icon_pink">notifications_none</mat-icon
-    >This is just a simple notification
-  </button>
-  <button mat-menu-item class="notification-menu__button">
-    <mat-icon class="notification-menu__icon_blue">local_grocery_store</mat-icon
-    >12 new orders has arrived today
-  </button>
+  <p class="notification-menu__title">Contas</p>
+
+  <ng-container *ngIf="billsNotifications$ | async as billsNotifications">
+    <ng-container
+      *ngFor="let billsDescription of billsNotifications.description">
+      <button
+        *ngIf="billsDescription.value > 0"
+        mat-menu-item
+        class="notification-menu__button">
+        <mat-icon [class]="billsDescription.class">{{
+          billsDescription.icon
+        }}</mat-icon>
+        {{ billsDescription.message }}
+      </button>
+    </ng-container>
+  </ng-container>
+  <!-- <mat-divider></mat-divider> -->
+</mat-menu>
+
+<mat-menu #none="matMenu" xPosition="before" class="notification-menu">
+  <ng-container>
+    <button mat-menu-item class="notification-menu__button">
+      <mat-icon class="notification-menu__icon_blue"
+        >notifications_none</mat-icon
+      >
+      Nenhuma Notificação
+    </button>
+  </ng-container>
 </mat-menu>

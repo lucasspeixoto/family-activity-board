@@ -1,6 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
+import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
 import { CustomValidationMessageComponent } from '@sharedC/custom-validation-message/custom-validation-message.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoadingComponent } from '../components/loading/loading.component';
@@ -24,6 +25,7 @@ const COMPONENTS = [
   CustomValidationMessageComponent,
   NotFoundComponent,
   LoadingComponent,
+  ConfirmationComponent,
 ];
 
 const DIRECTIVES = [UpElevationDirective];

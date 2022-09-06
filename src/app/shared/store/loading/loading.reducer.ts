@@ -28,4 +28,4 @@ const _loadingReducer = createReducer(
 export const loadingReducer = (
   state: LoadingState | undefined,
   action: Action
-) => _loadingReducer(state, action);
+): LoadingState => _loadingReducer(state, action);

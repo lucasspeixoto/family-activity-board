@@ -1,5 +1,5 @@
 <ng-container *ngIf="control && control?.invalid && control?.touched">
-  <ul style="margin-left: -1rem">
+  <ul>
     <li *ngIf="control.hasError('required')">Campo Obrigatório</li>
     <li *ngIf="control.hasError('email')">E-mail Inválido</li>
     <li *ngIf="control.hasError('minlength') && minLength">
@@ -11,5 +11,7 @@
     </li>
 
     <li *ngIf="control.hasError('pattern')">Padrão Inválido</li>
+
+    <li *ngIf="control.hasError('min')">Insira um valor válido</li>
   </ul>
 </ng-container>

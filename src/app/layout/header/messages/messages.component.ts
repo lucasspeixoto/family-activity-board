@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 interface Email {
   name: string;
   time: string;
@@ -9,6 +10,7 @@ interface Email {
   selector: 'app-messages',
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessagesComponent {
   public emails: Email[] = [

@@ -1,0 +1,45 @@
+<div class="bills">
+  <!-- Type -->
+  <mat-form-field appearance="fill">
+    <mat-label>Tipo</mat-label>
+    <mat-select (valueChange)="changeTypeValue($event)">
+      <mat-option>Nenhum</mat-option>
+      <mat-option *ngFor="let type of typeOptions" [value]="type.value">{{
+        type.viewValue
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Value -->
+  <mat-form-field appearance="fill">
+    <mat-label>Faixa</mat-label>
+    <mat-select (valueChange)="changeRangeValue($event)">
+      <mat-option>Nenhum</mat-option>
+      <mat-option *ngFor="let range of rangeOptions" [value]="range.value">{{
+        range.viewValue
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Status -->
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select (valueChange)="changeStatusValue($event)">
+      <mat-option>Nenhum</mat-option>
+      <mat-option *ngFor="let status of statusOptions" [value]="status.value">{{
+        status.viewValue
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Gasto -->
+  <mat-form-field appearance="fill">
+    <mat-label>Gasto</mat-label>
+    <mat-select (valueChange)="changeSpentValue($event)">
+      <mat-option>Nenhum</mat-option>
+      <mat-option *ngFor="let spent of spentOptions" [value]="spent.value">{{
+        spent.viewValue
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

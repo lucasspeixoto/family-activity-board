@@ -13,6 +13,8 @@
       "@app/*": ["src/app/*"],
 
       "@config/*": ["src/app/config/*"],
+      "@constants/*": ["src/app/config/constants/*"],
+      "@routes/*": ["src/app/config/routes/*"],
 
       "@layout/*": ["src/app/layout/*"],
 
@@ -21,12 +23,20 @@
       "@sharedC/*": ["src/app/shared/components/*"],
       "@sharedD/*": ["src/app/shared/directives/*"],
       "@sharedP/*": ["src/app/shared/pipes/*"],
-      "@sharedS/*": ["src/app/shared/store/*"],
+      "@sharedS/*": ["src/app/shared/services/*"],
+      "@sharedSt/*": ["src/app/shared/store/*"],
+      "@sharedMd/*": ["src/app/shared/models/*"],
+      "@sharedH/*": ["src/app/shared/helpers/*"],
+      "@sharedMs/*": ["src/app/shared/messages/*"],
 
       "@features/*": ["src/app/features/*"],
 
       "@billsC/*": ["src/app/features/bills/components/*"],
       "@billsP/*": ["src/app/features/bills/pages/*"],
+      "@billsMd/*": ["src/app/features/bills/models/*"],
+      "@billsS/*": ["src/app/features/bills/services/*"],
+      "@billsSt/*": ["src/app/features/bills/store/*"],
+      "@billsH/*": ["src/app/features/bills/helpers/*"],
 
       "@plansC/*": ["src/app/features/plans/components/*"],
       "@plansP/*": ["src/app/features/plans/pages/*"],
@@ -36,7 +46,7 @@
       "@authP/*": ["src/app/authentication/pages/*"],
       "@authS/*": ["src/app/authentication/services/*"],
       "@authSt/*": ["src/app/authentication/store/*"],
-      "@authM/*": ["src/app/authentication/models/*"]
+      "@authMd/*": ["src/app/authentication/models/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

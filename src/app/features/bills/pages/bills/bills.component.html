@@ -1,11 +1,19 @@
 <app-layout>
-  <mat-card-content class="typography-content">
-    <div class="typography-content__wrapper">
-      <mat-card class="typography-content__item-wrapper">
-        <mat-card-title>
-          <p>Contas</p>
-        </mat-card-title>
-      </mat-card>
+  <ng-container class="bills" *ngIf="bills$ | async; else loading">
+    <div class="bills__actions">
+      <button
+        mat-fab
+        aria-label="Incluir conta"
+        appUpElevation
+        (click)="addNewBillHandler()">
+        <mat-icon>add</mat-icon>
+      </button>
     </div>
-  </mat-card-content>
+
+    <app-bills-cards></app-bills-cards>
+  </ng-container>
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
 </app-layout>

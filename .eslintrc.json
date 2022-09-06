@@ -19,13 +19,32 @@
         "plugin:prettier/recommended"
       ],
       "rules": {
-        "@typescript-eslint/no-unused-vars": ["error"],
+        "@typescript-eslint/no-unused-vars": ["warn"],
         "@typescript-eslint/no-inferrable-types": ["warn"],
+        "@typescript-eslint/no-empty-function": ["warn"],
+        "@typescript-eslint/explicit-function-return-type": ["error"],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "accessors": "off",
+              "constructors": "off",
+              "methods": "explicit",
+              "properties": "explicit",
+              "parameterProperties": "explicit"
+            }
+          }
+        ],
+        "prefer-const": ["warn"],
+        "no-implicit-coercion": ["warn"],
+        "no-console": ["warn"],
+        "no-multi-spaces": ["warn"],
         "sort-imports": [
           "warn",
           {
-            "ignoreCase": false,
-            "ignoreDeclarationSort": false
+            "ignoreCase": true,
+            "ignoreDeclarationSort": true
           }
         ],
         "no-unused-vars": "off",

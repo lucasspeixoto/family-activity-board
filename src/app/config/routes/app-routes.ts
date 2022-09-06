@@ -1,6 +1,7 @@
-export enum routes {
+export enum appRoutes {
   BILLS = '/bills',
   PLANS = '/plans',
+  PROFILE = '/profile',
   DASHBOARD = '/dashboard',
   TYPOGRAPHY = '/typography',
   TABLES = '/tables',

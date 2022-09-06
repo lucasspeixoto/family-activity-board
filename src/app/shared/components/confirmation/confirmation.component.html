@@ -1,0 +1,22 @@
+<ng-container class="container" *ngIf="data">
+  <h4 mat-dialog-title class="container__title">{{ data.title }}</h4>
+  <div mat-dialog-content class="container__content">{{ data.subtitle }}</div>
+  <div mat-dialog-actions class="container__actions">
+    <button
+      mat-button
+      mat-dialog-close
+      class="container__cancel"
+      color="primary">
+      {{ data.cancelButtonTitle }}
+    </button>
+    <button
+      mat-button
+      mat-dialog-close
+      class="container__confirmation"
+      cdkFocusInitial
+      color="warn"
+      (click)="confirm()">
+      {{ data.confirmationButtonTitle }}
+    </button>
+  </div>
+</ng-container>

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   OnDestroy,
@@ -12,9 +13,10 @@ import { MediaMatcher } from '@angular/cdk/layout';
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent implements OnDestroy {
-  @ViewChild('sidenav') sidenav!: MatSidenav;
+  @ViewChild('sidenav') public sidenav!: MatSidenav;
   public isShowSidebar!: boolean;
   public mobileQuery: MediaQueryList;
   private mobileQueryListener!: () => void;
@@ -23,7 +25,7 @@ export class LayoutComponent implements OnDestroy {
 
   constructor(ChangeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 1024px)');
-    this.mobileQueryListener = () => ChangeDetectorRef.detectChanges();
+    this.mobileQueryListener = (): void => ChangeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener(this.eventType, this.mobileQueryListener);
 
     this.isShowSidebar = !this.mobileQuery.matches;
