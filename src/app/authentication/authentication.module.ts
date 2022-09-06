@@ -11,8 +11,8 @@ import { SnackbarService } from '@app/shared/services/snackbar/snackbar.service'
 
 const authRoutes = [
   { path: '', component: LoginComponent },
-  { path: 'cadastro', component: SignupComponent },
-  { path: 'lembrar-senha', component: ForgotPasswordComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'remember-password', component: ForgotPasswordComponent },
 ];
 
 @NgModule({
