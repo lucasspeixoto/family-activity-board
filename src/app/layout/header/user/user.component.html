@@ -22,38 +22,11 @@
     <button
       mat-menu-item
       class="user-menu__item-title"
-      *ngFor="let item of menuItems"
-      [routerLink]="item.routerLink">
-      <mat-icon class="user-menu-icon">{{ item.icon }}</mat-icon
-      >{{ item.label }}
+      *ngFor="let menuItem of menuItems"
+      [routerLink]="menuItem.routerLink">
+      <mat-icon class="user-menu-icon">{{ menuItem.icon }}</mat-icon
+      >{{ menuItem.label }}
     </button>
-    <!-- <button
-      mat-menu-item
-      class="user-menu__item-title"
-      [routerLink]="appRoutes.PLANS">
-      <mat-icon class="user-menu-icon">description</mat-icon>Planejamentos
-    </button>
-
-    <button
-      mat-menu-item
-      class="user-menu__item-title"
-      [routerLink]="appRoutes.TASKS">
-      <mat-icon class="user-menu-icon">assignment</mat-icon>Tarefas
-    </button>
-
-    <button
-      mat-menu-item
-      class="user-menu__item-title"
-      [routerLink]="appRoutes.REPORTS">
-      <mat-icon class="user-menu-icon">dashboard</mat-icon>Relatórios
-    </button>
-
-    <button
-      mat-menu-item
-      class="user-menu__item-title"
-      [routerLink]="appRoutes.PROFILE">
-      <mat-icon class="user-menu-icon">person</mat-icon>Perfil
-    </button> -->
 
     <div class="sign-button-wrapper">
       <button class="sign-button" mat-flat-button (click)="signOutEmit()">

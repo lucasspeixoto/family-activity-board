@@ -1,11 +1,11 @@
 <div class="sidebar">
   <mat-list>
     <mat-list-item
-      *ngFor="let item of menuItems"
-      [routerLink]="item.routerLink"
+      *ngFor="let menuItem of menuItems"
+      [routerLink]="menuItem.routerLink"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }">
-      <mat-icon>{{ item.icon }}</mat-icon> {{ item.label }}
+      <mat-icon>{{ menuItem.icon }}</mat-icon> {{ menuItem.label }}
     </mat-list-item>
   </mat-list>
 
