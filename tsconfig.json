@@ -18,6 +18,14 @@
 
       "@layout/*": ["src/app/layout/*"],
 
+      "@auth/*": ["src/app/authentication/*"],
+      "@authL/*": ["src/app/authentication/layout/*"],
+      "@authP/*": ["src/app/authentication/pages/*"],
+      "@authS/*": ["src/app/authentication/services/*"],
+      "@authSt/*": ["src/app/authentication/store/*"],
+      "@authMd/*": ["src/app/authentication/models/*"],
+      "@authG/*": ["src/app/authentication/guards/*"],
+
       "@shared/*": ["src/app/shared/*"],
       "@sharedM/*": ["src/app/shared/modules/*"],
       "@sharedC/*": ["src/app/shared/components/*"],
@@ -40,13 +48,31 @@
 
       "@plansC/*": ["src/app/features/plans/components/*"],
       "@plansP/*": ["src/app/features/plans/pages/*"],
+      "@plansMd/*": ["src/app/features/plans/models/*"],
+      "@plansS/*": ["src/app/features/plans/services/*"],
+      "@plansSt/*": ["src/app/features/plans/store/*"],
+      "@plansH/*": ["src/app/features/plans/helpers/*"],
 
-      "@auth/*": ["src/app/authentication/*"],
-      "@authL/*": ["src/app/authentication/layout/*"],
-      "@authP/*": ["src/app/authentication/pages/*"],
-      "@authS/*": ["src/app/authentication/services/*"],
-      "@authSt/*": ["src/app/authentication/store/*"],
-      "@authMd/*": ["src/app/authentication/models/*"]
+      "@tasksC/*": ["src/app/features/tasks/components/*"],
+      "@tasksP/*": ["src/app/features/tasks/pages/*"],
+      "@tasksMd/*": ["src/app/features/tasks/models/*"],
+      "@tasksS/*": ["src/app/features/tasks/services/*"],
+      "@tasksSt/*": ["src/app/features/tasks/store/*"],
+      "@tasksH/*": ["src/app/features/tasks/helpers/*"],
+
+      "@reportsC/*": ["src/app/features/reports/components/*"],
+      "@reportsP/*": ["src/app/features/reports/pages/*"],
+      "@reportsMd/*": ["src/app/features/reports/models/*"],
+      "@reportsS/*": ["src/app/features/reports/services/*"],
+      "@reportsSt/*": ["src/app/features/reports/store/*"],
+      "@reportsH/*": ["src/app/features/reports/helpers/*"],
+
+      "@profileC/*": ["src/app/features/profile/components/*"],
+      "@profileP/*": ["src/app/features/profile/pages/*"],
+      "@profileMd/*": ["src/app/features/profile/models/*"],
+      "@profileS/*": ["src/app/features/profile/services/*"],
+      "@profileSt/*": ["src/app/features/profile/store/*"],
+      "@profileH/*": ["src/app/features/profile/helpers/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

@@ -7,8 +7,8 @@ import {
   Output,
 } from '@angular/core';
 
-import { appRoutes } from '@routes/app-routes';
 import { getUser } from '@authSt/auth.selectors';
+import { menuItems } from '@constants/menu-routes';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -20,7 +20,8 @@ import { Store } from '@ngrx/store';
 export class UserComponent {
   @Output() public readonly signOut: EventEmitter<void> =
     new EventEmitter<void>();
-  public appRoutes: typeof appRoutes = appRoutes;
+
+  public readonly menuItems = menuItems;
 
   public readonly user$ = this._store.select(getUser);
 

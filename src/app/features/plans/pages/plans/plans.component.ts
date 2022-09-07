@@ -1,6 +1,6 @@
 import * as fromApp from '@app/app.state';
 
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -8,12 +8,8 @@ import { Store } from '@ngrx/store';
   selector: 'app-plans',
   templateUrl: './plans.component.html',
   styleUrls: ['./plans.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlansComponent implements OnInit {
+export class PlansComponent {
   constructor(private readonly _store: Store<fromApp.AppState>) {}
-
-  public ngOnInit(): void {
-    console.log('Planejamentos');
-    //this._store.dispatch(LoadUser());
-  }
 }

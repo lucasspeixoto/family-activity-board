@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthEffects } from '@authSt/auth.effects';
 import { AuthenticationModule } from '@auth/authentication.module';
-import { BillsEffects } from './features/bills/store/bills.effects';
+import { BillsEffects } from '@billsSt/bills.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
