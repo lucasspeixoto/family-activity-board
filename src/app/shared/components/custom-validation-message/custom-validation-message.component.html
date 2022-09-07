@@ -1,4 +1,4 @@
-<ng-container *ngIf="control && control?.invalid && control?.touched">
+<ng-container *ngIf="control && control?.invalid && control?.dirty">
   <ul>
     <li *ngIf="control.hasError('required')">Campo Obrigatório</li>
     <li *ngIf="control.hasError('email')">E-mail Inválido</li>

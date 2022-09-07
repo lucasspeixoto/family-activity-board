@@ -1,10 +1,9 @@
+import * as fromApp from '@app/app.state';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-interface Email {
-  name: string;
-  time: string;
-  message: string;
-}
+import { getMessages } from '@sharedSt/message/message.selectors';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-messages',
@@ -13,23 +12,7 @@ interface Email {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessagesComponent {
-  public emails: Email[] = [
-    { name: 'Jane Hew', time: '9:32', message: 'Hey! How is it going?' },
-    {
-      name: 'Lloyd Brown',
-      time: '9:18',
-      message: 'Check out my new Dashboard',
-    },
-    {
-      name: 'Mark Winstein',
-      time: '9:15',
-      message: 'I want rearrange the appointment',
-    },
-    {
-      name: 'Liana Dutti',
-      time: '9:09',
-      message: 'Good news from sale department',
-    },
-  ];
-  public colors: string[] = ['yellow', 'green', 'blue', 'ping'];
+  public readonly messages$ = this._store.select(getMessages);
+
+  constructor(private readonly _store: Store<fromApp.AppState>) {}
 }

@@ -177,6 +177,9 @@ const _billsReducer = createReducer(
   })
 );
 
-export const billsReducer = (state: BillsState | undefined, action: Action) => {
+export const billsReducer = (
+  state: BillsState | undefined,
+  action: Action
+): BillsState => {
   return _billsReducer(state, action);
 };

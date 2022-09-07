@@ -1,4 +1,4 @@
-import { appRoutes } from '../routes/app-routes';
+import { appRoutes } from '@config/routes/app-routes';
 import { MenuItem } from '@sharedMd/menu-item.model';
 
 export const menuItems: MenuItem[] = [
@@ -13,5 +13,10 @@ export const menuItems: MenuItem[] = [
     routerLink: appRoutes.REPORTS,
     icon: 'dashboard',
     label: 'Relatórios',
+  },
+  {
+    routerLink: appRoutes.PROFILE,
+    icon: 'person',
+    label: 'Meu Perfil',
   },
 ];
