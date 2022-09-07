@@ -22,10 +22,12 @@
     <button
       mat-menu-item
       class="user-menu__item-title"
-      [routerLink]="appRoutes.BILLS">
-      <mat-icon class="user-menu-icon">event</mat-icon>Contas
+      *ngFor="let item of menuItems"
+      [routerLink]="item.routerLink">
+      <mat-icon class="user-menu-icon">{{ item.icon }}</mat-icon
+      >{{ item.label }}
     </button>
-    <button
+    <!-- <button
       mat-menu-item
       class="user-menu__item-title"
       [routerLink]="appRoutes.PLANS">
@@ -51,7 +53,7 @@
       class="user-menu__item-title"
       [routerLink]="appRoutes.PROFILE">
       <mat-icon class="user-menu-icon">person</mat-icon>Perfil
-    </button>
+    </button> -->
 
     <div class="sign-button-wrapper">
       <button class="sign-button" mat-flat-button (click)="signOutEmit()">
