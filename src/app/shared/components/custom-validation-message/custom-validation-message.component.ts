@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  Optional,
-} from '@angular/core';
+import { Component, Input, Optional } from '@angular/core';
 import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -16,7 +11,6 @@ import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomValidationMessageComponent {
   @Input()
