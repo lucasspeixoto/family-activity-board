@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { appRoutes } from '@routes/app-routes';
+import { menuItems } from '@constants/menu-routes';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,5 +9,5 @@ import { appRoutes } from '@routes/app-routes';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
-  public appRoutes: typeof appRoutes = appRoutes;
+  public readonly menuItems = menuItems;
 }

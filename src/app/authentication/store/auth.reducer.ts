@@ -49,5 +49,7 @@ const _authReducer = createReducer(
   })
 );
 
-export const authReducer = (state: AuthState | undefined, action: Action) =>
-  _authReducer(state, action);
+export const authReducer = (
+  state: AuthState | undefined,
+  action: Action
+): AuthState => _authReducer(state, action);
