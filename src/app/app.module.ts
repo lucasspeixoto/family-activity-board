@@ -32,6 +32,7 @@ import { environment } from '@envs/environment';
 import { LayoutModule } from './layout/layout.module';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from '@sharedM/material.module';
+import { MessageEffects } from './shared/store/message/message.effects';
 import { NgModule } from '@angular/core';
 import { reducers } from './app.state';
 import { RouterModule } from '@angular/router';
@@ -72,7 +73,7 @@ const STORE = [
     maxAge: 25,
     logOnly: environment.production,
   }),
-  EffectsModule.forRoot([AuthEffects, BillsEffects]),
+  EffectsModule.forRoot([AuthEffects, BillsEffects, MessageEffects]),
 ];
 
 const PROVIDERS = [

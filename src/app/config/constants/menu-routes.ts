@@ -14,4 +14,9 @@ export const menuItems: MenuItem[] = [
     icon: 'dashboard',
     label: 'Relatórios',
   },
+  {
+    routerLink: appRoutes.PROFILE,
+    icon: 'person',
+    label: 'Meu Perfil',
+  },
 ];
