@@ -2,12 +2,12 @@ import * as fromApp from '@app/app.state';
 import * as MessageActions from '@sharedSt/message/message.actions';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, tap } from 'rxjs/operators';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Injectable } from '@angular/core';
-import { Message } from '@app/shared/models/message.model';
+import { Message } from '@sharedMd/message.model';
 import { Store } from '@ngrx/store';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class MessageEffects {
@@ -19,25 +19,12 @@ export class MessageEffects {
           this.afs
             .collection<Message>(`messages`)
             .valueChanges()
-            /* .pipe(
-              map(action =>
-                action.map(actionData => {
-                  const messageData = actionData.payload.doc.data();
-                  const messageId = actionData.payload.doc.id;
-                  console.log(messageData);
-                  const message = {
-                    ...messageData,
-                    messageId,
-                  };
-                  return messageData;
-                })
-              )
-            ) */
-            .subscribe(messages => {
-              console.log(messages);
-              this._store.dispatch(
-                MessageActions.loadMessagesSuccess({ payload: messages })
-              );
+            .subscribe({
+              next: messages => {
+                this._store.dispatch(
+                  MessageActions.loadMessagesSuccess({ payload: messages })
+                );
+              },
             });
         })
       ),
