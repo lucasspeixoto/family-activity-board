@@ -1,5 +1,9 @@
 <ng-container *ngIf="messages$ | async as messages">
-  <button class="message-button" mat-mini-fab [matMenuTriggerFor]="email">
+  <button
+    *ngIf="messages.length > 0; else emptyMessage"
+    class="message-button"
+    mat-mini-fab
+    [matMenuTriggerFor]="email">
     <mat-icon
       [matBadge]="messages.length"
       matBadgeColor="accent"
@@ -7,11 +11,25 @@
       >mail_outline</mat-icon
     >
   </button>
+  <ng-template #emptyMessage>
+    <button class="message-button" mat-mini-fab [matMenuTriggerFor]="none">
+      <mat-icon matBadgeColor="accent" class="message-button__icon"
+        >mail_outline</mat-icon
+      >
+    </button>
+  </ng-template>
   <mat-menu #email="matMenu" xPosition="before">
-    <div class="message-menu-header">
+    <div *ngIf="messages.length > 1" class="message-menu-header">
       <h4 class="message-menu-header__title">Mensagens</h4>
       <p class="message-menu-header__subtitle">
         {{ messages.length }} Novas Mensagens
+      </p>
+    </div>
+
+    <div *ngIf="messages.length === 1" class="message-menu-header">
+      <h4 class="message-menu-header__title">Mensagem</h4>
+      <p class="message-menu-header__subtitle">
+        {{ messages.length }} Nova Mensagem
       </p>
     </div>
 
@@ -39,5 +57,11 @@
         <mat-icon class="show-message-button__icon">zoom_in</mat-icon>
       </button>
     </div> -->
+  </mat-menu>
+
+  <mat-menu #none="matMenu" xPosition="before">
+    <div class="message-menu-header">
+      <h4 class="message-menu-header__title">Nenhuma Mensagem</h4>
+    </div>
   </mat-menu>
 </ng-container>
