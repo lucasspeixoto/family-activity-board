@@ -15,6 +15,7 @@ export enum AuthActions {
   LOGIN = '[Login Page] User Login',
   FORGOT_PASSWORD = '[Forgot Password Page] Send user E-mail for change password',
   LOAD_USER = '[App Component] Load logged user',
+  LOAD_USER_SUCCESS = '[App Component] Load logged user Success',
 }
 
 export const Login = createAction(
@@ -59,3 +60,5 @@ export const ForgotPassword = createAction(
 );
 
 export const LoadUser = createAction(AuthActions.LOAD_USER);
+
+export const LoadUserSuccess = createAction(AuthActions.LOAD_USER_SUCCESS);

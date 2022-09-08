@@ -6,9 +6,16 @@
   justify-content: space-around;
   gap: 1rem;
 
+  ::ng-deep {
+    .mat-form-field-infix {
+      width: 90px;
+    }
+  }
+
   @media (max-width: 470px) {
     justify-content: center;
     width: auto;
     gap: 1rem;
   }
+
 }

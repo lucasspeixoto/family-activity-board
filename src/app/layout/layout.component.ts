@@ -1,13 +1,19 @@
+import * as fromApp from '@app/app.state';
+
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   OnDestroy,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 
+import { getUser } from '@authSt/auth.selectors';
+import { LoadUser } from '@authSt/auth.actions';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-layout',
@@ -15,17 +21,29 @@ import { MediaMatcher } from '@angular/cdk/layout';
   styleUrls: ['./layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutComponent implements OnDestroy {
-  @ViewChild('sidenav') public sidenav!: MatSidenav;
+export class LayoutComponent implements OnInit, OnDestroy {
+  @ViewChild('sidenav') public readonly sidenav!: MatSidenav;
+
+  public readonly user$ = this._store.select(getUser);
+
   public isShowSidebar!: boolean;
-  public mobileQuery: MediaQueryList;
+  public mobileQuery!: MediaQueryList;
   private mobileQueryListener!: () => void;
 
-  public eventType = 'change';
+  public readonly eventType = 'change';
 
-  constructor(ChangeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 1024px)');
-    this.mobileQueryListener = (): void => ChangeDetectorRef.detectChanges();
+  constructor(
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly media: MediaMatcher,
+    private readonly _store: Store<fromApp.AppState>
+  ) {}
+
+  public ngOnInit(): void {
+    this._store.dispatch(LoadUser());
+
+    this.mobileQuery = this.media.matchMedia('(max-width: 1024px)');
+    this.mobileQueryListener = (): void =>
+      this.changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener(this.eventType, this.mobileQueryListener);
 
     this.isShowSidebar = !this.mobileQuery.matches;

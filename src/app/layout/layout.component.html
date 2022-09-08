@@ -1,4 +1,4 @@
-<div class="container">
+<ng-container class="container" *ngIf="user$ | async">
   <app-header
     (isShowSidebar)="toggleMenu($event)"
     [isMenuOpened]="isShowSidebar">
@@ -17,4 +17,4 @@
       <ng-content></ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div>
+</ng-container>

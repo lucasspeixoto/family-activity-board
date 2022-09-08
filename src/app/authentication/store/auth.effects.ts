@@ -6,7 +6,6 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { clearBillData, loadBills } from '@billsSt/bills.actions';
-import { Injectable, NgZone } from '@angular/core';
 import {
   SendEmailVerification,
   SetNewUserData,
@@ -19,6 +18,7 @@ import { StartLoading, StopLoading } from '@sharedSt/loading/loading.actions';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthActions } from './action-types';
 import { AuthenticationService } from '@authS/authentication.service';
+import { Injectable } from '@angular/core';
 import { Messages } from '@shared/messages/firebase';
 import { Router } from '@angular/router';
 import { SnackbarService } from '@sharedS/snackbar/snackbar.service';
@@ -177,11 +177,13 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.Logout),
         tap(async () => {
-          await this.afAuth.signOut();
-          this.router.navigateByUrl('/');
-          this._store.dispatch(StopLoading());
-          this._snackBarService.openSuccessSnackBar('Volte Sempre 😁');
-          this._store.dispatch(clearBillData());
+          this._store.dispatch(StartLoading());
+          await this.afAuth.signOut().then(() => {
+            this.router.navigateByUrl('/');
+            this._store.dispatch(StopLoading());
+            this._snackBarService.openSuccessSnackBar('Volte Sempre 😁');
+            this._store.dispatch(clearBillData());
+          });
         })
       ),
     { dispatch: false }
@@ -196,17 +198,16 @@ export class AuthEffects {
             if (user) {
               const { email, photoURL, uid, displayName, emailVerified } =
                 user as User;
-              if (email && uid && displayName) {
-                const loggedUser = {
-                  email,
-                  photoURL,
-                  uid,
-                  displayName,
-                  emailVerified,
-                };
-                this._store.dispatch(SetUserData({ payload: loggedUser }));
-                this._store.dispatch(loadBills({ payload: uid }));
-              }
+
+              const loggedUser = {
+                email,
+                photoURL,
+                uid,
+                displayName,
+                emailVerified,
+              };
+              this._store.dispatch(SetUserData({ payload: loggedUser }));
+              this._store.dispatch(loadBills({ payload: uid }));
             }
 
             const isLogged = user !== null ? true : false;
@@ -222,7 +223,6 @@ export class AuthEffects {
     public readonly afs: AngularFirestore,
     public readonly afAuth: AngularFireAuth,
     public readonly router: Router,
-    public readonly ngZone: NgZone,
     public readonly _authService: AuthenticationService,
     private readonly _store: Store<fromApp.AppState>,
     private readonly _snackBarService: SnackbarService

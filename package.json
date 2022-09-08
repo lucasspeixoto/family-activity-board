@@ -12,6 +12,10 @@
     "lint": "npx eslint 'src/**/*.{html,ts}' --quiet --fix",
     "format": "npx prettier 'src/**/*.{html,ts}' --write"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.0.0",
