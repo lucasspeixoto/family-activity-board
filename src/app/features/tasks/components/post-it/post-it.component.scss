@@ -2,8 +2,8 @@
 @import 'src/styles/variables';
 @import 'src/styles/font';
 
-
 .base {
+  margin: .5rem 0rem 0rem .5rem;
   width: 200px;
   position: relative;
   cursor: move;
@@ -46,18 +46,16 @@
   clip-path: url(#stickyClip);
 
   &__delete {
-
     text-align: end;
 
     >.mat-icon {
       cursor: pointer;
     }
-
   }
 
   &__text {
     font-size: 1.2rem;
-    text-align: start;
+    text-align: center;
     word-wrap: break-word;
   }
 
@@ -74,8 +72,6 @@
       font-style: italic;
     }
   }
-
-
 }
 
 .yellow {
@@ -96,4 +92,20 @@
 
 .green {
   background: $postit-green;
+}
+
+.orange {
+  background: $postit-orange;
+}
+
+.gold {
+  background: $postit-gold;
+}
+
+.red {
+  background: $postit-red;
+}
+
+.white {
+  background: $postit-white;
 }
