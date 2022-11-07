@@ -26,11 +26,9 @@ $angular-material-admin-accent: mat-palette($mat-pink, A200, A100, A400);
 $angular-material-admin-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$angular-material-admin-theme: mat-light-theme(
-  $angular-material-admin-primary,
-  $angular-material-admin-accent,
-  $angular-material-admin-warn
-);
+$angular-material-admin-theme: mat-light-theme($angular-material-admin-primary,
+    $angular-material-admin-accent,
+    $angular-material-admin-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -52,8 +50,7 @@ $ama-yellow: (
   A200: $yellow,
   A400: $yellow,
   A700: $yellow,
-  contrast: (
-    50: $dark-primary-text,
+  contrast: (50: $dark-primary-text,
     100: $dark-primary-text,
     200: $dark-primary-text,
     300: $dark-primary-text,
@@ -81,8 +78,7 @@ $ama-pink: (
   700: $pink,
   800: $pink,
   900: $pink,
-  contrast: (
-    50: $dark-primary-text,
+  contrast: (50: $dark-primary-text,
     100: $dark-primary-text,
     200: $dark-primary-text,
     300: $dark-primary-text,
@@ -114,8 +110,7 @@ $ama-blue: (
   A200: $blue,
   A400: $blue,
   A700: $blue,
-  contrast: (
-    50: $dark-primary-text,
+  contrast: (50: $dark-primary-text,
     100: $dark-primary-text,
     200: $dark-primary-text,
     300: $dark-primary-text,
@@ -335,13 +330,16 @@ mat-tab-body div.mat-tab-body-content {
   box-shadow: 0 0 12px $light-grey;
 }
 
-.mat-icon {
+/* .mat-icon {
   padding-right: 4px;
   padding-bottom: 2px;
-}
-
+} */
 .material-icons {
   font-size: 28px;
+}
+
+button.mat-icon-button {
+  padding: 0px 3px 4px 0px;
 }
 
 button.mat-mini-fab .mat-button-wrapper {
@@ -389,23 +387,29 @@ div.apexcharts-xaxistooltip-bottom:after {
   width: 8px;
   height: 3px;
 }
+
 ::-webkit-scrollbar-button {
   display: none;
 }
+
 ::-webkit-scrollbar-track {
   background-color: $scrollbar-track-color;
 }
+
 ::-webkit-scrollbar-track-piece {
   background-color: $scrollbar-track-piece-color;
 }
+
 ::-webkit-scrollbar-thumb {
   height: 50px;
   background-color: $scrollbar-thumb-color;
   border-radius: 36px;
 }
+
 ::-webkit-scrollbar-corner {
   background-color: $scrollbar-corner-color;
 }
+
 ::-webkit-resizer {
   background-color: $dark-grey;
 }

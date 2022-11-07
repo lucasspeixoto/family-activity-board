@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@sharedM/shared.module';
 import { TasksComponent } from './pages/tasks/tasks.component';
+import { PostItComponent } from './components/post-it/post-it.component';
 
 const tasksRoutes = [{ path: '', component: TasksComponent }];
 
@@ -16,6 +17,6 @@ const tasksRoutes = [{ path: '', component: TasksComponent }];
     LayoutModule,
     RouterModule.forChild(tasksRoutes),
   ],
-  declarations: [TasksComponent],
+  declarations: [TasksComponent, PostItComponent],
 })
 export class TasksModule {}
