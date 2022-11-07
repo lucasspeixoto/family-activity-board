@@ -6,8 +6,18 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '@sharedM/shared.module';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { PostItComponent } from './components/post-it/post-it.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { EffectsModule } from '@ngrx/effects';
+import { TasksEffects } from './store/tasks.effects';
 
-const tasksRoutes = [{ path: '', component: TasksComponent }];
+const tasksRoutes = [
+  {
+    path: '',
+    component: TasksComponent,
+  },
+];
+
+const COMPONENTS = [TasksComponent, PostItComponent, AddTaskComponent];
 
 @NgModule({
   imports: [
@@ -16,7 +26,8 @@ const tasksRoutes = [{ path: '', component: TasksComponent }];
     SharedModule,
     LayoutModule,
     RouterModule.forChild(tasksRoutes),
+    EffectsModule.forFeature([TasksEffects]),
   ],
-  declarations: [TasksComponent, PostItComponent],
+  declarations: [...COMPONENTS],
 })
 export class TasksModule {}

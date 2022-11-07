@@ -16,4 +16,8 @@ export class PostItComponent {
 
   @Input()
   public color!: Colors;
+
+  public handleDeleteTask(): void {
+    alert('Delete');
+  }
 }

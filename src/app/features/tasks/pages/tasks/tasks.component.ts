@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTaskComponent } from '@tasksC/add-task/add-task.component';
 
 @Component({
   selector: 'app-tasks',
@@ -6,4 +8,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./tasks.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TasksComponent {}
+export class TasksComponent {
+  constructor(public readonly dialog: MatDialog) {}
+
+  public handleAddTask(): void {
+    this.dialog.open(AddTaskComponent, {
+      minWidth: '45%',
+    });
+  }
+}

@@ -28,7 +28,7 @@
 
         <div class="sticky-content__footer">
           <span class="sticky-content__footer-date">{{ date }}</span>
-          <button mat-icon-button>
+          <button mat-icon-button (click)="handleDeleteTask()">
             <mat-icon>delete_forever</mat-icon>
           </button>
         </div>
