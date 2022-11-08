@@ -4,4 +4,4 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 const getTasksState = createFeatureSelector<fromTasks.TasksState>('tasks');
 
-export const getBills = createSelector(getTasksState, state => state.tasks);
+export const getTasks = createSelector(getTasksState, state => state.tasks);

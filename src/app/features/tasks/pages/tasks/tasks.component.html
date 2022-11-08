@@ -1,54 +1,33 @@
 <app-layout>
-  <div class="tasks">
-    <div class="tasks__actions">
-      <button
-        mat-fab
-        aria-label="Incluir Tarefa"
-        appUpElevation
-        (click)="handleAddTask()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
+  <ng-container *ngIf="user$ | async as user">
+    <ng-container *ngIf="tasks$ | async as tasks; else loading">
+      <div class="tasks">
+        <div class="tasks__actions">
+          <button
+            mat-fab
+            aria-label="Incluir Tarefa"
+            appUpElevation
+            (click)="handleAddTask()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
 
-    <div class="tasks__postits">
-      <app-post-it
-        [color]="1"
-        [text]="'Comprar Teclado'"
-        [date]="'04/11/2022'"></app-post-it>
+        <div class="tasks__postits" *ngIf="tasks.length > 0">
+          <app-post-it
+            *ngFor="let task of tasks"
+            [user]="user"
+            [task]="task"></app-post-it>
+        </div>
 
-      <app-post-it
-        [color]="2"
-        [text]="'Verificar Rodinha da cadeira'"
-        [date]="'03/11/2022'"></app-post-it>
+        <div class="tasks__empty" *ngIf="tasks.length === 0">
+          <img src="assets/images/no-data.svg" width="50%" height="50%" />
+          <h3>Nenhuma tarefa ainda. Registre uma para começar!</h3>
+        </div>
+      </div>
+    </ng-container>
 
-      <app-post-it
-        [color]="3"
-        [text]="'Task...'"
-        [date]="'06/11/2022'"></app-post-it>
-      <app-post-it
-        [color]="4"
-        [text]="'Task...'"
-        [date]="'07/11/2022'"></app-post-it>
-      <app-post-it
-        [color]="5"
-        [text]="'Task...'"
-        [date]="'08/11/2022'"></app-post-it>
-      <app-post-it
-        [color]="6"
-        [text]="'Task...'"
-        [date]="'09/11/2022'"></app-post-it>
-      <app-post-it
-        [color]="7"
-        [text]="'Task...'"
-        [date]="'10/11/2022'"></app-post-it>
-      <app-post-it
-        [color]="8"
-        [text]="'Task...'"
-        [date]="'11/11/2022'"></app-post-it>
-      <app-post-it
-        [color]="9"
-        [text]="'Task...'"
-        [date]="'12/11/2022'"></app-post-it>
-    </div>
-  </div>
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+  </ng-container>
 </app-layout>

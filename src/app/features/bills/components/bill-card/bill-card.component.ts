@@ -17,9 +17,7 @@ import { DialogService } from '@sharedS/dialog/dialog.service';
 import { first } from 'rxjs/operators';
 import { getDateStatus } from '@sharedH/date.helper';
 import { getTotalBillAmount } from '@billsSt/bills.selectors';
-import { getUser } from '@authSt/auth.selectors';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
 import { User } from '@authMd/user.model';
 
 @Component({
@@ -29,6 +27,9 @@ import { User } from '@authMd/user.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BillCardComponent implements OnInit {
+  public readonly deleteTitle = 'Excluir Tarefa';
+  public readonly deleteSubtitle = 'Deseja realmente excluir esta tarefa ?';
+
   public readonly billTypeIcons: Record<number, string> = {
     1: 'account_balance',
     2: 'credit_card',
@@ -45,10 +46,8 @@ export class BillCardComponent implements OnInit {
   public billsAmount$ = this._store.select(getTotalBillAmount);
 
   //* Dados de usuário
+  @Input()
   public user!: User;
-  public readonly userId$ = this._store
-    .select(getUser)
-    .pipe(tap(user => (this.user = user!)));
 
   constructor(
     private readonly _store: Store<fromApp.AppState>,
@@ -71,7 +70,11 @@ export class BillCardComponent implements OnInit {
       width: '350px',
       enterAnimationDuration,
       exitAnimationDuration,
-      data: this.dialogService.getDeleteDialogData(this.user.uid!),
+      data: this.dialogService.getDeleteDialogData(
+        this.user.uid!,
+        this.deleteTitle,
+        this.deleteSubtitle
+      ),
     });
 
     this.dialogRef.componentInstance.confirmClicked

@@ -3,10 +3,11 @@
 @import 'src/styles/font';
 
 .bills {
-  > * {
+
+  >* {
     width: 100%;
   }
-  padding: 1rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,121 +15,61 @@
   &__actions {
     display: flex;
     justify-content: flex-end;
-    margin: 1rem 0rem 2rem 0rem;
+    margin: 1rem 0rem 1rem 0rem;
     gap: 1rem;
 
-    > button {
+    >button {
       margin-right: 2rem;
       background-color: $green;
     }
   }
-}
 
-.bills-content {
-  &__wrapper {
+  &__cards {
     display: flex;
-    padding: 0 8px;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 2rem;
 
-    @media (max-width: $small) {
-      flex-wrap: wrap;
+    &-filters {
+      width: 100%;
+      gap: 1rem;
+
+      @media (max-width: 470px) {
+        width: auto;
+        gap: 1rem;
+      }
     }
-  }
 
-  &__actions {
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-  }
+    &-card {
+      width: 30rem;
+      height: 25rem;
+      background-color: $white;
+      box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px #b2b2b21a,
+        0 1px 8px 0 #9a9a9a1a;
+      border-radius: $card-border-radius;
 
-  &__item-wrapper {
-    box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px #b2b2b21a,
-      0 1px 8px 0 #9a9a9a1a;
-    width: 100%;
-    margin: 16px;
-  }
-
-  &__headings,
-  &__colors,
-  &__settings,
-  &__size {
-    margin-top: 8px;
-    border: 1px dashed $blue;
-    padding: 32px 16px;
-
-    h1 {
-      @media (max-width: $small) {
-        line-height: 46px;
+      &:hover {
+        transform: scale(1.02);
       }
     }
   }
 
-  &__colors {
-    &_blue {
-      color: $blue;
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    >h3 {
+      margin-top: .1rem;
+      color: $grey;
     }
 
-    &_green {
-      color: $green;
-    }
-
-    &_pink {
-      color: $pink;
-    }
-
-    &_yellow {
-      color: $yellow;
-    }
-
-    &_light-blue {
-      color: $light-blue;
-    }
-
-    &_violet {
-      color: $violet;
+    @media (max-width: 460px) {
+      >img {
+        width: 90vw;
+      }
     }
   }
-}
-
-.fw-light {
-  font-weight: $fw-lighter;
-}
-
-.fw-medium {
-  font-weight: $fw-normal;
-}
-
-.fw-bold {
-  font-weight: $fw-bold;
-}
-
-.font-uppercase {
-  text-transform: uppercase;
-}
-
-.font-lowercase {
-  text-transform: lowercase;
-}
-
-.fst-italic {
-  font-style: italic;
-}
-
-.fs-sm {
-  font-size: $fs-xs;
-}
-
-.fs-regular {
-  font-size: $fs-small;
-}
-
-.fs-md {
-  font-size: $fs-medium;
-}
-
-.fs-xl {
-  font-size: $fs-xl;
-}
-
-.fs-xxl {
-  font-size: $fs-xxxl;
 }

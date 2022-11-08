@@ -1,6 +1,7 @@
 @import 'src/styles/colors';
 @import 'src/styles/variables';
 @import 'src/styles/font';
+@import 'src/styles/classes';
 
 .base {
   margin: .5rem 0rem 0rem .5rem;
@@ -72,40 +73,4 @@
       font-style: italic;
     }
   }
-}
-
-.yellow {
-  background: $postit-yellow;
-}
-
-.blue {
-  background: $postit-blue;
-}
-
-.pink {
-  background: $postit-pink;
-}
-
-.purple {
-  background: $postit-purple;
-}
-
-.green {
-  background: $postit-green;
-}
-
-.orange {
-  background: $postit-orange;
-}
-
-.gold {
-  background: $postit-gold;
-}
-
-.red {
-  background: $postit-red;
-}
-
-.white {
-  background: $postit-white;
 }
