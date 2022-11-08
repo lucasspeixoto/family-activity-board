@@ -25,8 +25,8 @@ export class PostItComponent {
   public task!: Task;
 
   constructor(
-    public readonly _dialog: MatDialog,
-    public dialogRef: MatDialogRef<ConfirmationComponent>,
+    private readonly _dialog: MatDialog,
+    private _dialogRef: MatDialogRef<ConfirmationComponent>,
     private readonly dialogService: DialogService,
     private readonly _taskService: TaskService
   ) {}
@@ -35,7 +35,7 @@ export class PostItComponent {
     enterAnimationDuration: string,
     exitAnimationDuration: string
   ): void {
-    this.dialogRef = this._dialog.open(ConfirmationComponent, {
+    this._dialogRef = this._dialog.open(ConfirmationComponent, {
       width: '350px',
       enterAnimationDuration,
       exitAnimationDuration,
@@ -46,7 +46,7 @@ export class PostItComponent {
       ),
     });
 
-    this.dialogRef.componentInstance.confirmClicked
+    this._dialogRef.componentInstance.confirmClicked
       .pipe(first())
       .subscribe(() => {
         this._taskService.deleteTaskHandler(this.user.uid!, this.task.taskId!);

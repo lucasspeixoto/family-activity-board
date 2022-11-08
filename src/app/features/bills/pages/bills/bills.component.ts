@@ -25,12 +25,12 @@ export class BillsComponent {
     this._store.select(getFilteredBills);
 
   constructor(
-    public readonly dialog: MatDialog,
+    private readonly _dialog: MatDialog,
     private readonly _store: Store<fromApp.AppState>
   ) {}
 
   public addNewBillHandler(): void {
-    this.dialog.open(AddEditBillComponent, {
+    this._dialog.open(AddEditBillComponent, {
       minWidth: '45%',
       data: {
         type: 'add',

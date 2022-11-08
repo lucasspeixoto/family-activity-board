@@ -1,12 +1,12 @@
 import * as fromApp from '@app/app.state';
 
-import { Task } from '../models/task.model';
+import { Task } from '@tasksMd/task.model';
 
 import { DateService } from '@sharedS/date/date.service';
 
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { addTask, deleteTask } from '../store/tasks.actions';
+import { addTask, deleteTask } from '@tasksSt/tasks.actions';
 
 import * as _ from 'lodash';
 

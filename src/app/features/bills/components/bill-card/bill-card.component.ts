@@ -9,7 +9,6 @@ import {
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { AddEditBillComponent } from '@billsC/add-edit-bill/add-edit-bill.component';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Bill } from '@billsMd/bills.model';
 import { BillService } from '@billsS/bill.service';
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
@@ -51,11 +50,10 @@ export class BillCardComponent implements OnInit {
 
   constructor(
     private readonly _store: Store<fromApp.AppState>,
-    public readonly dialog: MatDialog,
-    public dialogRef: MatDialogRef<ConfirmationComponent>,
-    public readonly afs: AngularFirestore,
-    private readonly billService: BillService,
-    private readonly dialogService: DialogService
+    private readonly _dialog: MatDialog,
+    private _dialogRef: MatDialogRef<ConfirmationComponent>,
+    private readonly _billService: BillService,
+    private readonly _dialogService: DialogService
   ) {}
 
   public ngOnInit(): void {
@@ -66,26 +64,26 @@ export class BillCardComponent implements OnInit {
     enterAnimationDuration: string,
     exitAnimationDuration: string
   ): void {
-    this.dialogRef = this.dialog.open(ConfirmationComponent, {
+    this._dialogRef = this._dialog.open(ConfirmationComponent, {
       width: '350px',
       enterAnimationDuration,
       exitAnimationDuration,
-      data: this.dialogService.getDeleteDialogData(
+      data: this._dialogService.getDeleteDialogData(
         this.user.uid!,
         this.deleteTitle,
         this.deleteSubtitle
       ),
     });
 
-    this.dialogRef.componentInstance.confirmClicked
+    this._dialogRef.componentInstance.confirmClicked
       .pipe(first())
       .subscribe(() => {
-        this.billService.deleteBillHandler(this.user.uid!, this.bill.billId!);
+        this._billService.deleteBillHandler(this.user.uid!, this.bill.billId!);
       });
   }
 
   public handleEditBill(): void {
-    this.dialog.open(AddEditBillComponent, {
+    this._dialog.open(AddEditBillComponent, {
       minWidth: '45%',
       data: {
         type: 'edit',
@@ -95,6 +93,6 @@ export class BillCardComponent implements OnInit {
   }
 
   public handleMarkAsPaid(): void {
-    this.billService.handleMarkAsPaid(this.bill, this.user.uid!);
+    this._billService.handleMarkAsPaid(this.bill, this.user.uid!);
   }
 }

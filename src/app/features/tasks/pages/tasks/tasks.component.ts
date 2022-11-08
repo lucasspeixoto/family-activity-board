@@ -19,7 +19,7 @@ export class TasksComponent {
   public readonly user$ = this._store.select(getUser);
 
   constructor(
-    public readonly _dialog: MatDialog,
+    private readonly _dialog: MatDialog,
     private readonly _store: Store<fromApp.AppState>
   ) {}
 

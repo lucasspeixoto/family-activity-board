@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 
 import * as fromApp from '@app/app.state';
-import { getExistingTasksColors } from '../../store/tasks.selectors';
+import { getExistingTasksColors } from '@tasksSt/tasks.selectors';
 
 @Component({
   selector: 'app-add-task',
@@ -26,11 +26,11 @@ export class AddTaskComponent {
     private readonly _taskService: TaskService,
     private readonly _store: Store<fromApp.AppState>,
     @Inject(MAT_DIALOG_DATA)
-    public data: { user: User | undefined }
+    private readonly _data: { user: User | undefined }
   ) {}
 
   public addNewTaskHandler(colors: number[]): void {
     const newTask = this.addNewTaskForm.value as Partial<Task>;
-    this._taskService.addTaskHandler(newTask, this.data.user!.uid!, colors);
+    this._taskService.addTaskHandler(newTask, this._data.user!.uid!, colors);
   }
 }
