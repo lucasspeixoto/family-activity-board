@@ -5,6 +5,7 @@ import * as fromApp from '@app/app.state';
 import { Store } from '@ngrx/store';
 import { getTasks } from '@tasksSt/tasks.selectors';
 import { getUser } from '@authSt/auth.selectors';
+import { User } from '@authMd/user.model';
 
 @Component({
   selector: 'app-tasks',
@@ -18,13 +19,16 @@ export class TasksComponent {
   public readonly user$ = this._store.select(getUser);
 
   constructor(
-    public readonly dialog: MatDialog,
+    public readonly _dialog: MatDialog,
     private readonly _store: Store<fromApp.AppState>
   ) {}
 
-  public handleAddTask(): void {
-    this.dialog.open(AddTaskComponent, {
-      minWidth: '45%',
+  public handleAddTask(user: User | undefined): void {
+    this._dialog.open(AddTaskComponent, {
+      minWidth: '35%',
+      data: {
+        user,
+      },
     });
   }
 }

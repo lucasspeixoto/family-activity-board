@@ -1,4 +1,4 @@
-<ng-container class="dialog-form" *ngIf="userId$ | async">
+<ng-container class="dialog-form" *ngIf="colors$ | async as colors">
   <h2 mat-dialog-title class="container__title">Nova Tarefa</h2>
   <form class="container__form" id="form" [formGroup]="addNewTaskForm">
     <mat-form-field class="container__form-input" appearance="fill">
@@ -32,7 +32,7 @@
       mat-raised-button
       color="warn"
       [mat-dialog-close]="true"
-      (click)="addNewTaskHandler()"
+      (click)="addNewTaskHandler(colors)"
       [disabled]="addNewTaskForm.invalid">
       Adicionar
     </button>

@@ -8,6 +8,8 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { addTask, deleteTask } from '../store/tasks.actions';
 
+import * as _ from 'lodash';
+
 @Injectable()
 export class TaskService {
   constructor(
@@ -15,10 +17,14 @@ export class TaskService {
     private readonly _dateService: DateService
   ) {}
 
-  public addTaskHandler(task: Partial<Task>, userId: string): void {
+  public addTaskHandler(
+    task: Partial<Task>,
+    userId: string,
+    existingColors: number[]
+  ): void {
     const { title, date } = task;
 
-    const color = this.chooseRandomColor();
+    const color = this.chooseRandomColor(existingColors);
 
     const newTask = {
       title: title!,
@@ -34,9 +40,19 @@ export class TaskService {
     );
   }
 
-  private chooseRandomColor(): number {
-    const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    return colors[Math.floor(Math.random() * colors.length)];
+  private chooseRandomColor(existingColors: number[]): number {
+    const colorOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const nonExistingColors = _.difference(colorOptions, existingColors);
+
+    if (nonExistingColors.length === 0) {
+      // Todas as cores ja existem
+      return colorOptions[Math.floor(Math.random() * colorOptions.length)];
+    } else {
+      // ALguma opção de cor não existe, escolhe entre as que faltam
+      return nonExistingColors[
+        Math.floor(Math.random() * nonExistingColors.length)
+      ];
+    }
   }
 
   public deleteTaskHandler(userId: string, taskId: string): void {

@@ -12,3 +12,9 @@ export const getTasksNotification = createSelector(getTasks, tasks => {
 
   return tasksNotifications;
 });
+
+export const getExistingTasksColors = createSelector(getTasks, tasks => {
+  const colors = tasks.map(task => task.color);
+
+  return colors;
+});

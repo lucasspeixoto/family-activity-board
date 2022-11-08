@@ -1,12 +1,12 @@
 import * as fromApp from '@app/app.state';
 
-import { combineLatest, map, Observable, of } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 
 import { getBillsNotification } from '@billsSt/bills.selectors';
 import { Injectable } from '@angular/core';
 import { Notification } from '@sharedMd/notification';
 import { Store } from '@ngrx/store';
-import { getTasksNotification } from '@app/features/tasks/store/tasks.selectors';
+import { getTasksNotification } from '@tasksSt/tasks.selectors';
 
 @Injectable({
   providedIn: 'root',

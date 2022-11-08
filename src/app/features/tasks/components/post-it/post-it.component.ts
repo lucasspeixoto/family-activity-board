@@ -1,10 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import * as fromApp from '@app/app.state';
 
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
 import { DialogService } from '@sharedS/dialog/dialog.service';
-import { Store } from '@ngrx/store';
 import { User } from '@authMd/user.model';
 import { first } from 'rxjs';
 import { TaskService } from '@tasksS/task.service';
@@ -27,9 +25,8 @@ export class PostItComponent {
   public task!: Task;
 
   constructor(
-    public readonly dialog: MatDialog,
+    public readonly _dialog: MatDialog,
     public dialogRef: MatDialogRef<ConfirmationComponent>,
-    private readonly _store: Store<fromApp.AppState>,
     private readonly dialogService: DialogService,
     private readonly _taskService: TaskService
   ) {}
@@ -38,7 +35,7 @@ export class PostItComponent {
     enterAnimationDuration: string,
     exitAnimationDuration: string
   ): void {
-    this.dialogRef = this.dialog.open(ConfirmationComponent, {
+    this.dialogRef = this._dialog.open(ConfirmationComponent, {
       width: '350px',
       enterAnimationDuration,
       exitAnimationDuration,
