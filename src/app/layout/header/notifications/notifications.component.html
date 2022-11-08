@@ -38,7 +38,25 @@
       </button>
     </ng-container>
   </ng-container>
-  <!-- <mat-divider></mat-divider> -->
+
+  <mat-divider></mat-divider>
+
+  <p class="notification-menu__title">Tarefas</p>
+
+  <ng-container *ngIf="tasksNotifications$ | async as tasksNotifications">
+    <ng-container
+      *ngFor="let tasksNotification of tasksNotifications.description">
+      <button
+        *ngIf="tasksNotification.value > 0"
+        mat-menu-item
+        class="notification-menu__button">
+        <mat-icon [class]="tasksNotification.class">{{
+          tasksNotification.icon
+        }}</mat-icon>
+        {{ tasksNotification.message }}
+      </button>
+    </ng-container>
+  </ng-container>
 </mat-menu>
 
 <mat-menu #none="matMenu" xPosition="before" class="notification-menu">
