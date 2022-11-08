@@ -5,10 +5,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class DialogService {
-  public getDeleteDialogData(userId: string): DialogConfig {
+  public getDeleteDialogData(
+    userId: string,
+    title: string,
+    subtitle: string
+  ): DialogConfig {
     const config = {
-      title: 'Excluir Conta',
-      subtitle: 'Deseja realmente excluir está conta ?',
+      title,
+      subtitle,
       cancelButtonTitle: 'Cancelar',
       confirmationButtonTitle: 'Confirmar',
       data: userId,

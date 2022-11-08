@@ -1,6 +1,5 @@
 import { AddEditBillComponent } from './components/add-edit-bill/add-edit-bill.component';
 import { BillCardComponent } from '@billsC/bill-card/bill-card.component';
-import { BillsCardsComponent } from '@billsC/bills-cards/bills-cards.component';
 import { BillsComponent } from '@billsP/bills/bills.component';
 import { BillsEffects } from './store/bills.effects';
 import { BillService } from './services/bill.service';
@@ -23,7 +22,6 @@ const billsRoutes = [{ path: '', component: BillsComponent }];
 const COMPONENTS = [
   BillsComponent,
   BillsFiltersComponent,
-  BillsCardsComponent,
   BillCardComponent,
   AddEditBillComponent,
 ];

@@ -1,19 +1,60 @@
 <app-layout>
-  <ng-container class="bills" *ngIf="bills$ | async; else loading">
-    <div class="bills__actions">
-      <button
-        mat-fab
-        aria-label="Incluir conta"
-        appUpElevation
-        (click)="addNewBillHandler()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
+  <ng-container *ngIf="user$ | async as user">
+    <ng-container class="bills" *ngIf="bills$ | async as bills; else loading">
+      <div class="bills">
+        <div class="bills__actions">
+          <button
+            mat-fab
+            aria-label="Incluir Conta"
+            appUpElevation
+            (click)="addNewBillHandler()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
 
-    <app-bills-cards></app-bills-cards>
+        <div
+          class="bills__cards"
+          *ngIf="filteredBills$ | async as filteredBills">
+          <div class="bills__cards-filters" *ngIf="filteredBills.length > 0">
+            <app-bills-filters></app-bills-filters>
+          </div>
+
+          <ng-container
+            class="bills__cards-card"
+            *ngIf="filteredBills.length > 0">
+            <app-bill-card
+              *ngFor="let filteredBill of filteredBills | dateOrderFilter"
+              [bill]="filteredBill"
+              [user]="user"></app-bill-card>
+          </ng-container>
+        </div>
+
+        <div class="bills__empty" *ngIf="bills.length === 0">
+          <img src="assets/images/no-data.svg" width="50%" height="50%" />
+          <h3>Nenhuma conta ainda. Registre uma para começar!</h3>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+    <!-- <ng-container class="bills" *ngIf="bills$ | async; else loading">
+      <div class="bills__actions">
+        <button
+          mat-fab
+          aria-label="Incluir conta"
+          appUpElevation
+          (click)="addNewBillHandler()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <app-bills-cards></app-bills-cards>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template> -->
   </ng-container>
-
-  <ng-template #loading>
-    <app-loading></app-loading>
-  </ng-template>
 </app-layout>

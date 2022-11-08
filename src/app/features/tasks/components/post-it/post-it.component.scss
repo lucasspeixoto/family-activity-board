@@ -1,0 +1,76 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+@import 'src/styles/font';
+@import 'src/styles/classes';
+
+.base {
+  margin: .5rem 0rem 0rem .5rem;
+  width: 200px;
+  position: relative;
+  cursor: move;
+}
+
+.sticky-outer {
+  display: flex;
+  padding-top: 90%;
+  position: relative;
+}
+
+.sticky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.sticky:before {
+  box-shadow: -2px 2px 15px 5px $grey-08;
+  background-color: $black-25;
+  content: '';
+  width: 90%;
+  left: 2px;
+  height: 83%;
+  position: absolute;
+  top: 30%;
+}
+
+.sticky-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: $postit-yellow;
+  width: 100%;
+  height: 100%;
+  padding: .5rem;
+  font-family: 'Kalam', cursive;
+  clip-path: url(#stickyClip);
+
+  &__delete {
+    text-align: end;
+
+    >.mat-icon {
+      cursor: pointer;
+    }
+  }
+
+  &__text {
+    font-size: 1.2rem;
+    text-align: center;
+    word-wrap: break-word;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 2px;
+
+    &-date {
+      font-size: .7rem;
+      color: $dark-grey;
+      font-style: italic;
+    }
+  }
+}

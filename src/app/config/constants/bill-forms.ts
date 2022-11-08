@@ -11,3 +11,8 @@ export const addEdditBillForm = {
   spent: [1, [Validators.required]],
   date: [new Date(), [Validators.required]],
 };
+
+export const addTaskForm = {
+  title: ['', [Validators.required, Validators.minLength(3)]],
+  date: [new Date(), [Validators.required]],
+};

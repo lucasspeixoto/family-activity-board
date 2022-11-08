@@ -1,0 +1,38 @@
+<div class="base" cdkDrag cdkDragBoundary=".layout-content">
+  <div class="sticky-outer">
+    <div class="sticky">
+      <svg width="0" height="0">
+        <defs>
+          <clipPath id="stickyClip" clipPathUnits="objectBoundingBox">
+            <path
+              d="M 0 0 Q 0 0.69, 0.03 0.96 0.03 0.96, 1 0.96 Q 0.96 0.69, 0.96 0 0.96 0, 0 0"
+              stroke-linejoin="round"
+              stroke-linecap="square" />
+          </clipPath>
+        </defs>
+      </svg>
+      <div
+        class="sticky-content"
+        [ngClass]="{
+          yellowPostit: task.color === 1,
+          bluePostit: task.color === 2,
+          pinkPostit: task.color === 3,
+          purplePostit: task.color === 4,
+          greenPostit: task.color === 5,
+          orangePostit: task.color === 6,
+          goldPostit: task.color === 7,
+          redPostit: task.color === 8,
+          whitePostit: task.color === 9
+        }">
+        <span class="sticky-content__text">{{ task.title }}</span>
+
+        <div class="sticky-content__footer">
+          <span class="sticky-content__footer-date">{{ task.date }}</span>
+          <button mat-icon-button (click)="handleDeleteTask('0ms', '0ms')">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

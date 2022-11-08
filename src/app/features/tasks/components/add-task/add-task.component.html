@@ -1,0 +1,40 @@
+<ng-container class="dialog-form" *ngIf="colors$ | async as colors">
+  <h2 mat-dialog-title class="container__title">Nova Tarefa</h2>
+  <form class="container__form" id="form" [formGroup]="addNewTaskForm">
+    <mat-form-field class="container__form-input" appearance="fill">
+      <mat-label>Título</mat-label>
+      <input matInput type="text" formControlName="title" required />
+      <mat-icon matSuffix>title</mat-icon>
+      <mat-error
+        ><app-custom-validation-message
+          controlName="title"></app-custom-validation-message>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      class="container__form-input"
+      color="accent"
+      appearance="fill">
+      <mat-label>Vencimento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker color="primary"></mat-datepicker>
+      <mat-error
+        ><app-custom-validation-message
+          controlName="date"></app-custom-validation-message>
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <div class="container__actions">
+    <button mat-raised-button mat-dialog-close color="primary">Cancelar</button>
+    <button
+      mat-raised-button
+      color="warn"
+      [mat-dialog-close]="true"
+      (click)="addNewTaskHandler(colors)"
+      [disabled]="addNewTaskForm.invalid">
+      Adicionar
+    </button>
+  </div>
+</ng-container>

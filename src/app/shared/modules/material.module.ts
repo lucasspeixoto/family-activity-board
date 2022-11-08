@@ -17,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const MODULES = [
   MatButtonModule,
@@ -35,6 +36,7 @@ const MODULES = [
   MatDialogModule,
   MatDatepickerModule,
   MatRadioModule,
+  DragDropModule,
 ];
 
 const DATE_PROVIDERS = [MatDatepickerModule, MatNativeDateModule];

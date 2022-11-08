@@ -1,11 +1,12 @@
 import * as fromApp from '@app/app.state';
 
-import { combineLatest, map, Observable, of } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 
 import { getBillsNotification } from '@billsSt/bills.selectors';
 import { Injectable } from '@angular/core';
 import { Notification } from '@sharedMd/notification';
 import { Store } from '@ngrx/store';
+import { getTasksNotification } from '@tasksSt/tasks.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -19,13 +20,17 @@ export class NotificationsService {
     return this._store.select(getBillsNotification);
   }
 
+  public getTasksNotifications(): Observable<Notification> {
+    return this._store.select(getTasksNotification);
+  }
+
   public getNotificationsAmount(): Observable<number> {
     const notificationsAmount$ = combineLatest([
       this.getBillsNotifications(),
-      of(0), //Simulação de Próxima feature para quadro de notificações
+      this.getTasksNotifications(),
     ]).pipe(
-      map(([billsAmount, plansAmount]) => {
-        return billsAmount.amount + plansAmount;
+      map(([billsAmount, tasksAmount]) => {
+        return billsAmount.amount + tasksAmount.amount;
       })
     );
 
