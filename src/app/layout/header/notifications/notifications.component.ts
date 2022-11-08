@@ -9,6 +9,9 @@ import { NotificationsService } from '@sharedS/notifications/notifications.servi
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotificationsComponent {
+  public readonly tasksNotifications$ =
+    this.notificationsService.getTasksNotifications();
+
   public readonly billsNotifications$ =
     this.notificationsService.getBillsNotifications();
 

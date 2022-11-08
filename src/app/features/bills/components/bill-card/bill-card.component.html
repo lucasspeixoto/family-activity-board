@@ -2,7 +2,7 @@
   <mat-card-title>
     <div class="title">
       <div class="title__name">{{ bill.title }}</div>
-      <ng-container *ngIf="userId$ | async" class="title__menu">
+      <ng-container class="title__menu">
         <button
           mat-mini-fab
           [matMenuTriggerFor]="updateBillMenu"

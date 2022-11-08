@@ -45,11 +45,11 @@ export class AddEditBillComponent implements OnInit {
     private readonly _formBuilder: NonNullableFormBuilder,
     private readonly _store: Store<fromApp.AppState>,
     private readonly _billService: BillService,
-    @Inject(MAT_DIALOG_DATA) public readonly data: UpdateBillData
+    @Inject(MAT_DIALOG_DATA) public readonly _data: UpdateBillData
   ) {}
 
   public ngOnInit(): void {
-    const { bill, type } = this.data;
+    const { bill, type } = this._data;
     if (type === 'edit') {
       this.setEditBillValues(bill);
     }
@@ -71,9 +71,9 @@ export class AddEditBillComponent implements OnInit {
   public updateBillHandler(): void {
     this._billService.updateBill(
       this.addNewBillForm.value,
-      this.data.type,
+      this._data.type,
       this.userId,
-      this.data.bill?.billId!
+      this._data.bill?.billId!
     );
   }
 }

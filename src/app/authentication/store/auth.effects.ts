@@ -25,6 +25,7 @@ import { SnackbarService } from '@sharedS/snackbar/snackbar.service';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs/operators';
 import { User } from '@authMd/user.model';
+import { loadTasks } from '@tasksSt/tasks.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -49,7 +50,7 @@ export class AuthEffects {
                 };
 
                 this._store.dispatch(SetUserData({ payload: loggedUser }));
-                this.router.navigateByUrl('/bills');
+                this.router.navigateByUrl('/tasks');
                 this._store.dispatch(StopLoading());
                 this._snackBarService.openSuccessSnackBar(
                   'Bem vindo ao Quadro Familiar 😁'
@@ -106,7 +107,7 @@ export class AuthEffects {
           this.afAuth.currentUser
             .then(user => user!.sendEmailVerification())
             .then(() => {
-              this.router.navigateByUrl('/bills');
+              this.router.navigateByUrl('/tasks');
               this._store.dispatch(StopLoading());
               this._snackBarService.openSuccessSnackBar(
                 'Bem vindo ao Quadro Familiar 😁'
@@ -208,6 +209,7 @@ export class AuthEffects {
               };
               this._store.dispatch(SetUserData({ payload: loggedUser }));
               this._store.dispatch(loadBills({ payload: uid }));
+              this._store.dispatch(loadTasks({ payload: uid }));
             }
 
             const isLogged = user !== null ? true : false;

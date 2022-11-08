@@ -1,6 +1,6 @@
 <ng-container class="dialog-form" *ngIf="userId$ | async">
   <h2 mat-dialog-title class="container__title">
-    {{ data.type === 'add' ? 'Nova Conta' : 'Atualizar Conta' }}
+    {{ _data.type === 'add' ? 'Nova Conta' : 'Atualizar Conta' }}
   </h2>
   <form class="container__form" id="form" [formGroup]="addNewBillForm">
     <mat-form-field class="container__form-input" appearance="fill">
@@ -80,7 +80,7 @@
       [mat-dialog-close]="true"
       (click)="updateBillHandler()"
       [disabled]="addNewBillForm.invalid">
-      {{ data.type === 'add' ? 'Adicionar' : 'Salvar' }}
+      {{ _data.type === 'add' ? 'Adicionar' : 'Salvar' }}
     </button>
   </div>
 </ng-container>

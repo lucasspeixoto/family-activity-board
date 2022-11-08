@@ -1,6 +1,8 @@
 @import 'src/styles/colors';
 @import 'src/styles/variables';
 
+
+
 mat-card {
   margin: 0 0 20px 0;
   width: 18rem;
@@ -17,7 +19,7 @@ mat-card {
     text-align: start;
     word-break: break-all;
 
-    > .title {
+    >.title {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -38,7 +40,7 @@ mat-card {
     text-align: center;
     min-height: 60px;
 
-    > .value {
+    >.value {
       text-align: start;
       margin-top: 0.5rem;
 
@@ -52,13 +54,14 @@ mat-card {
 
       h6 {
         color: $green;
+
         span {
           font-weight: bold;
         }
       }
     }
 
-    > .percent {
+    >.percent {
       border-radius: 50%;
       width: 65px;
       height: 65px;

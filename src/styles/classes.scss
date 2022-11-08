@@ -52,6 +52,7 @@
   }
 }
 
+//* Snackbar alerts colors
 .green-snackbar {
   background: $green !important;
   color: $white !important;
@@ -71,14 +72,52 @@
   border: none !important;
 }
 
+// * Bill status color
 .late {
-  background-color: $dark-pink;
+  background-color: $dark-pink !important;
 }
 
 .today {
-  background-color: $yellow;
+  background-color: $yellow !important;
 }
 
 .inDay {
-  background-color: $green;
+  background-color: $green !important;
+}
+
+// * Post-it colors
+.yellowPostit {
+  background: $postit-yellow !important;
+}
+
+.bluePostit {
+  background: $postit-blue !important;
+}
+
+.pinkPostit {
+  background: $postit-pink !important;
+}
+
+.purplePostit {
+  background: $postit-purple !important;
+}
+
+.greenPostit {
+  background: $postit-green !important;
+}
+
+.orangePostit {
+  background: $postit-orange !important;
+}
+
+.goldPostit {
+  background: $postit-gold !important;
+}
+
+.redPostit {
+  background: $postit-red !important;
+}
+
+.whitePostit {
+  background: $postit-white !important;
 }

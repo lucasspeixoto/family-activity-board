@@ -1,6 +1,33 @@
 <app-layout>
-  <div class="report-container">
-    <img src="assets/images/coming-soon.svg" />
-    <h3>Em breve</h3>
-  </div>
+  <ng-container *ngIf="user$ | async as user">
+    <ng-container *ngIf="tasks$ | async as tasks; else loading">
+      <div class="tasks">
+        <div class="tasks__actions">
+          <button
+            mat-fab
+            aria-label="Incluir Tarefa"
+            appUpElevation
+            (click)="handleAddTask(user)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+        <div class="tasks__postits" *ngIf="tasks.length > 0">
+          <app-post-it
+            *ngFor="let task of tasks"
+            [user]="user"
+            [task]="task"></app-post-it>
+        </div>
+
+        <div class="tasks__empty" *ngIf="tasks.length === 0">
+          <img src="assets/images/no-data.svg" width="50%" height="50%" />
+          <h3>Nenhuma tarefa ainda. Registre uma para começar!</h3>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+  </ng-container>
 </app-layout>

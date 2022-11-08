@@ -6,7 +6,7 @@ const emailValidators = [
 ];
 
 export const loginForm = {
-  email: ['user@email.com', [...emailValidators]],
+  email: ['lukeskywalker@email.com', [...emailValidators]],
   password: ['123456', [Validators.required, Validators.minLength(3)]],
 };
 
