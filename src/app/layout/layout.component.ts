@@ -1,5 +1,3 @@
-import * as fromApp from '@app/app.state';
-
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -8,12 +6,15 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MediaMatcher } from '@angular/cdk/layout';
+
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '@app/app.state';
 
 import { getUser } from '@authSt/auth.selectors';
 import { LoadUser } from '@authSt/auth.actions';
-import { MatSidenav } from '@angular/material/sidenav';
-import { MediaMatcher } from '@angular/cdk/layout';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-layout',

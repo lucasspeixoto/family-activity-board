@@ -1,22 +1,26 @@
-import * as fromApp from '@app/app.state';
-import * as MessageActions from '@sharedSt/message/message.actions';
-
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Injectable } from '@angular/core';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Injectable } from '@angular/core';
-import { Message } from '@sharedMd/message.model';
-import { Store } from '@ngrx/store';
+
 import { tap } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+
+import * as fromApp from '@app/app.state';
+
+import * as MessageActions from '@sharedSt/message/message.actions';
+
+import { Message } from '@sharedMd/message.model';
 
 @Injectable()
 export class MessageEffects {
   public loadMessage$ = createEffect(
     () =>
-      this.actions$.pipe(
+      this._actions$.pipe(
         ofType(MessageActions.loadMessages),
         tap(() => {
-          this.afs
+          this._angularFirestore
             .collection<Message>(`messages`)
             .valueChanges()
             .subscribe({
@@ -32,8 +36,8 @@ export class MessageEffects {
   );
 
   constructor(
-    private readonly actions$: Actions,
-    public readonly afs: AngularFirestore,
+    private readonly _actions$: Actions,
+    public readonly _angularFirestore: AngularFirestore,
     private readonly _store: Store<fromApp.AppState>
   ) {}
 }

@@ -1,11 +1,29 @@
-import * as fromApp from '@app/app.state';
-
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+
+import { tap } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+
+import * as fromApp from '@app/app.state';
+
 import { clearBillData, loadBills } from '@billsSt/bills.actions';
+
+import { AuthenticationService } from '@authS/authentication.service';
+import { User } from '@authMd/user.model';
+
+import { StartLoading, StopLoading } from '@sharedSt/loading/loading.actions';
+import { Messages } from '@shared/messages/firebase';
+import { SnackbarService } from '@sharedS/snackbar/snackbar.service';
+
+import { loadTasks } from '@tasksSt/tasks.actions';
+
 import {
   SendEmailVerification,
   SetNewUserData,
@@ -13,30 +31,19 @@ import {
   UpdateIsLoggedStatus,
   UpdateProfile,
 } from './auth.actions';
-import { StartLoading, StopLoading } from '@sharedSt/loading/loading.actions';
 
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthActions } from './action-types';
-import { AuthenticationService } from '@authS/authentication.service';
-import { Injectable } from '@angular/core';
-import { Messages } from '@shared/messages/firebase';
-import { Router } from '@angular/router';
-import { SnackbarService } from '@sharedS/snackbar/snackbar.service';
-import { Store } from '@ngrx/store';
-import { tap } from 'rxjs/operators';
-import { User } from '@authMd/user.model';
-import { loadTasks } from '@tasksSt/tasks.actions';
 
 @Injectable()
 export class AuthEffects {
   public login$ = createEffect(
     () =>
-      this.actions$.pipe(
+      this._actions$.pipe(
         ofType(AuthActions.Login),
         tap(async action => {
           this._store.dispatch(StartLoading());
           const { email, password } = action.payload;
-          await this.afAuth
+          await this._angularFireAuth
             .signInWithEmailAndPassword(email, password)
             .then(result => {
               const user = result.user as User;
@@ -50,7 +57,7 @@ export class AuthEffects {
                 };
 
                 this._store.dispatch(SetUserData({ payload: loggedUser }));
-                this.router.navigateByUrl('/tasks');
+                this._router.navigateByUrl('/tasks');
                 this._store.dispatch(StopLoading());
                 this._snackBarService.openSuccessSnackBar(
                   'Bem vindo ao Quadro Familiar 😁'
@@ -68,12 +75,12 @@ export class AuthEffects {
 
   public signup$ = createEffect(
     () =>
-      this.actions$.pipe(
+      this._actions$.pipe(
         ofType(AuthActions.Signup),
         tap(action => {
           this._store.dispatch(StartLoading());
           const { name, email, password } = action.payload;
-          this.afAuth
+          this._angularFireAuth
             .createUserWithEmailAndPassword(email, password)
             .then(result => {
               const user = result.user as User;
@@ -101,13 +108,13 @@ export class AuthEffects {
 
   public sendEmailVerification$ = createEffect(
     () =>
-      this.actions$.pipe(
+      this._actions$.pipe(
         ofType(AuthActions.SendEmailVerification),
         tap(() => {
-          this.afAuth.currentUser
+          this._angularFireAuth.currentUser
             .then(user => user!.sendEmailVerification())
             .then(() => {
-              this.router.navigateByUrl('/tasks');
+              this._router.navigateByUrl('/tasks');
               this._store.dispatch(StopLoading());
               this._snackBarService.openSuccessSnackBar(
                 'Bem vindo ao Quadro Familiar 😁'
@@ -120,13 +127,15 @@ export class AuthEffects {
 
   public updateProfile$ = createEffect(
     () =>
-      this.actions$.pipe(
+      this._actions$.pipe(
         ofType(AuthActions.UpdateProfile),
         tap(async action => {
           const profile = {
             displayName: action.payload.displayName,
           };
-          return (await this.afAuth.currentUser)!.updateProfile(profile);
+          return (await this._angularFireAuth.currentUser)!.updateProfile(
+            profile
+          );
         })
       ),
     { dispatch: false }
@@ -134,13 +143,13 @@ export class AuthEffects {
 
   public setNewUserData$ = createEffect(
     () =>
-      this.actions$.pipe(
+      this._actions$.pipe(
         ofType(AuthActions.SetNewUserData),
         tap(async action => {
           const newUser = action.payload;
 
           const userRef: AngularFirestoreDocument<{ user: User }> =
-            this.afs.doc(`users/${newUser.uid}`);
+            this._angularFirestore.doc(`users/${newUser.uid}`);
           this._store.dispatch(UpdateProfile({ payload: newUser }));
           this._store.dispatch(SetUserData({ payload: newUser }));
 
@@ -152,11 +161,11 @@ export class AuthEffects {
 
   public forgotPassword$ = createEffect(
     () =>
-      this.actions$.pipe(
+      this._actions$.pipe(
         ofType(AuthActions.ForgotPassword),
         tap(async action => {
           this._store.dispatch(StartLoading());
-          await this.afAuth
+          await this._angularFireAuth
             .sendPasswordResetEmail(action.payload)
             .then(() => {
               this._store.dispatch(StopLoading());
@@ -175,12 +184,12 @@ export class AuthEffects {
 
   public logout$ = createEffect(
     () =>
-      this.actions$.pipe(
+      this._actions$.pipe(
         ofType(AuthActions.Logout),
         tap(async () => {
           this._store.dispatch(StartLoading());
-          await this.afAuth.signOut().then(() => {
-            this.router.navigateByUrl('/');
+          await this._angularFireAuth.signOut().then(() => {
+            this._router.navigateByUrl('/');
             this._store.dispatch(StopLoading());
             this._snackBarService.openSuccessSnackBar('Volte Sempre 😁');
             this._store.dispatch(clearBillData());
@@ -192,10 +201,10 @@ export class AuthEffects {
 
   public loadUser$ = createEffect(
     () =>
-      this.actions$.pipe(
+      this._actions$.pipe(
         ofType(AuthActions.LoadUser),
         tap(() => {
-          this.afAuth.authState.subscribe(user => {
+          this._angularFireAuth.authState.subscribe(user => {
             if (user) {
               const { email, photoURL, uid, displayName, emailVerified } =
                 user as User;
@@ -221,10 +230,10 @@ export class AuthEffects {
   );
 
   constructor(
-    private readonly actions$: Actions,
-    public readonly afs: AngularFirestore,
-    public readonly afAuth: AngularFireAuth,
-    public readonly router: Router,
+    private readonly _actions$: Actions,
+    public readonly _angularFirestore: AngularFirestore,
+    public readonly _angularFireAuth: AngularFireAuth,
+    public readonly _router: Router,
     public readonly _authService: AuthenticationService,
     private readonly _store: Store<fromApp.AppState>,
     private readonly _snackBarService: SnackbarService

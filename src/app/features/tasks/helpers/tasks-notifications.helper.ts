@@ -1,5 +1,5 @@
 import { getDateFromString } from '@sharedH/date.helper';
-import { Notification } from '@sharedMd/notification';
+import { Notification } from '@sharedMd/notification.model';
 import { Task } from '../models/task.model';
 
 export const getTasksNotifications = (tasks: Task[]): Notification => {

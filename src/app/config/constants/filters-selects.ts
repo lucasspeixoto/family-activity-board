@@ -1,4 +1,4 @@
-import { Select } from '@sharedMd/select';
+import { Select } from '@sharedMd/select.model';
 
 export const typeOptions: Select[] = [
   { value: 1, viewValue: 'Contas (Ex: Energia, água, etc...' },

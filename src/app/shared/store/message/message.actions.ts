@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Message } from '@app/shared/models/message.model';
+import { Message } from '@sharedMd/message.model';
 
 export enum MessageActions {
   LOAD = '[Message] Load System Messages',

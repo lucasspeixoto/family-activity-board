@@ -1,9 +1,10 @@
-import * as fromApp from '@app/app.state';
-
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { getMessages } from '@sharedSt/message/message.selectors';
 import { Store } from '@ngrx/store';
+
+import * as fromApp from '@app/app.state';
+
+import { getMessages } from '@sharedSt/message/message.selectors';
 
 @Component({
   selector: 'app-messages',

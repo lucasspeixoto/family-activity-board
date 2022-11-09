@@ -1,5 +1,3 @@
-import * as fromApp from '@app/app.state';
-
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,9 +5,13 @@ import {
   Output,
 } from '@angular/core';
 
-import { getUser } from '@authSt/auth.selectors';
-import { menuItems } from '@constants/menu-routes';
 import { Store } from '@ngrx/store';
+
+import * as fromApp from '@app/app.state';
+
+import { getUser } from '@authSt/auth.selectors';
+
+import { menuItems } from '@constants/menu-routes';
 
 @Component({
   selector: 'app-user',

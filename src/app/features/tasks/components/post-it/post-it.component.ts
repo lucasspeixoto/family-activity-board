@@ -1,18 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
+import { first } from 'rxjs';
+
+import { User } from '@authMd/user.model';
 
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
 import { DialogService } from '@sharedS/dialog/dialog.service';
-import { User } from '@authMd/user.model';
-import { first } from 'rxjs';
-import { TaskService } from '@tasksS/task.service';
 
+import { TaskService } from '@tasksS/task.service';
 import { Task } from '@tasksMd/task.model';
 
 @Component({
   selector: 'app-post-it',
   templateUrl: './post-it.component.html',
   styleUrls: ['./post-it.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostItComponent {
   public readonly deleteTitle = 'Excluir Tarefa';
@@ -27,7 +31,7 @@ export class PostItComponent {
   constructor(
     private readonly _dialog: MatDialog,
     private _dialogRef: MatDialogRef<ConfirmationComponent>,
-    private readonly dialogService: DialogService,
+    private readonly _dialogService: DialogService,
     private readonly _taskService: TaskService
   ) {}
 
@@ -39,7 +43,7 @@ export class PostItComponent {
       width: '350px',
       enterAnimationDuration,
       exitAnimationDuration,
-      data: this.dialogService.getDeleteDialogData(
+      data: this._dialogService.getDeleteDialogData(
         this.user.uid!,
         this.deleteTitle,
         this.deleteSubtitle

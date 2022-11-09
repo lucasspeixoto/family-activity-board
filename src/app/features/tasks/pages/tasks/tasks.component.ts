@@ -1,11 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { MatDialog } from '@angular/material/dialog';
-import { AddTaskComponent } from '@tasksC/add-task/add-task.component';
-import * as fromApp from '@app/app.state';
+
 import { Store } from '@ngrx/store';
-import { getTasks } from '@tasksSt/tasks.selectors';
-import { getUser } from '@authSt/auth.selectors';
+import * as fromApp from '@app/app.state';
+
 import { User } from '@authMd/user.model';
+import { getUser } from '@authSt/auth.selectors';
+
+import { AddTaskComponent } from '@tasksC/add-task/add-task.component';
+import { getTasks } from '@tasksSt/tasks.selectors';
 
 @Component({
   selector: 'app-tasks',
