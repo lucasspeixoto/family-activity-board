@@ -1,3 +1,15 @@
+/**
+ * @description
+ * A partir de três valors, referência (value)
+ * inicial (start) e final (end) retorna verdadeiro
+ * se o valor estiver entre o incial e o final e
+ * falso caso contrário
+ * @name getRangeValidation
+ * @param {number} start
+ * @param {number} end
+ * @param {number} value
+ * @return {boolean}
+ */
 export const getRangeValidation = (
   start: number,
   end: number,
@@ -6,7 +18,16 @@ export const getRangeValidation = (
   return value > start && value <= end ? true : false;
 };
 
-export const getDateFromString = (date: Date | string): number => {
+/**
+ * @description
+ * A partir de uma data em formato dd/mm/yyyy
+ * retorna a data em formato numérico com horas,
+ * minutos e segundos zerados
+ * @name getDateFromString
+ * @param {string | Date} date
+ * @return {number}
+ */
+export const getDateFromString = (date: string | Date): number => {
   const dateAsString = date as string;
   const [day, month, year] = dateAsString.split('/');
 
@@ -18,6 +39,15 @@ export const getDateFromString = (date: Date | string): number => {
   return dayWithoutHours.setHours(0, 0, 0, 0);
 };
 
+/**
+ * @description
+ * A partir de uma data em formato dd/mm/yyyy
+ * retorna a data do próximo mês em formato
+ * numérico com horas, minutos e segundos zerados
+ * @name getNextMonthDateFromString
+ * @param {Date | string} date
+ * @return {number}
+ */
 export const getNextMonthDateFromString = (date: string | Date): number => {
   const dateAsString = date as string;
   const [day, month, year] = dateAsString.split('/');
@@ -33,6 +63,16 @@ export const getNextMonthDateFromString = (date: string | Date): number => {
   return dayWithoutHours.setHours(0, 0, 0, 0);
 };
 
+/**
+ * @description
+ * A partir de uma data em formato dd/mm/yyyy
+ * retorna a representação numérica (1, 2 ou 3)
+ * para o status dessa data, ou seja, em dia,
+ * atrasado ou hoje
+ * @name getDateStatus
+ * @param {Date | string} date
+ * @return {number}
+ */
 export const getDateStatus = (date: string | Date): number => {
   const today = new Date().setHours(0, 0, 0, 0);
 

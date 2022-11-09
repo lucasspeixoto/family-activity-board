@@ -1,5 +1,3 @@
-import * as fromApp from '@app/app.state';
-
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,16 +6,22 @@ import {
 } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
+import { first } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '@app/app.state';
+
+import { User } from '@authMd/user.model';
+
+import { getTotalBillAmount } from '@billsSt/bills.selectors';
 import { AddEditBillComponent } from '@billsC/add-edit-bill/add-edit-bill.component';
 import { Bill } from '@billsMd/bills.model';
 import { BillService } from '@billsS/bill.service';
+
 import { ConfirmationComponent } from '@sharedC/confirmation/confirmation.component';
 import { DialogService } from '@sharedS/dialog/dialog.service';
-import { first } from 'rxjs/operators';
 import { getDateStatus } from '@sharedH/date.helper';
-import { getTotalBillAmount } from '@billsSt/bills.selectors';
-import { Store } from '@ngrx/store';
-import { User } from '@authMd/user.model';
 
 @Component({
   selector: 'app-bill-card',

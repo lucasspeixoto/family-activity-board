@@ -1,19 +1,20 @@
-import * as fromApp from '@app/app.state';
-
-import * as fromTasks from './tasks.actions';
-
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { StartLoading, StopLoading } from '@sharedSt/loading/loading.actions';
-
+import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-import { Injectable } from '@angular/core';
+import { tap } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+
+import * as fromApp from '@app/app.state';
+
+import { StartLoading, StopLoading } from '@sharedSt/loading/loading.actions';
 import { Messages } from '@sharedMs/firebase';
 import { SnackbarService } from '@sharedS/snackbar/snackbar.service';
-import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
-import { Task } from '../models/task.model';
+
+import * as fromTasks from '@tasksSt/tasks.actions';
+import { Task } from '@tasksMd/task.model';
 
 @Injectable()
 export class TasksEffects {

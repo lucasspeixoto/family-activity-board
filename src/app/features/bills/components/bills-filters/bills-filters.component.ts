@@ -1,15 +1,17 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { Store } from '@ngrx/store';
+
 import * as fromApp from '@app/app.state';
 
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { setFilter } from '@billsSt/bills.actions';
+
 import {
   rangeOptions,
   spentOptions,
   statusOptions,
   typeOptions,
 } from '@constants/filters-selects';
-
-import { setFilter } from '@billsSt/bills.actions';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-bills-filters',

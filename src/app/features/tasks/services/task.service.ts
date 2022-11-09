@@ -1,14 +1,15 @@
-import * as fromApp from '@app/app.state';
+import { Injectable } from '@angular/core';
 
-import { Task } from '@tasksMd/task.model';
+import { Store } from '@ngrx/store';
+
+import * as _ from 'lodash';
+
+import * as fromApp from '@app/app.state';
 
 import { DateService } from '@sharedS/date/date.service';
 
-import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { addTask, deleteTask } from '@tasksSt/tasks.actions';
-
-import * as _ from 'lodash';
+import { Task } from '@tasksMd/task.model';
 
 @Injectable()
 export class TaskService {

@@ -1,10 +1,13 @@
+import { ActionReducerMap } from '@ngrx/store';
+
 import * as fromAuth from '@authSt/auth.reducer';
+
 import * as fromBills from '@billsSt/bills.reducer';
+
 import * as fromLoading from '@sharedSt/loading/loading.reducer';
 import * as fromMessage from '@sharedSt/message/message.reducer';
-import * as fromTasks from '@tasksSt/tasks.reducer';
 
-import { ActionReducerMap } from '@ngrx/store';
+import * as fromTasks from '@tasksSt/tasks.reducer';
 
 export interface AppState {
   auth: fromAuth.AuthState;

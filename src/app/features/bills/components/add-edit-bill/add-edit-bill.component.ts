@@ -1,5 +1,3 @@
-import * as fromApp from '@app/app.state';
-
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,20 +5,24 @@ import {
   OnInit,
 } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
-
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { tap } from 'rxjs';
+
 import { Store } from '@ngrx/store';
 
-import { getUserUid } from '@authSt/auth.selectors';
+import * as fromApp from '@app/app.state';
 
-import { spentOptions, typeOptions } from '@constants/filters-selects';
+import { getUserUid } from '@authSt/auth.selectors';
 
 import { Bill } from '@billsMd/bills.model';
 import { UpdateBillData } from '@billsMd/update-bill.model';
 import { BillService } from '@billsS/bill.service';
+
+import { spentOptions, typeOptions } from '@constants/filters-selects';
 import { addEdditBillForm } from '@constants/bill-forms';
+
 import { getDateFromString } from '@sharedH/date.helper';
-import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-add-edit-bill',

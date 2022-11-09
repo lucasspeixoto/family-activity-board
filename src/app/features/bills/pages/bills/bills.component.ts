@@ -1,14 +1,17 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+import { Observable } from 'rxjs';
+
+import { Store } from '@ngrx/store';
+
 import * as fromApp from '@app/app.state';
 
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { getUser } from '@authSt/auth.selectors';
 
 import { AddEditBillComponent } from '@billsC/add-edit-bill/add-edit-bill.component';
 import { getBills, getFilteredBills } from '@billsSt/bills.selectors';
-import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { Bill } from '@billsMd/bills.model';
-import { getUser } from '@authSt/auth.selectors';
 
 @Component({
   selector: 'app-bills',

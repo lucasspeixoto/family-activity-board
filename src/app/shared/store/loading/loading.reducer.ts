@@ -1,4 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
+
 import { StartLoading, StopLoading } from './loading.actions';
 
 export interface LoadingState {
@@ -11,15 +12,13 @@ const initialState: LoadingState = {
 
 const _loadingReducer = createReducer(
   initialState,
-  on(StartLoading, (state: LoadingState) => {
+  on(StartLoading, () => {
     return {
-      ...state,
       isLoading: true,
     };
   }),
-  on(StopLoading, (state: LoadingState) => {
+  on(StopLoading, () => {
     return {
-      ...state,
       isLoading: false,
     };
   })
