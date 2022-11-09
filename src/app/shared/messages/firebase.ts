@@ -1,4 +1,4 @@
-export const Messages: any = {
+export const Messages: Record<string, string> = {
   'auth/claims-too-large':
     'O payload de declarações fornecido para setCustomUserClaims() excede o tamanho máximo permitido de 1.000 bytes.',
 

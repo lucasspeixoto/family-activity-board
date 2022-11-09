@@ -15,7 +15,7 @@
         <div
           class="bills__cards"
           *ngIf="filteredBills$ | async as filteredBills">
-          <div class="bills__cards-filters" *ngIf="filteredBills.length > 0">
+          <div class="bills__cards-filters" *ngIf="bills.length > 0">
             <app-bills-filters></app-bills-filters>
           </div>
 
@@ -39,22 +39,5 @@
     <ng-template #loading>
       <app-loading></app-loading>
     </ng-template>
-    <!-- <ng-container class="bills" *ngIf="bills$ | async; else loading">
-      <div class="bills__actions">
-        <button
-          mat-fab
-          aria-label="Incluir conta"
-          appUpElevation
-          (click)="addNewBillHandler()">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
-
-      <app-bills-cards></app-bills-cards>
-    </ng-container>
-
-    <ng-template #loading>
-      <app-loading></app-loading>
-    </ng-template> -->
   </ng-container>
 </app-layout>

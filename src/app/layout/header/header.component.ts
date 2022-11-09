@@ -1,5 +1,3 @@
-import * as fromApp from '@app/app.state';
-
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,9 +7,13 @@ import {
   Output,
 } from '@angular/core';
 
-import { loadMessages } from './../../shared/store/message/message.actions';
-import { Logout } from '@authSt/auth.actions';
 import { Store } from '@ngrx/store';
+
+import * as fromApp from '@app/app.state';
+
+import { Logout } from '@authSt/auth.actions';
+
+import { loadMessages } from '@sharedSt/message/message.actions';
 
 @Component({
   selector: 'app-header',

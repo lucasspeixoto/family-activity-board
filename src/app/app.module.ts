@@ -1,5 +1,18 @@
 import 'moment/locale/pt';
 
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import {
+  ScreenTrackingService,
+  UserTrackingService,
+} from '@angular/fire/analytics';
 import {
   DateAdapter,
   MAT_DATE_FORMATS,
@@ -10,32 +23,24 @@ import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
 } from '@angular/material-moment-adapter';
-import {
-  ScreenTrackingService,
-  UserTrackingService,
-} from '@angular/fire/analytics';
+import { MatDialogRef } from '@angular/material/dialog';
 
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthenticationModule } from '@auth/authentication.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-import { EffectsModule } from '@ngrx/effects';
-import { environment } from '@envs/environment';
-import { LayoutModule } from './layout/layout.module';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MaterialModule } from '@sharedM/material.module';
-import { NgModule } from '@angular/core';
 import { reducers } from './app.state';
-import { RouterModule } from '@angular/router';
+
+import { AuthenticationModule } from '@auth/authentication.module';
+
+import { environment } from '@envs/environment';
+
+import { LayoutModule } from '@layout/layout.module';
+
+import { MaterialModule } from '@sharedM/material.module';
 import { SharedModule } from '@sharedM/shared.module';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule } from '@ngrx/store';
 
 const MODULES = [
   BrowserModule,

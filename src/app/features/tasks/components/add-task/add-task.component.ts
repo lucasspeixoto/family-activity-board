@@ -1,20 +1,24 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { addTaskForm } from '@constants/bill-forms';
-
-import { TaskService } from '@tasksS/task.service';
-import { Task } from '@tasksMd/task.model';
-import { User } from '@authMd/user.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import { Store } from '@ngrx/store';
 
 import * as fromApp from '@app/app.state';
+
+import { User } from '@authMd/user.model';
+
+import { addTaskForm } from '@constants/bill-forms';
+
 import { getExistingTasksColors } from '@tasksSt/tasks.selectors';
+import { TaskService } from '@tasksS/task.service';
+import { Task } from '@tasksMd/task.model';
 
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddTaskComponent {
   public addNewTaskForm = this._formBuilder.group({ ...addTaskForm });
